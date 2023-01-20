@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+:root {
+    --theme: #3d4435;
+    --error: #e7195a;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.App {
+    position: relative;
+    min-height: 100vh;
+}
+
+/* NAVBAR STYLES */
+.nav-text {
+    color: white;
+    letter-spacing: 1.5px;
+    font-size: 30px;
+}
+
+.nav-button {
+    border: solid  2px;
+    border-radius: 15%;
+    margin: 20;
+    background-color: white;
+}
+
+.navbar {
+    background-color: var(--theme);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.link {
+    color: var(--theme);
+    text-decoration: none;
+}
+
+.link:hover {
+    color: rgb(239, 174, 20);
+}
+
+.nav-container {
+    padding: 20px;
+}
+
+a h2.web-title {
+    padding-top: 0px;
+}
+
+/* SIGNUP AND LOGIN PAGE */
+.custom-container{
+    width: 50%;
+    margin: 70px auto;
+}
+
+h1.signup{
+    text-align: center;
+}
+
+button.sign-up-button{
+   align-self: center;
+}
+
+
+
+/* FOOTER STYLES */
+footer.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+}
