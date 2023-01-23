@@ -1,11 +1,30 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { logIn } from '../state_management/userSlice';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const dispatch = useDispatch()
 
-    const handleSubmit = () => {
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            const response = await fetch(`http://127.0.0.1:5000/api/organisation/login`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password }),
 
+            })
+            const json = await response.json();
+            if (response.ok) {
+               dispatch(logIn(json))
+            }
+            console.log(json);
+
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return (
@@ -14,11 +33,11 @@ const Login = () => {
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label className="form-label">Email address:</label>
-                    <input type="email" onChange={(e) => setEmail(e.target.value)} value={email} className="form-control" />
+                    <input type="email" onChange={(e) => setEmail(e.target.value)} value={email} className="form-control" required />
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Password:</label>
-                    <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} className="form-control" />
+                    <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} className="form-control" required/>
                 </div>
                 <button type='submit' className="btn btn-dark sign-up-button">Login</button>
             </form>

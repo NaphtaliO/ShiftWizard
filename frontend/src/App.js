@@ -14,7 +14,6 @@ import Footer from './components/Footer';
 function App() {
   //this is the user made global
   const user = useSelector((state) => state.user.value);
-  console.log(user);
   return (
     <div className="App">
       <BrowserRouter>

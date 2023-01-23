@@ -1,10 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const user = {email: 'admin@dell.com'}
 export const userSlice = createSlice({
     name: 'user',
     initialState: {
-        value: user,
+        value: null,
     },
     reducers: {
         logIn: (state, action) => {
