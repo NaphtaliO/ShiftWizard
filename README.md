@@ -31,3 +31,6 @@ so that the server refreshes when the file changes
 
 If you install new modules with pip you can say pip freeze > requirements.txt to add it to the file
 
+**I also to the liberty of hosting a mysql db to save yous the hassle of installing it locally. It's a fucking hassle but this way its a lot easier**
+
+

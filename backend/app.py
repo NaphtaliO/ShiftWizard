@@ -9,10 +9,9 @@ app = Flask(__name__)
 CORS(app, support_credentials=True)
 
 db = SQLAlchemy()
-# "mysql://naphtali:naphtali123@mydb.cg1kk4ysnwdb.eu-west-1.rds.amazonaws.com:3306/ebdb"
 # If you want to run on a mysqlclient server runnint locally the URI is generally in this format
 # mysql://<username>:<password>@<host>:<port>/<dbname>
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:chigoz++@localhost:3306/project"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://naphtali:naphtali123@mydb.cg1kk4ysnwdb.eu-west-1.rds.amazonaws.com:3306/ebdb"
 db.init_app(app)
 
 # This is the db model for Organisations you can add or edit later
