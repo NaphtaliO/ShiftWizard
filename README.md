@@ -6,9 +6,10 @@ To run the react application you need to install
 Node 18 from here https://nodejs.org/en/
 Then after that you cd into frontend and run "npm install"
 after that you run "npm start" its very simple. It should open on it's own.
-input can be removed or added it's just a basic implementation to get something working
+inputs like name and address can be removed or added it's just a basic implementation to get something working
 
 ## Backend
+cd into the backend folder
 Activate the dev environment on mac with 
 . venv/bin/activate
 or on windows with
@@ -20,11 +21,11 @@ I commented the best I could but you can ask me anything if you don't get it
 I used here https://docs.sqlalchemy.org/en/14/orm/queryguide.html as a reference also you can ask me any question
 
 ### How it works
-The user send a inputs like name emaill password and so on. The server checkes if the user exists if not it adds the usere to the database and creates a token for authentication and sends the response back i.e. user information plus the token
+The user sends inputs like name email password and so on. The server checks if the user exists if not it adds the user to the database and creates a token for authentication and sends the response back i.e. user information plus the token
 
-Same with login. It checks if the user exists the it checks if the password matches with that already stored in the database if so respond accordinly pretty simple stuff
+Same with login. It checks if the user exists then it checks if the password matches with that already stored password in the database if so respond accordingly pretty simple stuff
 
-to run the backend you have to cd into backend folder
+to run the backend, make sure your are in the backend folder(cd backend) then make sure you started the dev environment above. then
 pip install -r requirements.txt
 flask --app app.py --debug run
 so that the server refreshes when the file changes
