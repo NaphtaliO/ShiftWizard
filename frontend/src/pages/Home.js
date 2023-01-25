@@ -1,9 +1,8 @@
 import React from 'react'
+import Table from '../components/Table';
 
 const Home = () => {
-    return (<div>
-        <h1>Welcome Home</h1>
-    </div>);
+    return (<Table />);
 }
 
 export default Home;

@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+div.names {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+div.names p {
+    margin-left: 10px;
+}
+
+.details p,
+.shift p {
+    margin: 0;
+}
+
+.details p.job {
+    color: rgb(168, 202, 202);
+}
+
+.shift-item {
+    padding: 0px 10px;
+}
+
+.shift {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10%;
+    background-color: rgb(210, 105, 105);
+}

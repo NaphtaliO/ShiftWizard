@@ -13,7 +13,8 @@ import Footer from './components/Footer';
 //via the react-router-dom
 function App() {
   //this is the user made global
-  const user = useSelector((state) => state.user.value);
+  // const user = useSelector((state) => state.user.value);
+  const user = true;
   return (
     <div className="App">
       <BrowserRouter>
