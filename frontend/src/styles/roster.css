@@ -45,3 +45,10 @@ div.names p {
     flex-direction: row;
     justify-content: space-between;
 }
+
+.roster-buttons{
+    margin: 20px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}

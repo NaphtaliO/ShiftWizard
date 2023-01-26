@@ -1,6 +1,7 @@
 import React from 'react';
-import '../styles/table.css'
-import { Avatar } from '@mui/material';
+import '../styles/roster.css'
+import { Avatar, Button } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 import Shift from './Shift';
 
 let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -149,9 +150,12 @@ const employees = [
 
 
 
-const Table = () => {
+const Roster = () => {
     return (
         <div className="container">
+            <div className='roster-buttons'>
+                <Button color="error" variant="contained" startIcon={<DeleteIcon />}>Delete Roster</Button>
+            </div>
             <table className='table'>
                 {/* tale-dark is an option */}
                 <thead>
@@ -203,4 +207,4 @@ const Table = () => {
     )
 }
 
-export default Table;
+export default Roster;

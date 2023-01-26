@@ -1,9 +1,9 @@
-import React from 'react'
-import Table from '../components/Table';
+import React from 'react';
+import Roster from '../components/Roster';
 
 const Home = () => {
     return (
-        <Table />
+        <Roster />
     );
 }
 
