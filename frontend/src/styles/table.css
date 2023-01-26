@@ -32,6 +32,16 @@ div.names p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border: 1px solid black;
     border-radius: 10%;
-    background-color: rgb(210, 105, 105);
+    /* height: 80px; */
+    padding: 10px 0px;
+    cursor: pointer;
+}
+
+.modal-buttons{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

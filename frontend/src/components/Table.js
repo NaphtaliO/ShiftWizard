@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/table.css'
 import { Avatar } from '@mui/material';
+import Shift from './Shift';
 
 let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -17,12 +18,6 @@ for (let i = 0; i < 7; i++) {
     dates.push(`${dayName} ${day} ${month}`);
     // console.log(`${dayName} ${day} ${month}`);
 }
-
-// const pickRandomColor = () => {
-//     let colors = [''];
-//     let randomColor = colors[Math.floor(Math.random() * colors.length)];
-//     return randomColor;
-// }
 
 const employees = [
     {
@@ -152,10 +147,13 @@ const employees = [
     },
 ]
 
+
+
 const Table = () => {
     return (
         <div className="container">
             <table className='table'>
+                {/* tale-dark is an option */}
                 <thead>
                     <tr>
                         <th scope='col'></th>
@@ -171,7 +169,8 @@ const Table = () => {
                         <tr key={i}>
                             <td>
                                 <div className='names' style={{ marginRight: 'auto' }}>
-                                    <Avatar>{employee.name.charAt(0).toUpperCase()}</Avatar>
+                                    <Avatar sx={{ bgcolor: "#000000" }}>
+                                        {employee.name.charAt(0).toUpperCase()}</Avatar>
                                     <div className="details">
                                         <p>{employee.name}</p>
                                         <p className='job'>{employee.job}</p>
@@ -186,12 +185,8 @@ const Table = () => {
                                 return (
                                     <td key={i}>
                                         {shift ?
-                                            <div className='shift-item'>
-                                                <div className="shift">
-                                                    <p>{shift.startTime} - {shift.endTime}</p>
-                                                    <p>{shift.description !== "" ? shift.description : null}</p>
-                                                </div>
-                                            </div> :
+                                            <Shift shift={shift} name={employee.name} />
+                                            :
                                             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                                 <p>OFF</p>
                                             </div>
