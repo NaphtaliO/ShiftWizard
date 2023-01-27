@@ -78,7 +78,7 @@ const Shift = ({ shift, name }) => {
                             onChange={(newValue) => {
                                 setStartTime(newValue);
                             }}
-                            renderInput={(params) => <TextField {...params} />}
+                            renderInput={(params) => <TextField {...params} fullWidth />}
                             minTime={moment().hours(8).minutes(59)}
                         />
                         <br />
@@ -90,7 +90,7 @@ const Shift = ({ shift, name }) => {
                                 setEndTime(newValue)
                                 //console.log(newValue.format('h:mmA'));
                             }}
-                            renderInput={(params) => <TextField {...params} />}
+                            renderInput={(params) => <TextField {...params} fullWidth />}
                             maxTime={moment().hours(18).minutes(0)}
                             onError={(e)=>console.log(e)}
                             

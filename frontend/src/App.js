@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-//import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 //pages and components
 import Navbar from './components/Navbar';
@@ -13,8 +13,7 @@ import Footer from './components/Footer';
 //via the react-router-dom
 function App() {
   //this is the user made global
-  // const user = useSelector((state) => state.user.value);
-  const user = true;
+  const user = useSelector((state) => state.user.value);
   return (
     <div className="App">
       <BrowserRouter>

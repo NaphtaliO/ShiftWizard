@@ -1,0 +1,9 @@
+.number-count{
+    display: flex;
+    justify-content: flex-end;
+}
+
+p.number-count-p{
+    font-size: 70px;
+    font-weight: 600;
+}
