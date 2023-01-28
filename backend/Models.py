@@ -8,7 +8,7 @@ class Organisation(db.Model):
     name = db.Column(db.String(100))
     address = db.Column(db.String(100))
     email = db.Column(db.String(70), unique=True)
-    password = db.Column(db.String(80))
+    password = db.Column(db.String(100))
     employees = db.relationship('Employee', backref='organisation')
 
     def __init__(self, id, name, address, email, password):
@@ -21,31 +21,38 @@ class Organisation(db.Model):
 
 class Employee(db.Model):
     __tablename__ = "employees"
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String, nullable=False)
-    email = db.Column(db.String, nullable=False)
-    role = db.Column(db.String, nullable=False)
-    employer_id = db.Column(db.Integer, db.ForeignKey(
-        'organisation.id'), nullable=False)
-    shifts = db.relationship('Shift', backref='employee', lazy=True)
+    id = db.Column(db.String(100), primary_key=True, unique=True)
+    name = db.Column(db.String(100), nullable=False)
+    job = db.Column(db.String(100))
+    email = db.Column(db.String(100), nullable=False, unique=True)
+    password = db.Column(db.String(100))
+    organisation_id = db.Column(db.String(100), db.ForeignKey(
+        'organisations.id'), nullable=False)
+    shifts = db.relationship('Shift', backref='employee')
+
+
+class Shift(db.Model):
+    __tablename__ = "shifts"
+    id = db.Column(db.String(100), primary_key=True)
+    description = db.Column(db.String(100))
+    day = db.Column(db.String(100), nullable=False)
+    start_time = db.Column(db.Time, nullable=False)
+    end_time = db.Column(db.Time, nullable=False)
+    employee_id = db.Column(db.String(100), db.ForeignKey(
+        'employees.id'), nullable=False)
 
 
 class Roster(db.Model):
     __tablename__ = "rosters"
-    id = db.Column(db.Integer, primary_key=True)
-    start_date = db.Column(db.Date, nullable=False)
-    end_date = db.Column(db.Date, nullable=False)
-    employee_id = db.Column(db.Integer, db.ForeignKey(
-        'employee.id'), nullable=False)
-    shifts = db.relationship('Shift', backref='roster')
+    id = db.Column(db.String(100), primary_key=True)
+    name = db.Column(db.String(100))
+    employees = db.relationship('Employee', secondary='employee_roster', lazy='subquery', backref=db.backref('rosters', lazy=True))
 
 
-class Shift(db.Model):
-	id = db.Column(db.Integer, primary_key=True)
-	start_time = db.Column(db.Time, nullable=False)
-	end_time = db.Column(db.Time, nullable=False)
-	day = db.Column(db.String, nullable=False)
-	description = db.Column(db.String)
-	employee_id = db.Column(db.Integer, db.ForeignKey(
-	    'employee.id'), nullable=False)
-	roster_id = db.Column(db.Integer, db.ForeignKey('roster.id'), nullable=False)
+class EmployeeRoster(db.Model):
+    __tablename__ = "employee_roster"
+    id = db.Column(db.String(100), primary_key=True)
+    employee_id = db.Column(db.String(100), db.ForeignKey(
+        'employees.id'), nullable=False)
+    roster_id = db.Column(db.String(100), db.ForeignKey(
+        'rosters.id'), nullable=False)
