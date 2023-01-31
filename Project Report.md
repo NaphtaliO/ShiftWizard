@@ -14,3 +14,9 @@ Our web application is designed to make the management of employees work schedul
 # Research
 
 # Use Case
+![image](https://user-images.githubusercontent.com/114653179/215885357-0b4a5a65-99b0-4d43-8cc4-8874a3dc7edb.png)
+This use case diagram describes how the user interacts with the system. There is two actors that interact with the system, employees and employers. These two actors will interact with a different view of the system. Both actors can log in, and will then be sorted into whether they are employers or employees. 
+
+For an employer logging into the system for the first time, the option to register the account and set up working hours and employee data will be given. This allows for greater automation and ease of use for employers. Once registered, the employer can create a new roster, or interact with an existing roster. They can also see any active requests made by employees to swap shift or request days off.
+
+An employee logging into the system will be able to view the rosters that their employers have created, along with the ability to request a shift change with another employee or the ability to request days off from their employer. If the employee receives a request to swap from another employee, the request will show up on their dashboard. 
