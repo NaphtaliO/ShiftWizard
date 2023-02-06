@@ -19,16 +19,16 @@ class Employee(db.Model):
     password = db.Column(db.String(100))
     organisation_id = db.Column(db.String(100), db.ForeignKey(
         'organisations.id'), nullable=False)
-    roster_id = db.Column(db.String(100), db.ForeignKey(
-        "rosters.id"))
+    # rosters = db.relationship(
+    #     'Roster', secondary='employee_rosters', backref='employees')
     shifts = db.relationship('Shift', backref='employee')
 
-    def __init__(self, id, name, job, email, roster_id, organisation_id):
+    def __init__(self, id, name, job, email, password, organisation_id):
         self.id = id
         self.name = name
         self.job = job
-        self.roster_id = roster_id
         self.email = email,
+        self.password = password,
         self.organisation_id = organisation_id
 
     def to_dict(self):
@@ -50,7 +50,8 @@ class Shift(db.Model):
     employee_id = db.Column(db.String(100), db.ForeignKey(
         'employees.id'), nullable=False)
 
-    def __init__(self, description, day, start_time, end_time, employee_id):
+    def __init__(self, id, description, day, start_time, end_time, employee_id):
+        self.id = id
         self.description = description
         self.day = day
         self.start_time = start_time
@@ -59,6 +60,7 @@ class Shift(db.Model):
 
     def to_dict(self):
         return {
+            "id": self.id,
             "description": self.description,
             "day": self.day,
             "startTime": self.start_time,
@@ -69,15 +71,25 @@ class Roster(db.Model):
     __tablename__ = "rosters"
     id = db.Column(db.String(100), primary_key=True, unique=True)
     name = db.Column(db.String(100))
-    employees = db.relationship('Employee', backref='roster')
+    organisation_id = db.Column(db.String(100), db.ForeignKey('organisations.id'), nullable=False)
+    employees = db.relationship(
+        'Employee', secondary='employee_roster', backref='roster')
 
-    def __init__(self, id, name):
+    def __init__(self, id, name, organisation_id):
         self.id = id
         self.name = name
+        self.organisation_id = organisation_id
 
     def to_dict(self):
         return {
             "id": self.id,
             "name": self.name,
+            "organisation_id": self.organisation_id,
             "employees": [employee.to_dict() for employee in self.employees]
         }
+
+
+class EmployeeRoster(db.Model):
+    __tablename__ = "employee_roster"
+    employee_id = db.Column(db.String(100), db.ForeignKey('employees.id'), nullable=False, primary_key=True)
+    roster_id = db.Column(db.String(100), db.ForeignKey('rosters.id'), nullable=False)
