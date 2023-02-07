@@ -3,8 +3,10 @@ import { useDispatch } from 'react-redux';
 import { logIn } from '../state_management/userSlice';
 
 const Login = () => {
+    //Todo: add loading
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('')
     const dispatch = useDispatch()
 
     const handleSubmit = async (event) => {
@@ -17,8 +19,13 @@ const Login = () => {
 
             })
             const json = await response.json();
+            if (!response.ok) {
+                setError(json.message)
+            }
             if (response.ok) {
-               dispatch(logIn(json))
+                //save the user to local storage
+                localStorage.setItem('user', JSON.stringify(json))
+                dispatch(logIn(json))
             }
             console.log(json);
 
@@ -37,9 +44,11 @@ const Login = () => {
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Password:</label>
-                    <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} className="form-control" required/>
+                    <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} className="form-control" required />
                 </div>
-                <button type='submit' className="btn btn-dark sign-up-button">Login</button>
+                {error !== "" ? <div className="error" style={{ color: 'red' }}>
+                    <p>{error}</p></div> : null}
+                <button type='submit' className="btn btn-dark sign-up-button">Login</button>  
             </form>
         </div>
 

@@ -7,6 +7,7 @@ const Signup = () => {
     const [address, setAddress] = useState('')
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('')
     const dispatch = useDispatch()
 
     const handleSubmit = async (event) => {
@@ -19,7 +20,11 @@ const Signup = () => {
                 
             })
             const json = await response.json();
+            if (!response.ok) {
+                setError(json.message)
+            }
             if (response.ok) {
+                localStorage.setItem('user', JSON.stringify(json))
                 dispatch(logIn(json))
             }
             console.log(json);
@@ -50,6 +55,8 @@ const Signup = () => {
                     <label className="form-label">Password:</label>
                     <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} className="form-control" required />
                 </div>
+                {error !== "" ? <div className="error" style={{ color: 'red' }}>
+                    <p>{error}</p></div> : null}
                 <button type='submit' className="btn btn-dark sign-up-button">Sign up</button>
             </form>
         </div>

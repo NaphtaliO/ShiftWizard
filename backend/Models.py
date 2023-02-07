@@ -49,14 +49,17 @@ class Shift(db.Model):
     end_time = db.Column(db.String(100), nullable=False)
     employee_id = db.Column(db.String(100), db.ForeignKey(
         'employees.id'), nullable=False)
+    roster_id = db.Column(db.String(100), db.ForeignKey(
+        'rosters.id'), nullable=False)
 
-    def __init__(self, id, description, day, start_time, end_time, employee_id):
+    def __init__(self, id, description, day, start_time, end_time, employee_id, roster_id):
         self.id = id
         self.description = description
         self.day = day
         self.start_time = start_time
         self.end_time = end_time
         self.employee_id = employee_id
+        self.roster_id = roster_id
 
     def to_dict(self):
         return {
@@ -64,7 +67,9 @@ class Shift(db.Model):
             "description": self.description,
             "day": self.day,
             "startTime": self.start_time,
-            "endTime": self.end_time
+            "endTime": self.end_time,
+            "employee_id": self.employee_id,
+            "roster_id": self.roster_id,
         }
 
 class Roster(db.Model):

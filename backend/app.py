@@ -113,6 +113,7 @@ def rosters(organisation_id):
 
 #TODO check if the employee exists first
 #TODO upon creation 
+#TODO extra things we might add to an employee like phone number and so on
 @app.route("/api/employee/create", methods=['POST'])
 def create_employee():
     data = request.get_json()
@@ -207,21 +208,33 @@ def roster(roster_id):
         response = {"message": "An error Occurred. Try Again"}
         return jsonify(response), 400
     
-# @app.route("/api/roster/addShift", methods=["POST"])
-# def addShift():
-#     data = request.get_json()
+#TODO when adding shift check if the employee is free on that day at that time
+@app.route("/api/roster/addShift", methods=["POST"])
+def addShift():
+    data = request.get_json()
 
-#     description, day, start_time, end_time, employee_id = data.get('description'), data.get(
-#         'day'), data.get('start_time'), data.get('end_time'), data.get('employee_id'),
-#     try:
-#         new_shift = Shift(
-#             id = str(uuid.uuid4())
-
-#         )
-#     except Exception as e:
-#         print(e)
-#         response = {"message": "An error Occurred. Try Again"}
-#         return jsonify(response), 400
+    description, day, start_time, end_time, employee_id, roster_id = data.get('description'), data.get(
+        'day'), data.get('start_time'), data.get('end_time'), data.get('employee_id'), data.get('roster_id')
+    try:
+        new_shift = Shift(
+            id = str(uuid.uuid4()),
+            description=description,
+            day=day,
+            start_time=start_time,
+            end_time=end_time,
+            employee_id=employee_id, 
+            roster_id=roster_id
+        )
+        db.session.add(new_shift)
+        employee = db.session.execute(db.select(Employee).where(
+            Employee.id == employee_id)).scalar()
+        employee.shifts.append(new_shift)
+        db.session.commit()
+        return jsonify(employee=employee.to_dict()), 200
+    except Exception as e:
+        print(e)
+        response = {"message": "An error Occurred. Try Again"}
+        return jsonify(response), 400
 
 
 @app.route("/api/getAllRosters/<organisation_id>", methods=["GET"])

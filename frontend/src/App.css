@@ -32,6 +32,7 @@
 .navbar {
     background-color: var(--theme);
     font-family: 'Montserrat', sans-serif;
+    margin-bottom: 50px;
 }
 
 .link {
