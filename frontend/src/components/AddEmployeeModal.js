@@ -49,6 +49,7 @@ const AddEmployeeModal = ({ isOpen, setIsOpen, roster_id, setRoster, roster }) =
                 alert(json.message)
             }
             if (response.ok) {
+                setIsOpen(false)
                 setRoster(json.roster)
             }
         } catch (error) {

@@ -10,6 +10,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 //TODO update roster to on show shifts with the same roster id
 const Dashboard = () => {
     const user = useSelector((state) => state.user.value)
+    const employees = useSelector((state) => state.employees.value)
+    console.log(employees);
     const [name, setName] = useState('');
     const [employeeName, setEmployeeName] = useState('')
     const [job, setJob] = useState('')

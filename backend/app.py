@@ -22,6 +22,7 @@ from Models import *
 with app.app_context():
     db.create_all()
 
+# TODO might want to add createdAt dates to models. We'll consider it later
 @app.route("/")
 def index():
     return "<h1>Hello World!!!<h1>"
@@ -250,6 +251,7 @@ def get_all_rosters(organisation_id):
         print(e)
         response = {"message": "An error Occured. Try Again"}
         return jsonify(response), 400
+
 
 if __name__ == "__main__":
     app.run(debug=True)

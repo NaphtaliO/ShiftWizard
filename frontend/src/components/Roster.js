@@ -177,7 +177,7 @@ const Roster = () => {
                                 let shift = employee.shifts.filter(shift => shift.day === date.split(' ')[0])[0];
                                 return (
                                     <td key={i}>
-                                        {shift ?
+                                        {shift && shift.roster_id === id ?
                                             <Shift shift={shift} name={employee.name} />
                                             :
                                             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

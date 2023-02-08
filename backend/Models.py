@@ -1,5 +1,6 @@
 from app import db
 
+#TODO might want to add createdAt dates to models. We'll consider it later
 class Organisation(db.Model):
     __tablename__ = "organisations"
 
@@ -96,5 +97,5 @@ class Roster(db.Model):
 
 class EmployeeRoster(db.Model):
     __tablename__ = "employee_roster"
-    employee_id = db.Column(db.String(100), db.ForeignKey('employees.id'), nullable=False, primary_key=True)
-    roster_id = db.Column(db.String(100), db.ForeignKey('rosters.id'), nullable=False)
+    employee_id = db.Column(db.String(100), db.ForeignKey('employees.id'), nullable=False )
+    roster_id = db.Column(db.String(100), db.ForeignKey('rosters.id'), nullable=False, primary_key=True)
