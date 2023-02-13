@@ -36,6 +36,14 @@ For an employer logging into the system for the first time, the option to regist
 
 An employee logging into the system will be able to view the rosters that their employers have created, along with the ability to request a shift change with another employee or the ability to request days off from their employer. If the employee receives a request to swap from another employee, the request will show up on their dashboard. 
 
+# Data Flow
+![Data Flow Diagram 2](https://user-images.githubusercontent.com/114653179/218460986-f98d6190-1842-46b0-8710-b1b0aa887c32.png)
+
+This Data Flow diagram shows the flow of information throughout the system. The system has two views to start the data flow, employers and employees. Once they log in, the system sorts them into either an employer or an employee. It does this by directing the person to their relevant login page. Once the system has verified which type of log in has occurred, the user is directed to their dashboard. 
+
+Both types of user can view any active roster. The employer can make changes to the roster, and those changes will be applied to the roster and is automatically available to view to employees. If an employee would like to swap shifts with another employee, they can make requests with available employees. The swap request is sent to the employee selected, and if accepted, is sent to the employer for approval. An option to export the roster is also given to the employer.
+
+
 # Design
 ## System architecture
 The architecture of our web application can be abstracted into three layers: the 'presentation' layer or frontend, the 'logic' layer and the 'data access layer' or backend. This architecture is typical of the majority of modern web applications. 
