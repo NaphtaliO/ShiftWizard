@@ -170,6 +170,7 @@ def add_employee_to_roster():
 
     roster_id, employee_id = data.get('roster_id'), data.get('employee_id')
     #query roster by id
+    
     try:
         roster = db.session.execute(db.select(Roster).where(Roster.id == roster_id)).scalar()
         employee = db.session.execute(db.select(Employee).where(Employee.id == employee_id)).scalar()
@@ -252,6 +253,21 @@ def get_all_rosters(organisation_id):
         response = {"message": "An error Occured. Try Again"}
         return jsonify(response), 400
 
+@app.route("/api/deleteRoster/<roster_id>", methods=["DELETE"])
+def delete_roster(roster_id):
+    try:
+        roster = db.session.execute(db.select(Roster).where(
+            Roster.id == str(roster_id))).scalar()
+        if not roster:
+            return {"message": "This roster doesn't exist"}, 400
+        else:
+            db.session.delete(roster)
+            db.session.commit()
+            return {"message": "This worked"}, 200
+    except Exception as e:
+        print(e)
+        response = {"message": "An error Occurred. Try Again"}
+        return jsonify(response), 400
 
 if __name__ == "__main__":
     app.run(debug=True)

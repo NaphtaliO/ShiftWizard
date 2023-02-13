@@ -10,6 +10,7 @@ class Organisation(db.Model):
     email = db.Column(db.String(70), unique=True)
     password = db.Column(db.String(100))
     employees = db.relationship('Employee', backref='organisation')
+    
 
 class Employee(db.Model):
     __tablename__ = "employees"
