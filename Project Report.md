@@ -45,6 +45,50 @@ Both types of user can view any active roster. The employer can make changes to 
 
 
 # Design
+## Path of Development
+When setting out our plan to develop this system, we prioritised the foundations of the system first, and built upon them. This list and diagram describe the path of development that we strived to achieve to make development as efficient as possible. This ensured we had as much time as possible to implement features and polish to the product.
+![CPD](https://user-images.githubusercontent.com/114653179/218506085-92ebfb08-134d-4445-b7a1-2d96416c9585.png)
+
+<ins>__Features for the Employer view:__</ins>
+
+1-	Login page for employers.
+
+2-	Setting up an account registration for new firm accounts.
+
+3-	Dashboard of employer - Create, delete, view, edit new roster.
+
+4-	Upon roster selection:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(a) A calendar-like view to see each hour and employee details.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(b) Add new employee, delete an employee, add roster times, change times, delete times. 
+
+5-	Delete whole roster – button on dashboard page and inside roster view.
+
+6-	Follow on to point 2 -- Add hours of work when initialling the firm which will be automatically applied on all firm rosters.
+
+<ins>__Features for the Employee view:__</ins>
+
+7-	Login page for employees.
+
+8-	Setting up an account registration for new accounts.
+
+9-	Set up emails to authenticate employees joining a firms network.
+
+10-	View active rosters.
+
+11-	Request shift swap with other employees which must be accepted by the employer.
+
+12-	Request days off, which must be accepted by the employer.
+
+<ins>__Stretch goals__</ins>
+
+13-	Add and edit holidays that the company is closed, closing hours of the firm, etc.
+
+14-	Export roster to PDF or PNG.
+
+15-	Chat function allowing employees to communicate.
+
 ## System architecture
 The architecture of our web application can be abstracted into three layers: the 'presentation' layer or frontend, the 'logic' layer and the 'data access layer' or backend. This architecture is typical of the majority of modern web applications. 
 
