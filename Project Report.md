@@ -43,6 +43,15 @@ This Data Flow diagram shows the flow of information throughout the system. The 
 
 Both types of user can view any active roster. The employer can make changes to the roster, and those changes will be applied to the roster and is automatically available to view to employees. If an employee would like to swap shifts with another employee, they can make requests with available employees. The swap request is sent to the employee selected, and if accepted, is sent to the employer for approval. An option to export the roster is also given to the employer.
 
+# Sequence Diagram
+## Employer Sequence Diagram
+This diagram shows the ordered interactions which the Employer user can take in time focus. Our system is made up of the Roster System / User Interface, the Systems Database, the Employer Account, and the Individual Rosters. Employers can perform difference opoerations once logged into the system. They can add a new Roster, add an employee to their account, add a timeslot entry to a Rosters, delete a Roster timeslot entry, or delete an entire roster.
+![EmployerSequenceDiagram](https://user-images.githubusercontent.com/105229775/218795910-c2617b5c-0227-46e9-ab54-38e010d17b02.png)
+
+## Employee Sequence Diagram
+The other user of our system is the Employee of the company / business. This Sequence Diagram has the same objects as the Employer. Employees can perform difference opoerations once logged into their account that has been created for them on the system by the Employer. They can request a day off, request a shift swap with another employee, accept or decline a shift swap from another employee.
+![EmployeeSequenceDiagram](https://user-images.githubusercontent.com/105229775/218797242-8ba3811a-f643-42be-8cf4-0fc2a0d3df0a.png)
+
 
 # Design
 ## Path of Development
