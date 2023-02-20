@@ -29,10 +29,10 @@ There are three main types of rosters for business operations which are used acr
 
 
 # Use Case
-![Use case](https://user-images.githubusercontent.com/114653179/217246678-f949270e-f329-4081-9ac5-c4f0d69b5e07.png)
+![Use case (1)](https://user-images.githubusercontent.com/114653179/220119895-99662f81-143d-40b7-a384-21cd556b466e.png)
 This use case diagram describes how the user interacts with the system. There is two actors that interact with the system, employees and employers. These two actors will interact with a different view of the system. Both actors can log in, and will then be sorted into whether they are employers or employees. 
 
-For an employer logging into the system for the first time, the option to register the account and set up working hours and employee data will be given. This allows for greater automation and ease of use for employers. Once registered, the employer can create a new roster, or interact with an existing roster. They can also see any active requests made by employees to swap shift or request days off.
+For an employer logging into the system for the first time, the option to register the account and set up working hours and employee data will be given. This allows for greater automation and ease of use for employers. Once registered, the employer can create a new roster, or interact with an existing roster. 
 
 An employee logging into the system will be able to view the rosters that their employers have created, along with the ability to request a shift change with another employee or the ability to request days off from their employer. If the employee receives a request to swap from another employee, the request will show up on their dashboard. 
 
