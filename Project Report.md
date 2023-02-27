@@ -112,6 +112,10 @@ As shown in the diagram below, the presentation layer is the user interface of t
 
 ![software architecture drawio](https://user-images.githubusercontent.com/97966316/218335111-4dd13b2f-3cc1-4207-9923-dae1c8242b82.png)
 
+# React.JS
+React is an open-source JavaScript library for building user interfaces. We chose to use React to build our web application front end as it swiftly reacts to changes made in the back end, and therefore is extremely maintainable and robust. React follows the principle of "one-way data flow" which means that data flows only in one direction, from parent to child components. As React is used to build dynamic and interactive user interfaces for web applications, we thought it would suit our project development needs perfectly. One of the members of our team uses React frequently to build different projects, so by the rest of the team brushing up on our knowledge of how it works, which is very similar to HTML, it allowed us to fluidly develop the web application in the most efficient way.
+
+Our implementation of an electronic rostering system combined React with Flask. The communication between React and Flask was achieved through HTTP requests. React uses JavaScript's built-in fetch() method to make HTTP requests to Flask's API endpoints. Once React receives the data from Flask, it can update the user interface by rendering components and changing their state or props. React can also send data back to Flask by making POST or PUT requests to Flask's API endpoints, allowing the user to interact with the web application and trigger changes on the back-end.
 
 # References
 Drake, R.G. (2017) “E-roster policy: Insights and implications of codifying nurse scheduling,” Health Informatics Journal, 25(3), pp. 844–857. Available at: https://doi.org/10.1177/1460458217724579.
