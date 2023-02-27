@@ -269,5 +269,35 @@ def delete_roster(roster_id):
         response = {"message": "An error Occurred. Try Again"}
         return jsonify(response), 400
 
+@app.route("/api/employee/login", methods=['POST'])
+def employee_login():
+    data = request.get_json()  # Get JSON body from frontend
+    email, password = data.get('email'), data.get('password')
+    try:
+        employee = db.session.execute(db.select(Employee, Employee.password).where(Employee.email == email)).scalar()
+        #Checking if the employee exists. This includes password
+
+        if employee:
+            #Comapring passwords
+            hashedPassword = employee.password.encode('utf-8')  # Encode strings before hashing
+            password = password.encode('utf-8') #Encode strings before hashing
+            if checkpw(password, hashedPassword):
+                token=create_jwt(employee.id) #Create token and send it to the user
+                return jsonify(id=employee.id, name=employee.name, email=employee.email, token=token), 200
+            else:
+                response = {"message" : "Incorrect Password"}
+                return(jsonify(response)), 400
+        else:
+            response = {"message": "Incorrect email"}
+            return jsonify(response), 400
+    except Exception as e:
+        print(e)
+        response = {
+            "message": "An error Occurred. Try Again"
+        }
+        return jsonify(response), 400
+
+
 if __name__ == "__main__":
     app.run(debug=True)
+
