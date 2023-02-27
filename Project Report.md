@@ -112,10 +112,17 @@ As shown in the diagram below, the presentation layer is the user interface of t
 
 ![software architecture drawio](https://user-images.githubusercontent.com/97966316/218335111-4dd13b2f-3cc1-4207-9923-dae1c8242b82.png)
 
+# Flask 
+Flask is a web framework for building web applications in Python. It provides a set of tools and libraries that make it easy to create web application quickly and easily. It is designed to be lightweight and flexible which it an easy choice for us when developing the web application for our new E-rostering system.
+Flask helped us build the web application by defining the routes and views required. Routes are URLs that map to specific functions or methods, while views are the functions or methods that handle the requests and responses for those URLs. Flask provided a simple and flexible way to define the routes and views using Python decorators.
+In addition to routing and views, Flask also provided us a wide range of other tools and libraries for handling tasks such as database integration, template rendering and form validation. We added these different tools to Flask when needed to meet the specific needs of our web application.
+
+
 # React.JS
 React is an open-source JavaScript library for building user interfaces. We chose to use React to build our web application front end as it swiftly reacts to changes made in the back end, and therefore is extremely maintainable and robust. React follows the principle of "one-way data flow" which means that data flows only in one direction, from parent to child components. As React is used to build dynamic and interactive user interfaces for web applications, we thought it would suit our project development needs perfectly. One of the members of our team uses React frequently to build different projects, so by the rest of the team brushing up on our knowledge of how it works, which is very similar to HTML, it allowed us to fluidly develop the web application in the most efficient way.
 
 Our implementation of an electronic rostering system combined React with Flask. The communication between React and Flask was achieved through HTTP requests. React uses JavaScript's built-in fetch() method to make HTTP requests to Flask's API endpoints. Once React receives the data from Flask, it can update the user interface by rendering components and changing their state or props. React can also send data back to Flask by making POST or PUT requests to Flask's API endpoints, allowing the user to interact with the web application and trigger changes on the back-end.
+
 
 # References
 Drake, R.G. (2017) “E-roster policy: Insights and implications of codifying nurse scheduling,” Health Informatics Journal, 25(3), pp. 844–857. Available at: https://doi.org/10.1177/1460458217724579.
