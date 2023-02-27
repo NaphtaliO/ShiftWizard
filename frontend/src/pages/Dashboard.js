@@ -10,8 +10,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 //TODO update roster to on show shifts with the same roster id
 const Dashboard = () => {
     const user = useSelector((state) => state.user.value)
-    const employees = useSelector((state) => state.employees.value)
-    console.log(employees);
+    //const employees = useSelector((state) => state.employees.value);
     const [name, setName] = useState('');
     const [employeeName, setEmployeeName] = useState('')
     const [job, setJob] = useState('')
@@ -34,7 +33,6 @@ const Dashboard = () => {
                 const json = await response.json()
                 if (response.ok) {
                     setRosters(json)
-                    console.log(json);
                 }
             } catch (error) {
                 console.log(error.message);
@@ -166,7 +164,7 @@ const Dashboard = () => {
                                     <tr key={i}>
 
                                         <td>
-                                            <button onClick={() => navigate(`/roster/${roster.id}`)}>
+                                            <button className='rosters-link' onClick={() => navigate(`/roster/${roster.id}`)}>
                                                 {roster.id}
                                             </button>
                                         </td>

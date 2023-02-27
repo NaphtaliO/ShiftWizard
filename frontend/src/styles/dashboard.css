@@ -7,3 +7,9 @@ p.number-count-p{
     font-size: 70px;
     font-weight: 600;
 }
+
+.rosters-link{
+    border: none;
+    background-color: transparent;
+    color: rgb(70, 70, 215);
+}

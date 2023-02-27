@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Modal, Box, InputLabel, MenuItem, FormControl, Select } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add'
+import AddIcon from '@mui/icons-material/Add';
 import { useSelector } from 'react-redux';
 
 const style = {
@@ -92,7 +92,7 @@ const AddEmployeeModal = ({ isOpen, setIsOpen, roster_id, setRoster, roster }) =
                     <br />
 
                     <div className="modal-buttons">
-                        <Button color="error" variant="contained">Cancel</Button>
+                        <Button color="error" variant="contained" onClick={() => setIsOpen(false)}>Cancel</Button>
                         <Button variant="contained" startIcon={<AddIcon />} type='submit'>Add</Button>
                     </div>
                 </form>

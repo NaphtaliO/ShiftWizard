@@ -7,8 +7,8 @@ const Signup = () => {
     const [address, setAddress] = useState('')
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('')
-    const dispatch = useDispatch()
+    const [error, setError] = useState('');
+    const dispatch = useDispatch();
 
     const handleSubmit = async (event) => {
         event.preventDefault();

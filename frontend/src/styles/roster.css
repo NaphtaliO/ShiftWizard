@@ -50,5 +50,12 @@ div.names p {
     margin: 20px 0px;
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
+
+.add-employee{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

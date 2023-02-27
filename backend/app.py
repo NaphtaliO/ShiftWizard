@@ -58,7 +58,7 @@ def signup():
         except Exception as e:
             print(e)  # print the exception
             response = {
-                "messgae": "An error Occurred. Try Again"
+                "message": "An error Occurred. Try Again"
             }
             return jsonify(response), 400
     else:
@@ -215,13 +215,11 @@ def roster(roster_id):
 def addShift():
     data = request.get_json()
 
-    description, day, start_time, end_time, employee_id, roster_id = data.get('description'), data.get(
-        'day'), data.get('start_time'), data.get('end_time'), data.get('employee_id'), data.get('roster_id')
+    description, start_time, end_time, employee_id, roster_id = data.get('description'), data.get('start_time'), data.get('end_time'), data.get('employee_id'), data.get('roster_id')
     try:
         new_shift = Shift(
             id = str(uuid.uuid4()),
             description=description,
-            day=day,
             start_time=start_time,
             end_time=end_time,
             employee_id=employee_id, 
@@ -253,6 +251,7 @@ def get_all_rosters(organisation_id):
         response = {"message": "An error Occured. Try Again"}
         return jsonify(response), 400
 
+
 @app.route("/api/deleteRoster/<roster_id>", methods=["DELETE"])
 def delete_roster(roster_id):
     try:
@@ -268,25 +267,52 @@ def delete_roster(roster_id):
         print(e)
         response = {"message": "An error Occurred. Try Again"}
         return jsonify(response), 400
+    
 
+#Getting shifts by employee ID
+@app.route("/api/getShiftsById/<id>", methods=["GET"])
+def getShiftsById(id):
+    try:
+        shifts = db.session.execute(db.select(Shift).where(Shift.employee_id == str(id))).scalars()
+        shifts_list = []
+        for i in shifts:
+            dictObject = {
+                "id": i.id,
+                "title": i.description,
+                "start": i.start_time,
+                "end": i.end_time,
+                "employee_id": i.employee_id,
+                "roster_id": i.roster_id,
+            }
+            shifts_list.append(dictObject)
+        return jsonify(shifts_list), 200
+    except Exception as e:
+        print(e)
+        response = {"message": "An error Occurred. Try Again"}
+        return jsonify(response), 400
+    
 @app.route("/api/employee/login", methods=['POST'])
 def employee_login():
     data = request.get_json()  # Get JSON body from frontend
     email, password = data.get('email'), data.get('password')
     try:
-        employee = db.session.execute(db.select(Employee, Employee.password).where(Employee.email == email)).scalar()
-        #Checking if the employee exists. This includes password
+        employee = db.session.execute(
+            db.select(Employee, Employee.password).where(Employee.email == email)).scalar()
+        # Checking if the employee exists. This includes password
 
         if employee:
-            #Comapring passwords
-            hashedPassword = employee.password.encode('utf-8')  # Encode strings before hashing
-            password = password.encode('utf-8') #Encode strings before hashing
+            # Comapring passwords
+            hashedPassword = employee.password.encode(
+                'utf-8')  # Encode strings before hashing
+            # Encode strings before hashing
+            password = password.encode('utf-8')
             if checkpw(password, hashedPassword):
-                token=create_jwt(employee.id) #Create token and send it to the user
+                # Create token and send it to the user
+                token = create_jwt(employee.id)
                 return jsonify(id=employee.id, name=employee.name, email=employee.email, token=token), 200
             else:
-                response = {"message" : "Incorrect Password"}
-                return(jsonify(response)), 400
+                response = {"message": "Incorrect Password"}
+                return (jsonify(response)), 400
         else:
             response = {"message": "Incorrect email"}
             return jsonify(response), 400
@@ -297,7 +323,5 @@ def employee_login():
         }
         return jsonify(response), 400
 
-
 if __name__ == "__main__":
     app.run(debug=True)
-

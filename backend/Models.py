@@ -46,7 +46,6 @@ class Shift(db.Model):
     __tablename__ = "shifts"
     id = db.Column(db.String(100), primary_key=True, unique=True)
     description = db.Column(db.String(100))
-    day = db.Column(db.String(100), nullable=False)
     start_time = db.Column(db.String(100), nullable=False)
     end_time = db.Column(db.String(100), nullable=False)
     employee_id = db.Column(db.String(100), db.ForeignKey(
@@ -54,10 +53,9 @@ class Shift(db.Model):
     roster_id = db.Column(db.String(100), db.ForeignKey(
         'rosters.id'), nullable=False)
 
-    def __init__(self, id, description, day, start_time, end_time, employee_id, roster_id):
+    def __init__(self, id, description, start_time, end_time, employee_id, roster_id):
         self.id = id
         self.description = description
-        self.day = day
         self.start_time = start_time
         self.end_time = end_time
         self.employee_id = employee_id
@@ -67,7 +65,6 @@ class Shift(db.Model):
         return {
             "id": self.id,
             "description": self.description,
-            "day": self.day,
             "startTime": self.start_time,
             "endTime": self.end_time,
             "employee_id": self.employee_id,
