@@ -114,7 +114,9 @@ As shown in the diagram below, the presentation layer is the user interface of t
 
 # Flask 
 Flask is a web framework for building web applications in Python. It provides a set of tools and libraries that make it easy to create web application quickly and easily. It is designed to be lightweight and flexible which it an easy choice for us when developing the web application for our new E-rostering system.
+
 Flask helped us build the web application by defining the routes and views required. Routes are URLs that map to specific functions or methods, while views are the functions or methods that handle the requests and responses for those URLs. Flask provided a simple and flexible way to define the routes and views using Python decorators.
+
 In addition to routing and views, Flask also provided us a wide range of other tools and libraries for handling tasks such as database integration, template rendering and form validation. We added these different tools to Flask when needed to meet the specific needs of our web application.
 
 
