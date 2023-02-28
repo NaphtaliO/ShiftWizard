@@ -26,83 +26,114 @@ const style = {
     pb: 3,
 };
 
-const Shift = ({ shift, name }) => {
+const Shift = ({ shift, name, roster, setRoster }) => {
     const [opacity, setOpacity] = useState(1);
     const [color] = useState(pickRandomColor());
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [startTime, setStartTime] = useState(moment(shift.startTime, "HH:mm"));
-    const [endTime, setEndTime] = useState(moment(shift.endTime, "HH:mm"));
+    const [startTime, setStartTime] = useState(moment(shift.startTime.split(' ')[3], "HH:mm"));
+    const [endTime, setEndTime] = useState(moment(shift.endTime.split(' ')[3], "HH:mm"));
+    const [description, setDescription] = useState(shift.description);
+    const st = `${shift.startTime.split(' ')[0]} ${shift.startTime.split(' ')[1]} ${shift.startTime.split(' ')[2]}`;
+    const et = `${shift.endTime.split(' ')[0]} ${shift.endTime.split(' ')[1]} ${shift.endTime.split(' ')[2]}`;
+console.log(roster);
+    const editShift = async (event) => {
+        event.preventDefault();
+        try {
+            //console.log({ description, start_time: `${st} ${startTime.format('HH:mm')}`, end_time: `${et} ${endTime.format('HH:mm')}`, shift_id: shift.id });
+            const response = await fetch(`http://127.0.0.1:5000/api/editShift`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ description, start_time: `${st} ${startTime.format('HH:mm')}`, end_time: `${et} ${endTime.format('HH:mm')}`, shift_id: shift.id }),
+            })
+            const json = await response.json()
+            if (!response.ok) {
+                alert(json.message)
+            }
+            if (response.ok) {
+                // Find the employee and the shift to update
+                const employee = roster.employees.find((employee) =>
+                    employee.shifts.some((shift) => shift.id === json.id)
+                );
+                const shift = employee.shifts.find((shift) => shift.id === json.id);
 
-    const handleMouseEnter = () => {
-        setOpacity(0.6);
-    };
+                // Update the shift
+                const updatedShifts = employee.shifts.map((s) =>
+                    s.id === json.id ? { ...shift, ...json } : s
+                );
 
-    const handleMouseLeave = () => {
-        setOpacity(1);
-    };
+                // Update the employee
+                const updatedEmployees = roster.employees.map((e) =>
+                    e.id === employee.id ? { ...employee, shifts: updatedShifts } : e
+                );
 
-    const handleClick = () => {
-        setIsModalOpen(true)
-    };
-
-    const handleClose = () => {
-        setIsModalOpen(false)
+                // Update the state
+                setRoster({ ...roster, employees: updatedEmployees });
+                setIsModalOpen(false)
+            }
+        } catch (error) {
+            console.log(error.message);
+        }
     }
+
     return (
         <>
             <div className="shift-item">
                 <div
                     className="shift"
                     style={{ backgroundColor: color, opacity: opacity }}
-                    onClick={handleClick}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}>
+                    onClick={() => setIsModalOpen(true)}
+                    onMouseEnter={() => setOpacity(0.6)}
+                    onMouseLeave={() => setOpacity(1)}>
                     <p>
-                        {shift.startTime} - {shift.endTime}
+                        {shift.startTime.split(' ')[3]} - {shift.endTime.split(' ')[3]}
                     </p>
                     <p>{shift.description !== "" ? shift.description : null}</p>
                 </div>
             </div>
             <Modal
                 open={isModalOpen}
-                onClose={handleClose}
+                onClose={() => setIsModalOpen(false)}
                 aria-labelledby="parent-modal-title"
                 aria-describedby="parent-modal-description">
                 <Box sx={{ ...style, width: 400 }}>
-                    <h2 id="parent-modal-title">Edit {name}'s hours</h2>
-                    <p id="parent-modal-description">{shift.description}</p>
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <TimePicker
-                            label="Shift Start"
-                            value={startTime}
-                            onChange={(newValue) => {
-                                setStartTime(newValue);
-                            }}
-                            renderInput={(params) => <TextField {...params} fullWidth />}
-                            minTime={moment().hours(8).minutes(59)}
-                        />
-                        <br />
-                        <br />
-                        <TimePicker
-                            label="Shift End"
-                            value={endTime}
-                            onChange={(newValue) => {
-                                setEndTime(newValue)
-                                //console.log(newValue.format('h:mmA'));
-                            }}
-                            renderInput={(params) => <TextField {...params} fullWidth />}
-                            maxTime={moment().hours(18).minutes(0)}
-                            onError={(e)=>console.log(e)}
-                            
-                        />
+                    <h5 id="parent-modal-title">Edit {name}'s hours</h5><h4 id="parent-modal-description">{shift.description}</h4>
+                    <form onSubmit={editShift}>
+                        <TextField id="outlined-basic" label="Description" variant="outlined" type="text"
+                            onChange={(e) => setDescription(e.target.value)} value={description} fullWidth />
+                        <br /><br />
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <TimePicker
+                                label="Shift Start"
+                                value={startTime}
+                                onChange={(newValue) => {
+                                    setStartTime(newValue);
+                                }}
+                                renderInput={(params) => <TextField {...params} fullWidth required />}
+                                minTime={moment().hours(8).minutes(59)}
+                            />
+                            <br />
+                            <br />
+                            <TimePicker
+                                label="Shift End"
+                                value={endTime}
+                                onChange={(newValue) => {
+                                    setEndTime(newValue)
+                                    //console.log(newValue.format('h:mmA'));
+                                }}
+                                renderInput={(params) => <TextField {...params} fullWidth required />}
+                                // maxTime={moment().hours(18).minutes(0)}
+                                onError={(e) => console.log(e)}
 
-                        <div className="modal-buttons">
-                            <Button color="error" variant="contained" startIcon={<DeleteIcon />}>Delete Shift</Button>
-                            <Button variant="contained">Cancel</Button>
-                            <Button variant="contained">Save</Button>
-                        </div>
+                            />
 
-                    </LocalizationProvider>
+                            <div className="modal-buttons">
+                                <Button color="error" variant="contained" startIcon={<DeleteIcon />}>Delete Shift</Button>
+                                <Button variant="contained" type="submit">Save</Button>
+                            </div>
+
+                        </LocalizationProvider>
+                    </form>
+
                 </Box>
             </Modal>
         </>

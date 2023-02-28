@@ -23,19 +23,12 @@ div.names p {
     color: rgb(168, 202, 202);
 }
 
-.shift-item {
-    padding: 0px 10px;
-}
-
 .shift {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     border: 1px solid black;
-    border-radius: 10%;
-    /* height: 80px; */
-    padding: 10px 0px;
     cursor: pointer;
 }
 
@@ -51,6 +44,16 @@ div.names p {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.calendar-text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar-text h4{
+    margin: 0;
 }
 
 .add-employee{

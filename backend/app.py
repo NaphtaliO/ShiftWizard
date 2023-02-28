@@ -1,19 +1,30 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
+from flask_mail import Mail, Message
 from bcrypt import gensalt, hashpw, checkpw
 import uuid
 from createToken import create_jwt
 from RandomPassword import generate_password
 
 app = Flask(__name__)
+mail = Mail(app)
 CORS(app, support_credentials=True)
 
 db = SQLAlchemy()
 # If you want to run on a mysqlclient server locally the URI is generally in this format
 # mysql://<username>:<password>@<host>:<port>/<dbname>
 app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://naphtali:naphtali123@mydb.cg1kk4ysnwdb.eu-west-1.rds.amazonaws.com:3306/ebdb"
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'naphtaliodinakachi@gmail.com'
+app.config['MAIL_PASSWORD'] = 'fkwveqfebaxavril'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
 db.init_app(app)
+mail = Mail(app)
+
+
 
 from Models import *
 
@@ -26,6 +37,21 @@ with app.app_context():
 @app.route("/")
 def index():
     return "<h1>Hello World!!!<h1>"
+
+@app.route("/sendEmail")
+def sendEmail():
+    try:
+        msg = Message('Hello', sender='naphtaliodinakachi@gmail.com',
+                    recipients=['naphtali2003@gmail.com'])
+        msg.body = "This is the email body"
+        mail.send(msg)
+        return jsonify(message="Sent")
+    except Exception as e:
+        print(e)
+        response = {
+            "message": "An error Occurred. Try Again"
+        }
+        return jsonify(response), 400
 
 
 @app.route("/api/organisation/signup", methods=['POST'])
@@ -115,12 +141,16 @@ def rosters(organisation_id):
 #TODO check if the employee exists first
 #TODO upon creation 
 #TODO extra things we might add to an employee like phone number and so on
+# TODO check if the roster exists then check if the employee exists
+# TODO check if an employee is already in the roster
 @app.route("/api/employee/create", methods=['POST'])
 def create_employee():
     data = request.get_json()
-    name, email, job, organisation_id = data.get(
-        'name'), data.get('email'), data.get('job'), data.get('organisation_id')
+    name, email, job, organisation_id, roster_id = data.get(
+        'name'), data.get('email'), data.get('job'), data.get('organisation_id'), data.get('roster_id')
     try:
+        roster = db.session.execute(
+            db.select(Roster).where(Roster.id == roster_id)).scalar()
         employee = Employee(
             id=str(uuid.uuid4()),
             name=name,
@@ -129,16 +159,18 @@ def create_employee():
             password=generate_password(),
             organisation_id=organisation_id,
         )
+        
+        roster.employees.append(employee)
         db.session.add(employee)
         db.session.commit()
         employeeObject = {
             "id": employee.id,
             "name": employee.name,
-            "job": employee.job, 
+            "job": employee.job,
             "email": employee.email,
             "organisation_id": employee.organisation_id
-            }
-        return jsonify({"employee": employeeObject, "message": "Successfully Added"}), 200
+        }
+        return jsonify({"roster": roster.to_dict(), "employee": employeeObject, "message": "Successfully Added"}), 200
     except Exception as e:
         print(e)
         response = {"message": "An error Occurred. Try Again"}
@@ -160,47 +192,12 @@ def create_roster():
     except Exception as e:
         print(e)
         response = {"message": "An error Occurred. Try Again"}
-        return jsonify(response), 400
-
-#TODO check if the roster exists then check if the employee exists
-#TODO check if an employee is already in the roster
-@app.route("/api/roster/addEmployee", methods=['POST'])
-def add_employee_to_roster():
-    data = request.get_json()
-
-    roster_id, employee_id = data.get('roster_id'), data.get('employee_id')
-    #query roster by id
-    
-    try:
-        roster = db.session.execute(db.select(Roster).where(Roster.id == roster_id)).scalar()
-        employee = db.session.execute(db.select(Employee).where(Employee.id == employee_id)).scalar()
-        roster.employees.append(employee)
-        db.session.commit()
-        return jsonify({"roster": roster.to_dict()}), 200
-    except Exception as e:
-        print(e)
-        response = {"message": "An error Occurred. Try Again"}
-        return jsonify(response), 400
-    
+        return jsonify(response), 400    
 
 @app.route("/api/roster/view/<roster_id>", methods=['GET'])
 def roster(roster_id):
     roster_id = str(roster_id)
-    #data = request.get_json()
-
-    #roster_id = data.get('roster_id')
-    # query roster by id
     try:
-        # roster = Roster.query.options(
-        #     db.joinedload('employees', innerjoin=True).joinedload('shifts')
-        # ).filter_by(id=roster_id).first()
-        
-        # roster_dict = {
-        #     "id": roster.id,
-        #     'name': roster.name,
-        #     "organisation_id": roster.organisation_id,
-        #     'employees': [employee.to_dict() for employee in roster.employees]
-        # }
         roster = db.session.execute(db.select(Roster).where(
             Roster.id == roster_id)).scalar()
 
@@ -231,6 +228,26 @@ def addShift():
         employee.shifts.append(new_shift)
         db.session.commit()
         return jsonify(employee=employee.to_dict()), 200
+    except Exception as e:
+        print(e)
+        response = {"message": "An error Occurred. Try Again"}
+        return jsonify(response), 400
+
+@app.route("/api/editShift", methods=["POST"])
+def edit_shift():
+    data = request.get_json()
+
+    shift_id, description, start_time, end_time = data.get('shift_id'), data.get('description'), data.get('start_time'), data.get('end_time')
+    try:
+        shift = db.session.execute(db.select(Shift).where(
+            Shift.id == shift_id)).scalar()
+        if not shift: 
+            return jsonify({"message": "No such shift"}), 400
+        shift.description = description
+        shift.start_time = start_time
+        shift.end_time = end_time
+        db.session.commit()
+        return jsonify(shift.to_dict()), 200
     except Exception as e:
         print(e)
         response = {"message": "An error Occurred. Try Again"}

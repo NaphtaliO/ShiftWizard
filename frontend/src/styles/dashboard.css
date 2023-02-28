@@ -13,3 +13,15 @@ p.number-count-p{
     background-color: transparent;
     color: rgb(70, 70, 215);
 }
+
+.delete-button{
+    border: none;
+    background-color: transparent;
+    color: red;
+    font-weight: 600;
+    font-size: larger;
+}
+
+tbody td {
+    vertical-align: middle;
+}

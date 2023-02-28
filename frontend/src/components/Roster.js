@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/roster.css';
-import { Avatar} from '@mui/material';
+import { Avatar } from '@mui/material';
 // import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
@@ -9,6 +9,7 @@ import { useParams } from 'react-router-dom';
 import AddEmployeeModal from './AddEmployeeModal';
 import IconButton from '@mui/material/IconButton';
 import AddShiftModal from './AddShiftModal';
+// import EditEmployeeModal from './EditEmployeeModal';
 
 
 //TODO:Get rid of the break tags
@@ -44,12 +45,12 @@ import AddShiftModal from './AddShiftModal';
 const Roster = () => {
     const { id } = useParams();
     const [isModalOpen, setIsModalOpen] = useState(false);
+    // const [isEditEmployeeModalOpen, setIsEditEmployeeModalOpen] = useState(false);
     const [isAddEmployeeModalOpen, setIsAddEmployeeModalOpen] = useState(false);
     const [roster, setRoster] = useState(null);
-    console.log(roster);
     const [currentWeek, setCurrentWeek] = useState(0);
-    const [value, setValue] = useState(null);
     const [calDay, setCalDay] = useState("");
+    // const [employee, setEmployee] = useState({});
 
     let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -104,22 +105,22 @@ const Roster = () => {
         <div className="container">
 
             <div className='roster-buttons'>
-                <div>
-                    <h4>{`${dates[0]} - ${dates[6]}`}</h4>
+                <div className='calendar-text'>
+                    <h4>{`${dates[0]} - ${dates[6]}, 2023`}</h4>
                 </div>
                 <div>
-                    <button onClick={handlePrevWeek}>
+                    <button style={{ marginRight: 7 }} className='btn btn-outline-primary' onClick={handlePrevWeek}>
                         &lt;
                     </button>
-                    <button onClick={() => setCurrentWeek(0)}>Today</button>
-                    <button onClick={handleNextWeek}>
+                    <button className='btn btn-outline-primary' onClick={() => setCurrentWeek(0)}>Today</button>
+                    <button style={{ marginLeft: 7 }} className='btn btn-outline-primary' onClick={handleNextWeek}>
                         &gt;
                     </button>
                 </div>
 
                 {/* <Button color="error" variant="contained" startIcon={<DeleteIcon />} onClick={() => alert("delete ?")}>Delete Roster</Button> */}
             </div>
-            <table className='table'>
+            <table className='table table-striped'>
                 {/* tale-dark is an option */}
                 <thead>
                     <tr>
@@ -136,7 +137,11 @@ const Roster = () => {
                         <>
                             <tr key={i}>
                                 <td>
-                                    <div className='names' style={{ marginRight: 'auto' }}>
+                                    <div className='names' onClick={() => {
+                                        // setEmployee(employee)
+                                        // setIsEditEmployeeModalOpen(true);
+                                        
+                                    }}>
                                         <Avatar sx={{ bgcolor: "#000000" }}>
                                             {employee.name.charAt(0).toUpperCase()}</Avatar>
                                         <div className="details">
@@ -144,25 +149,25 @@ const Roster = () => {
                                             <p className='job'>{employee.job}</p>
                                         </div>
                                     </div>
+                                    {/* <EditEmployeeModal isOpen={isEditEmployeeModalOpen} setIsOpen={setIsEditEmployeeModalOpen} employee={employee} /> */}
                                 </td>
+                                
                                 {dates.map((date, i) => {
                                     // let shift = employee.shifts.filter(shift => shift.startTime === date.split(' ')[0])[0];
                                     let shift = employee.shifts.find(shift => {
                                         let [dayName, day, month] = shift.startTime.split(" ");
                                         return `${dayName} ${day} ${month}` === date;
                                     });
-                                    console.log(shift);
                                     return (
                                         <td key={i}>
                                             {shift && shift.roster_id === id ?
-                                                <Shift shift={shift} name={employee.name} />
+                                                <Shift shift={shift} name={employee.name} roster={roster} setRoster={ setRoster} />
                                                 :
                                                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                                     <IconButton onClick={() => {
-                                                        //console.log(date);
                                                         setCalDay(date)
                                                         setIsModalOpen(true)
-                                                        
+
                                                     }} color='primary' children={<AddIcon />} />
                                                 </div>
 
@@ -171,12 +176,13 @@ const Roster = () => {
                                     )
                                 })}
                             </tr>
-                            <AddShiftModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} id={id} roster={roster} setRoster={setRoster} employeeName={employee.name} day={ calDay } />
+                            <AddShiftModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} id={id} roster={roster} setRoster={setRoster} employeeName={employee.name} day={calDay} />
                         </>
 
                     ))
                     }
                 </tbody>
+                {/* <EditEmployeeModal isOpen={isEditEmployeeModalOpen} setIsOpen={setIsEditEmployeeModalOpen} employee={employee} /> */}
             </table>
             <div className="add-employee">
                 <IconButton onClick={() => setIsAddEmployeeModalOpen(true)} color='error' size='large' children={<AddCircleIcon fontSize='large' />} />

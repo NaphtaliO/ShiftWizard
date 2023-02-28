@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+//import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { Modal, Box, TextField, Button } from '@mui/material';
 import { useSelector } from 'react-redux';
@@ -33,27 +33,27 @@ const AddShiftModal = ({ isModalOpen, setIsModalOpen, id, roster, setRoster, emp
             // console.log({
             //     description, start_time: `${day} ${startTime.format('HH:mm')}`, end_time: `${day} ${endTime.format('HH:mm')}`, roster_id: id, employee_id
             // });
-                const response = await fetch(`http://127.0.0.1:5000/api/roster/addShift`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ description, start_time: `${day} ${startTime.format('HH:mm')}`, end_time: `${day} ${endTime.format('HH:mm')}`, roster_id: id, employee_id}),
-                })
-                const json = await response.json()
-                if (!response.ok) {
-                    alert(json.message)
-                }
-                if (response.ok) {
-                    let list = roster.employees;
-                    let newObject = json.employee
-                    for (let i = 0; i < list.length; i++) {
-                        if (list[i].id === newObject.id) {
-                            list[i] = newObject;
-                            break;
-                        }
+            const response = await fetch(`http://127.0.0.1:5000/api/roster/addShift`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ description, start_time: `${day} ${startTime.format('HH:mm')}`, end_time: `${day} ${endTime.format('HH:mm')}`, roster_id: id, employee_id }),
+            })
+            const json = await response.json()
+            if (!response.ok) {
+                alert(json.message)
+            }
+            if (response.ok) {
+                let list = roster.employees;
+                let newObject = json.employee
+                for (let i = 0; i < list.length; i++) {
+                    if (list[i].id === newObject.id) {
+                        list[i] = newObject;
+                        break;
                     }
-                    setRoster({ ...roster, employees: list })
-                    setIsModalOpen(false)
                 }
+                setRoster({ ...roster, employees: list })
+                setIsModalOpen(false)
+            }
         } catch (error) {
             console.log(error.message);
         }

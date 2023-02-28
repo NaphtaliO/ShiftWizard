@@ -4,20 +4,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Box, TextField, Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add'
-import { addEmployee, setEmployees } from '../state_management/employeesSlice';
+import { setEmployees } from '../state_management/employeesSlice';
 import CircularProgress from '@mui/material/CircularProgress';
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
 
 //TODO update roster to on show shifts with the same roster id
 const Dashboard = () => {
     const user = useSelector((state) => state.user.value)
     //const employees = useSelector((state) => state.employees.value);
     const [name, setName] = useState('');
-    const [employeeName, setEmployeeName] = useState('')
-    const [job, setJob] = useState('')
-    const [email, setEmail] = useState('')
-    const [employeeError, setEmployeeError] = ('')
     const [error, setError] = useState('');
-    const [successMessage, setSuccessMessage] = useState('');
     const [rosters, setRosters] = useState([])
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate()
@@ -79,29 +76,6 @@ const Dashboard = () => {
         setLoading(false)
     }
 
-
-    const createEmployee = async (event) => {
-        setLoading(true)
-        try {
-            const response = await fetch(`http://127.0.0.1:5000/api/employee/create`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name: employeeName, job, email, organisation_id: user.id }),
-            })
-            const json = await response.json()
-            if (!response.ok) {
-                setEmployeeError(json.message)
-            }
-            if (response.ok) {
-                dispatch(addEmployee(json.employee))
-                setSuccessMessage(json.message)
-            }
-        } catch (error) {
-            console.log(error.message);
-        }
-        setLoading(false)
-    }
-
     return (
         <div className="container">
             <div className="row">
@@ -120,32 +94,9 @@ const Dashboard = () => {
                             <div><p>{error}</p></div>
                         </form>
                     </Box>
-                    <br /><br />
-                    <Box sx={{ ...style }}>
-                        <form onSubmit={createEmployee}>
-                            <h2 id="parent-modal-title">Add Emplyee</h2>
-                            <p id="parent-modal-description">Add employee to organisation</p>
-                            <TextField id="outlined-basic1" label="Name" variant="outlined"
-                                onChange={(e) => setEmployeeName(e.target.value)} value={employeeName} fullWidth required />
-                            <br />
-                            <TextField id="outlined-basic2" label="Job" variant="outlined"
-                                onChange={(e) => setJob(e.target.value)} value={job} fullWidth required />
-                            <br />
-                            <TextField id="outlined-basic3" label="Email" variant="outlined" type="email"
-                                onChange={(e) => setEmail(e.target.value)} value={email} fullWidth required />
-                            <div className="modal-buttons">
-                                <Button color="error" variant="contained" onClick={() => setEmployeeName('')}>Cancel</Button>
-                                <Button variant="contained" startIcon={<AddIcon />} type='submit'>
-                                    Create</Button>
-                            </div>
-                            <br />
-                            <div><p style={{ color: "red" }}>{employeeError}</p></div>
-                            <div><p style={{ color: "green" }}>{successMessage}</p></div>
-                        </form>
-                    </Box>
                 </div>
                 <div className="col-8">
-                    {loading ?
+                    {loading || rosters.length === 0 ?
                         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                             <CircularProgress />
                         </div>
@@ -159,9 +110,9 @@ const Dashboard = () => {
                                     <th>Shifts</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody >
                                 {rosters.map((roster, i) => (
-                                    <tr key={i}>
+                                    <tr key={i} className='dashboard'>
 
                                         <td>
                                             <button className='rosters-link' onClick={() => navigate(`/roster/${roster.id}`)}>
@@ -175,6 +126,9 @@ const Dashboard = () => {
                                                 return acc + employee.shifts.length;
                                             }, 0)
                                         }</td>
+                                        <td>
+                                            <IconButton color='error' children={<DeleteIcon />} />
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>
