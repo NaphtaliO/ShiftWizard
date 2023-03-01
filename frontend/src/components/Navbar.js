@@ -152,7 +152,7 @@ const Navbar = () => {
                                         >
                                             dashboard
                                     </Button>
-                                    <Button onClick={handleCloseNavMenu}
+                                    <Button onClick={() => navigate('/employees')}
                                         sx={{ my: 2, color: 'white', display: 'block', fontWeight: 'bold' }}
                                     >
                                         employees
@@ -202,8 +202,8 @@ const Navbar = () => {
                             </>
                             :
                             <div className='nav-buttons'>
-                                <Button color="inherit">Login</Button>
-                                <Button color="inherit">Create Account</Button>
+                                <Button color="inherit" onClick={() => navigate('login')}>Login</Button>
+                                <Button color="inherit" onClick={() => navigate('signup')}>Create Account</Button>
                             </div>
 
                         }

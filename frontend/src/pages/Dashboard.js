@@ -12,10 +12,9 @@ import IconButton from '@mui/material/IconButton';
 //TODO update roster to on show shifts with the same roster id
 const Dashboard = () => {
     const user = useSelector((state) => state.user.value)
-    //const employees = useSelector((state) => state.employees.value);
     const [name, setName] = useState('');
     const [error, setError] = useState('');
-    const [rosters, setRosters] = useState([])
+    const [rosters, setRosters] = useState(null)
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -89,14 +88,15 @@ const Dashboard = () => {
                             <div className="modal-buttons">
                                 <Button color="error" variant="contained" onClick={() => setName('')}>Cancel</Button>
                                 <Button variant="contained" startIcon={<AddIcon />} type='submit'>
-                                    Create</Button>
+                                    Create
+                                </Button>
                             </div>
                             <div><p>{error}</p></div>
                         </form>
                     </Box>
                 </div>
                 <div className="col-8">
-                    {loading || rosters.length === 0 ?
+                    {loading || rosters === null ?
                         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                             <CircularProgress />
                         </div>

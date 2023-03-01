@@ -43,7 +43,7 @@ div.names p {
     margin: 20px 0px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    align-items: center;
 }
 
 .calendar-text{
@@ -62,3 +62,7 @@ div.names p {
     align-items: center;
 }
 
+.right-buttons{
+    display: flex;
+    
+}

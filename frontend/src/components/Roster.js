@@ -9,6 +9,7 @@ import { useParams } from 'react-router-dom';
 import AddEmployeeModal from './AddEmployeeModal';
 import IconButton from '@mui/material/IconButton';
 import AddShiftModal from './AddShiftModal';
+import PrintIcon from '@mui/icons-material/Print';
 // import EditEmployeeModal from './EditEmployeeModal';
 
 
@@ -108,7 +109,7 @@ const Roster = () => {
                 <div className='calendar-text'>
                     <h4>{`${dates[0]} - ${dates[6]}, 2023`}</h4>
                 </div>
-                <div>
+                <div className='' style={{marginLeft: 'auto'}}>
                     <button style={{ marginRight: 7 }} className='btn btn-outline-primary' onClick={handlePrevWeek}>
                         &lt;
                     </button>
@@ -116,7 +117,12 @@ const Roster = () => {
                     <button style={{ marginLeft: 7 }} className='btn btn-outline-primary' onClick={handleNextWeek}>
                         &gt;
                     </button>
+
                 </div>
+                <div style={{ marginRight: 10, marginLeft: 10 }}>
+                    <IconButton color='primary' children={<PrintIcon fontSize='large' />} size='large' />
+                </div>
+
 
                 {/* <Button color="error" variant="contained" startIcon={<DeleteIcon />} onClick={() => alert("delete ?")}>Delete Roster</Button> */}
             </div>
@@ -140,7 +146,7 @@ const Roster = () => {
                                     <div className='names' onClick={() => {
                                         // setEmployee(employee)
                                         // setIsEditEmployeeModalOpen(true);
-                                        
+
                                     }}>
                                         <Avatar sx={{ bgcolor: "#000000" }}>
                                             {employee.name.charAt(0).toUpperCase()}</Avatar>
@@ -151,7 +157,7 @@ const Roster = () => {
                                     </div>
                                     {/* <EditEmployeeModal isOpen={isEditEmployeeModalOpen} setIsOpen={setIsEditEmployeeModalOpen} employee={employee} /> */}
                                 </td>
-                                
+
                                 {dates.map((date, i) => {
                                     // let shift = employee.shifts.filter(shift => shift.startTime === date.split(' ')[0])[0];
                                     let shift = employee.shifts.find(shift => {
@@ -161,7 +167,7 @@ const Roster = () => {
                                     return (
                                         <td key={i}>
                                             {shift && shift.roster_id === id ?
-                                                <Shift shift={shift} name={employee.name} roster={roster} setRoster={ setRoster} />
+                                                <Shift shift={shift} name={employee.name} roster={roster} setRoster={setRoster} />
                                                 :
                                                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                                     <IconButton onClick={() => {

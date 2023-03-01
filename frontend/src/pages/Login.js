@@ -1,17 +1,26 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../state_management/userSlice';
+import Copyright from '../components/Copyright';
+import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Grid, Box, Typography, Container } from '@mui/material';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     //Todo: add loading
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [isChecked, setIsChecked] = useState(false);
     const [error, setError] = useState('')
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const theme = createTheme();
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
+            //console.log({email, password, isChecked});
             const response = await fetch(`http://127.0.0.1:5000/api/organisation/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -24,34 +33,88 @@ const Login = () => {
             }
             if (response.ok) {
                 //save the user to local storage
-                localStorage.setItem('user', JSON.stringify(json))
+                if (isChecked) {
+                    localStorage.setItem('user', JSON.stringify(json))
+                }
                 dispatch(logIn(json))
             }
-            console.log(json);
-
         } catch (error) {
             console.log(error);
         }
     }
 
     return (
-        <div className="custom-container">
-            <h1 className='signup'>Log in</h1>
-            <form onSubmit={handleSubmit}>
-                <div className="mb-3">
-                    <label className="form-label">Email address:</label>
-                    <input type="email" onChange={(e) => setEmail(e.target.value)} value={email} className="form-control" required />
-                </div>
-                <div className="mb-3">
-                    <label className="form-label">Password:</label>
-                    <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} className="form-control" required />
-                </div>
-                {error !== "" ? <div className="error" style={{ color: 'red' }}>
-                    <p>{error}</p></div> : null}
-                <button type='submit' className="btn btn-dark sign-up-button">Login</button>  
-            </form>
-        </div>
-
+        <ThemeProvider theme={theme}>
+            <Container component="main" maxWidth="xs">
+                <CssBaseline />
+                <Box
+                    sx={{
+                        marginTop: 8,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                    }}
+                >
+                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                        <LockOutlinedIcon />
+                    </Avatar>
+                    <Typography component="h1" variant="h5">
+                        Log in
+                    </Typography>
+                    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+                        <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="email"
+                            label="Email Address"
+                            name="email"
+                            autoComplete="email"
+                            onChange={(e) => setEmail(e.target.value)} value={email}
+                            autoFocus
+                        />
+                        <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            name="password"
+                            label="Password"
+                            type="password"
+                            id="password"
+                            autoComplete="current-password"
+                            onChange={(e) => setPassword(e.target.value)} value={password}
+                        />
+                        <FormControlLabel
+                            control={<Checkbox value="remember" color="primary" checked={isChecked} onChange={() => setIsChecked(!isChecked)} />}
+                            label="Remember me"
+                        />
+                        {error !== "" ? <div className="error" style={{ color: 'red' }}>
+                            <p>{error}</p></div> : null}
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            sx={{ mt: 3, mb: 2 }}
+                        >
+                            Log In
+                        </Button>
+                        <Grid container>
+                            <Grid item xs>
+                                <Link href="#" variant="body2">
+                                    {/* Forgot password? */}
+                                </Link>
+                            </Grid>
+                            <Grid item>
+                                <Link variant="body2" onClick={() => navigate("/signup")}>
+                                    {"Don't have an account? Sign Up"}
+                                </Link>
+                            </Grid>
+                        </Grid>
+                    </Box>
+                </Box>
+                <Copyright sx={{ mt: 8, mb: 4 }} />
+            </Container>
+        </ThemeProvider>
     )
 }
 

@@ -20,13 +20,18 @@ function findIdByName(name, list) {
 }
 
 const AddShiftModal = ({ isModalOpen, setIsModalOpen, id, roster, setRoster, employeeName, day }) => {
-    const employees = useSelector((state) => state.employees.value)
-    const [description, setDescription] = useState('')
+    const employees = useSelector((state) => state.employees.value);
+    const [description, setDescription] = useState('');
     const [startTime, setStartTime] = useState(null);
     const [endTime, setEndTime] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     const addShiftToRoster = async (event) => {
         event.preventDefault();
+        if (loading) {
+            return;
+        }
+        setLoading(true)
         try {
             //console.log(employeeName);
             const employee_id = findIdByName(employeeName, employees)
@@ -57,6 +62,7 @@ const AddShiftModal = ({ isModalOpen, setIsModalOpen, id, roster, setRoster, emp
         } catch (error) {
             console.log(error.message);
         }
+        setLoading(false)
     }
 
     return (

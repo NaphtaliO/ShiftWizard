@@ -24,8 +24,6 @@ app.config['MAIL_USE_SSL'] = True
 db.init_app(app)
 mail = Mail(app)
 
-
-
 from Models import *
 
 #This will create all tables in our database from Models.py
@@ -41,7 +39,7 @@ def index():
 @app.route("/sendEmail")
 def sendEmail():
     try:
-        msg = Message('Hello', sender='naphtaliodinakachi@gmail.com',
+        msg = Message('Welcome to our Organisation', sender='naphtaliodinakachi@gmail.com',
                     recipients=['naphtali2003@gmail.com'])
         msg.body = "This is the email body"
         mail.send(msg)
@@ -141,8 +139,8 @@ def rosters(organisation_id):
 #TODO check if the employee exists first
 #TODO upon creation 
 #TODO extra things we might add to an employee like phone number and so on
-# TODO check if the roster exists then check if the employee exists
-# TODO check if an employee is already in the roster
+#TODO check if the roster exists then check if the employee exists
+#TODO check if an employee is already in the roster
 @app.route("/api/employee/create", methods=['POST'])
 def create_employee():
     data = request.get_json()
@@ -151,12 +149,16 @@ def create_employee():
     try:
         roster = db.session.execute(
             db.select(Roster).where(Roster.id == roster_id)).scalar()
+        password = generate_password()
+        encodedPassword = password.encode('utf-8')
+        salt = gensalt()
+        hashedPassword = hashpw(encodedPassword, salt)
         employee = Employee(
             id=str(uuid.uuid4()),
             name=name,
             job=job,
             email=email,
-            password=generate_password(),
+            password=hashedPassword,
             organisation_id=organisation_id,
         )
         
@@ -170,6 +172,16 @@ def create_employee():
             "email": employee.email,
             "organisation_id": employee.organisation_id
         }
+        msg = Message('Welcome to our Organisation', sender='naphtaliodinakachi@gmail.com',
+                      recipients=[f'{employee.email}'])
+        msg.body = "Below are your login details"
+        msg.html = f"""<h3> You have been added to our Organisation </h3>
+    <p> Welcome to our organisation we our excited to have you. Below are your log in details </p>
+    <p> username: {employee.email}</p>
+    <p> password: {password}</p>
+    <p> Click <a href = "http://localhost:3000/" target = "_blank"> HERE </a> to login. Make sure to check that you are an employee </p>
+    <h3> Do not share this with anybody </h3>"""
+        mail.send(msg)
         return jsonify({"roster": roster.to_dict(), "employee": employeeObject, "message": "Successfully Added"}), 200
     except Exception as e:
         print(e)
