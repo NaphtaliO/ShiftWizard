@@ -35,12 +35,12 @@ const Shift = ({ shift, name, roster, setRoster }) => {
     const [description, setDescription] = useState(shift.description);
     const st = `${shift.startTime.split(' ')[0]} ${shift.startTime.split(' ')[1]} ${shift.startTime.split(' ')[2]}`;
     const et = `${shift.endTime.split(' ')[0]} ${shift.endTime.split(' ')[1]} ${shift.endTime.split(' ')[2]}`;
-console.log(roster);
+
     const editShift = async (event) => {
         event.preventDefault();
         try {
             //console.log({ description, start_time: `${st} ${startTime.format('HH:mm')}`, end_time: `${et} ${endTime.format('HH:mm')}`, shift_id: shift.id });
-            const response = await fetch(`http://127.0.0.1:5000/api/editShift`, {
+            const response = await fetch(`http://roster-app-1-env.eba-myeicz6k.eu-west-1.elasticbeanstalk.com/api/editShift`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ description, start_time: `${st} ${startTime.format('HH:mm')}`, end_time: `${et} ${endTime.format('HH:mm')}`, shift_id: shift.id }),
@@ -72,6 +72,43 @@ console.log(roster);
             }
         } catch (error) {
             console.log(error.message);
+        }
+    }
+
+    const deleteShift = async () => {
+        if (window.confirm("You are about to delete this shift")) {
+            // console.log(roster);
+            // console.log(shift.id);
+            try {
+                const response = await fetch(`http://roster-app-1-env.eba-myeicz6k.eu-west-1.elasticbeanstalk.com/api/deleteShift/${shift.id}`, {
+                    method: 'DELETE'
+                })
+                const json = await response.json()
+                if (!response.ok) {
+                    alert(json.message);
+                }
+                if (response.ok) {
+                    alert(json.message);
+                    setRoster(prevRoster => {
+                        let id = shift.id;
+                        const updatedEmployees = prevRoster.employees.map(employee => {
+                            const updatedShifts = employee.shifts.filter(shift => shift.id !== id);
+                            return {
+                                ...employee,
+                                shifts: updatedShifts
+                            };
+                        });
+                        return {
+                            ...prevRoster,
+                            employees: updatedEmployees
+                        };
+                    });
+                }
+            } catch (error) {
+                console.log(error.message);
+            }
+        } else {
+            return;
         }
     }
 
@@ -127,7 +164,8 @@ console.log(roster);
                             />
 
                             <div className="modal-buttons">
-                                <Button color="error" variant="contained" startIcon={<DeleteIcon />}>Delete Shift</Button>
+                                <Button color="error" variant="contained" startIcon={<DeleteIcon />}
+                                    onClick={deleteShift}>Delete Shift</Button>
                                 <Button variant="contained" type="submit">Save</Button>
                             </div>
 

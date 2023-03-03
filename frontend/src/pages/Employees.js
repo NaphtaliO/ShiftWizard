@@ -1,23 +1,44 @@
-import React, { useState } from 'react';
-import { Avatar, Menu, MenuItem, Typography } from '@mui/material';
-import { useSelector } from 'react-redux';
+import React from 'react';
+import { Avatar } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
 import "../styles/employees.css"
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import { setEmployees } from '../state_management/employeesSlice';
 
 const Employees = () => {
     const employees = useSelector((state) => state.employees.value);
-    const [anchorElUser, setAnchorElUser] = useState(null);
+    const dispatch = useDispatch()
+    console.log(employees);
 
-    const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget);
-    };
+    const deleteEmployee = async (id) => {
+        if (window.confirm("You are about to delete this employee permanently")) {
+            // console.log(id);
+            try {
+                const response = await fetch(`http://roster-app-1-env.eba-myeicz6k.eu-west-1.elasticbeanstalk.com/api/deleteEmployee/${id}`, {
+                    method: 'DELETE'
+                })
+                const json = await response.json()
+                if (!response.ok) {
+                    alert(json.message)
+                }
+                if (response.ok) {
+                    alert(json.message)
+                    const list = employees.filter(function (obj) {
+                        return obj.id !== id;
+                    });
+                    dispatch(setEmployees(list))
+                }
+            } catch (error) {
+                console.log(error.message);
+            }
+        } else {
+            return;
+        }
+    }
 
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
-    };
-
-    return ( 
+    return (
         <div className="employees">
             <div className="container">
                 <h4>Employees</h4>
@@ -48,30 +69,11 @@ const Employees = () => {
                                 <td>{employee.job}</td>
                                 <td>{employee.email}</td>
                                 <td>
-                                    <IconButton color='black' children={<MoreVertIcon />} onClick={handleOpenUserMenu} />
-                                    <Menu
-                                        sx={{ mt: '10px' }}
-                                        id="menu-appbar"
-                                        anchorEl={anchorElUser}
-                                        anchorOrigin={{
-                                            vertical: 'top',
-                                            horizontal: 'right',
-                                        }}
-                                        keepMounted
-                                        transformOrigin={{
-                                            vertical: 'top',
-                                            horizontal: 'right',
-                                        }}
-                                        open={Boolean(anchorElUser)}
-                                        onClose={handleCloseUserMenu}
-                                    >
-                                        <MenuItem onClick={handleCloseUserMenu}>
-                                            <Typography textAlign="center">Edit</Typography>
-                                        </MenuItem>
-                                        <MenuItem onClick={handleCloseUserMenu}>
-                                            <Typography textAlign="center" color={'red'}>Delete</Typography>
-                                        </MenuItem>
-                                    </Menu>
+                                    <IconButton children={<EditIcon />} />
+                                </td>
+                                <td>
+                                    <IconButton color='error' children={<DeleteIcon />}
+                                        onClick={() => deleteEmployee(employee.id)} />
                                 </td>
                             </tr>
                         ))}
@@ -79,7 +81,7 @@ const Employees = () => {
                 </table>
             </div>
         </div>
-     );
+    );
 }
- 
+
 export default Employees;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../state_management/userSlice';
 import Copyright from '../components/Copyright';
-import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Grid, Box, Typography, Container } from '@mui/material';
+import { Avatar, Button, CssBaseline, TextField, Link, Grid, Box, Typography, Container } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
@@ -13,7 +13,6 @@ const Signup = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const [isChecked, setIsChecked] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const theme = createTheme();
@@ -21,7 +20,7 @@ const Signup = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch(`http://127.0.0.1:5000/api/organisation/signup`, {
+            const response = await fetch(`http://roster-app-1-env.eba-myeicz6k.eu-west-1.elasticbeanstalk.com/api/organisation/signup`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, address, email, password }),
@@ -32,9 +31,9 @@ const Signup = () => {
                 setError(json.message)
             }
             if (response.ok) {
-                if (isChecked) {
+            
                     localStorage.setItem('user', JSON.stringify(json))
-                }
+                
                 dispatch(logIn(json))
             }
             console.log(json);
@@ -112,12 +111,7 @@ const Signup = () => {
                                     onChange={(e) => setPassword(e.target.value)} value={password}
                                 />
                             </Grid>
-                            <Grid item xs={12}>
-                                <FormControlLabel
-                                    control={<Checkbox value="remember" color="primary" checked={isChecked} onChange={() => setIsChecked(!isChecked)} />}
-                                    label="Remember me"
-                                />
-                            </Grid>
+                            
                         </Grid>
                         {error !== "" ? <div className="error" style={{ color: 'red' }}>
                             <p>{error}</p></div> : null}

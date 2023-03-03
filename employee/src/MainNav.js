@@ -3,13 +3,9 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
-import Signup from './pages/Signup';
-import Roster from './components/Roster';
-import Home from './pages/Home';
-import Footer from './components/Footer';
+import Employee from './pages/Employee';
 import { logIn } from './state_management/userSlice';
 import { useEffect } from 'react';
-import Employees from './pages/Employees';
 import Profile from './pages/Profile';
 
 const MainNav = () => {
@@ -33,31 +29,18 @@ const MainNav = () => {
                 <Routes>
                     <Route
                         path="/"
-                        element={user ? <Home /> : <Navigate to="/login" />}
-                    />
-                    <Route
-                        path="/employees"
-                        element={user ? <Employees /> : <Navigate to="/login" />}
-                    />
-                    <Route
-                        path="/roster/:id"
-                        element={user ? <Roster /> : <Navigate to="/login" />}
+                        element={user ? <Employee /> : <Navigate to="/login" />}
                     />
                     <Route
                         path="/profile"
-                        element={user ? <Profile /> : <Navigate to="/login" />}
+                        element={user ? <Profile/> : <Navigate to="/login" />}
                     />
                     <Route
                         path="/login"
                         element={!user ? <Login /> : <Navigate to="/" />}
                     />
-                    <Route
-                        path="/signup"
-                        element={!user ? <Signup /> : <Navigate to="/" />}
-                    />
                 </Routes>
             </div>
-            <Footer />
         </BrowserRouter>
     );
 }

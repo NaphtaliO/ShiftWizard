@@ -147,19 +147,12 @@ const Navbar = () => {
                         {user ?
                             <>
                                 <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                                        <Button onClick={() => navigate('/')}
-                                            sx={{ my: 2, color: 'white', display: 'block', fontWeight: 'bold' }}
-                                        >
+                                        {/* <Button onClick={() => navigate('/')}
+                                            sx={{ my: 2, color: 'white', display: 'block', fontWeight: 'bold' }}>
                                             dashboard
-                                    </Button>
-                                    <Button onClick={() => navigate('/employees')}
-                                        sx={{ my: 2, color: 'white', display: 'block', fontWeight: 'bold' }}
-                                    >
-                                        employees
-                                    </Button>
+                                    </Button> */}
                                     <Button onClick={handleCloseNavMenu}
-                                        sx={{ my: 2, color: 'white', display: 'block', fontWeight: 'bold' }}
-                                    >
+                                        sx={{ my: 2, color: 'white', display: 'block', fontWeight: 'bold' }}>
                                         Chat
                                     </Button>
                                     
@@ -206,7 +199,6 @@ const Navbar = () => {
                             :
                             <div className='nav-buttons'>
                                 <Button color="inherit" onClick={() => navigate('login')}>Login</Button>
-                                <Button color="inherit" onClick={() => navigate('signup')}>Create Account</Button>
                             </div>
 
                         }

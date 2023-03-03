@@ -25,3 +25,13 @@ p.number-count-p{
 tbody td {
     vertical-align: middle;
 }
+
+.no-rosters{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.no-rosters p{
+    
+}

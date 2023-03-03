@@ -3,7 +3,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 //import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
-import { Modal, Box, TextField, Button } from '@mui/material';
+import { Modal, Box, TextField, Button, LinearProgress } from '@mui/material';
 import { useSelector } from 'react-redux';
 import AddIcon from '@mui/icons-material/Add'
 
@@ -21,6 +21,7 @@ function findIdByName(name, list) {
 
 const AddShiftModal = ({ isModalOpen, setIsModalOpen, id, roster, setRoster, employeeName, day }) => {
     const employees = useSelector((state) => state.employees.value);
+    //const [name, setName] = useState(employeeName);
     const [description, setDescription] = useState('');
     const [startTime, setStartTime] = useState(null);
     const [endTime, setEndTime] = useState(null);
@@ -33,12 +34,11 @@ const AddShiftModal = ({ isModalOpen, setIsModalOpen, id, roster, setRoster, emp
         }
         setLoading(true)
         try {
-            //console.log(employeeName);
-            const employee_id = findIdByName(employeeName, employees)
+            const employee_id = await findIdByName(employeeName, employees)
             // console.log({
             //     description, start_time: `${day} ${startTime.format('HH:mm')}`, end_time: `${day} ${endTime.format('HH:mm')}`, roster_id: id, employee_id
             // });
-            const response = await fetch(`http://127.0.0.1:5000/api/roster/addShift`, {
+            const response = await fetch(`http://roster-app-1-env.eba-myeicz6k.eu-west-1.elasticbeanstalk.com/api/roster/addShift`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ description, start_time: `${day} ${startTime.format('HH:mm')}`, end_time: `${day} ${endTime.format('HH:mm')}`, roster_id: id, employee_id }),
@@ -58,6 +58,9 @@ const AddShiftModal = ({ isModalOpen, setIsModalOpen, id, roster, setRoster, emp
                 }
                 setRoster({ ...roster, employees: list })
                 setIsModalOpen(false)
+                setDescription("");
+                setStartTime(null);
+                setEndTime(null);
             }
         } catch (error) {
             console.log(error.message);
@@ -96,12 +99,21 @@ const AddShiftModal = ({ isModalOpen, setIsModalOpen, id, roster, setRoster, emp
                         />
 
                         <div className="modal-buttons">
-                            <Button variant="contained" onClick={() => setIsModalOpen(false)}>Cancel</Button>
+                            {/* <Button variant="contained" onClick={() => setIsModalOpen(false)}>Cancel</Button>
+                             */}
+                            <div></div>
                             <Button variant="contained" startIcon={<AddIcon />} type='submit'>Create</Button>
                         </div>
 
                     </LocalizationProvider>
                 </form>
+                <br />
+                {loading ?
+                    <Box sx={{ width: '100%' }}>
+                        <LinearProgress />
+                    </Box>: null
+                }
+
             </Box>
         </Modal>
     );

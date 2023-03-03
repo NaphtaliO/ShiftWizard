@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import "../styles/calender.css"
-import { Calendar, momentLocalizer } from 'react-big-calendar';
+import { Calendar, momentLocalizer, Views } from 'react-big-calendar';
 import moment from 'moment';
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
-import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
+//import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
+import { useSelector } from 'react-redux';
 
 const localizer = momentLocalizer(moment)
-const DnDCalendar = withDragAndDrop(Calendar);
+const defaultView = Views.WEEK;
+
+//const DnDCalendar = withDragAndDrop(Calendar);
 
 // const events = {
 //     events: [
@@ -36,12 +39,13 @@ const DnDCalendar = withDragAndDrop(Calendar);
 // }
 
 const Employee = () => {
+    const user = useSelector((state) => state.user.value);
     const [state, setState] = useState([]);
     
     useEffect(() => {
         const getShiftsbyId = async () => {
             try {
-                const response = await fetch(`http://127.0.0.1:5000/api/getShiftsById/6cf48152-d81c-419b-a1b9-8057a5484614`, {
+                const response = await fetch(`http://roster-app-1-env.eba-myeicz6k.eu-west-1.elasticbeanstalk.com/api/getShiftsById/${user.id}`, {
                     method: 'GET',
                 })
                 const json = await response.json()
@@ -62,33 +66,35 @@ const Employee = () => {
         }
 
         getShiftsbyId()
-    }, [])
+    }, [user.id])
 
-    const onEventResize = (data) => {
-        const { start, end } = data;
+    // const onEventResize = (data) => {
+    //     const { start, end } = data;
 
-        setState((state) => {
-            state[0].start = start;
-            state[0].end = end;
-            return [...state]
-        });
-    };
+    //     setState((state) => {
+    //         state[0].start = start;
+    //         state[0].end = end;
+    //         return [...state]
+    //     });
+    // };
 
-    const onEventDrop = (data) => {
-        console.log(data);
-    };
+    // const onEventDrop = (data) => {
+    //     console.log(data);
+    // };
 
     return (
         <div className="container">
-            <div className='calendar'>
-                {/* <Calendar
+            <div className='calendar' style={{marginTop: 70}}>
+                <Calendar
                     localizer={localizer}
                     events={state}
                     startAccessor="start"
                     endAccessor="end"
                     style={{ height: 500 }}
-                /> */}
-                <DnDCalendar
+                    defaultView={defaultView}
+                    // views={['month', 'week', ]}
+                />
+                {/* <DnDCalendar
                     defaultDate={moment().toDate()}
                     defaultView="month"
                     events={state}
@@ -98,7 +104,7 @@ const Employee = () => {
                     onDoubleClickEvent={() => console.log("Hello")}
                     resizable
                     style={{ height: "100vh" }}
-                />
+                /> */}
             </div>
         </div>
 

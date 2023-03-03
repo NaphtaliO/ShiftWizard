@@ -153,36 +153,50 @@ def create_employee():
         encodedPassword = password.encode('utf-8')
         salt = gensalt()
         hashedPassword = hashpw(encodedPassword, salt)
-        employee = Employee(
-            id=str(uuid.uuid4()),
-            name=name,
-            job=job,
-            email=email,
-            password=hashedPassword,
-            organisation_id=organisation_id,
-        )
-        
-        roster.employees.append(employee)
-        db.session.add(employee)
-        db.session.commit()
-        employeeObject = {
-            "id": employee.id,
-            "name": employee.name,
-            "job": employee.job,
-            "email": employee.email,
-            "organisation_id": employee.organisation_id
-        }
-        msg = Message('Welcome to our Organisation', sender='naphtaliodinakachi@gmail.com',
-                      recipients=[f'{employee.email}'])
-        msg.body = "Below are your login details"
-        msg.html = f"""<h3> You have been added to our Organisation </h3>
-    <p> Welcome to our organisation we our excited to have you. Below are your log in details </p>
-    <p> username: {employee.email}</p>
-    <p> password: {password}</p>
-    <p> Click <a href = "http://localhost:3000/" target = "_blank"> HERE </a> to login. Make sure to check that you are an employee </p>
-    <h3> Do not share this with anybody </h3>"""
-        mail.send(msg)
-        return jsonify({"roster": roster.to_dict(), "employee": employeeObject, "message": "Successfully Added"}), 200
+        employee = db.session.execute(db.select(Employee).where(Employee.email == str(email))).scalar()
+        if employee:
+            roster.employees.append(employee)
+            db.session.add(employee)
+            db.session.commit()
+            employeeObject = {
+                "id": employee.id,
+                "name": employee.name,
+                "job": employee.job,
+                "email": employee.email,
+                "organisation_id": employee.organisation_id
+            }
+            return jsonify({"roster": roster.to_dict(), "employee": employeeObject, "message": "Successfully Added"}), 200
+        else:
+            employee = Employee(
+                id=str(uuid.uuid4()),
+                name=name,
+                job=job,
+                email=email,
+                password=hashedPassword,
+                organisation_id=organisation_id,
+            )
+            
+            roster.employees.append(employee)
+            db.session.add(employee)
+            db.session.commit()
+            employeeObject = {
+                "id": employee.id,
+                "name": employee.name,
+                "job": employee.job,
+                "email": employee.email,
+                "organisation_id": employee.organisation_id
+            }
+            msg = Message('Welcome to our Organisation', sender='naphtaliodinakachi@gmail.com',
+                        recipients=[f'{employee.email}'])
+            msg.body = "Below are your login details"
+            msg.html = f"""<h3> You have been added to our Organisation </h3>
+        <p> Welcome to our organisation we our excited to have you. Below are your log in details </p>
+        <p> username: {employee.email}</p>
+        <p> password: {password}</p>
+        <p> Click <a href = "http://localhost:3000/" target = "_blank"> HERE </a> to login. Make sure to check that you are an employee </p>
+        <h3> Do not share this with anybody </h3>"""
+            mail.send(msg)
+            return jsonify({"roster": roster.to_dict(), "employee": employeeObject, "message": "Successfully Added"}), 200
     except Exception as e:
         print(e)
         response = {"message": "An error Occurred. Try Again"}
@@ -212,8 +226,10 @@ def roster(roster_id):
     try:
         roster = db.session.execute(db.select(Roster).where(
             Roster.id == roster_id)).scalar()
-
-        return jsonify(roster.to_dict()), 200
+        if roster:
+            return jsonify(roster.to_dict()), 200
+        else: 
+            return jsonify({"message": "No such roster"}), 400
     except Exception as e:
         print(e)
         response = {"message": "An error Occurred. Try Again"}
@@ -264,6 +280,20 @@ def edit_shift():
         print(e)
         response = {"message": "An error Occurred. Try Again"}
         return jsonify(response), 400
+    
+@app.route("/api/deleteShift/<id>", methods=["DELETE"])
+def delete_shift(id):
+    try:
+        shift = db.session.execute(db.select(Shift).where(Shift.id == str(id))).scalar()
+        if not shift:
+            return jsonify({"message": "No such shift"}), 400
+        db.session.delete(shift)
+        db.session.commit()
+        return jsonify({"message": "Successfully Deleted"})
+    except Exception as e:
+        print(e)
+        response = {"message": "An error Occurred. Try Again"}
+        return jsonify(response), 400
 
 
 @app.route("/api/getAllRosters/<organisation_id>", methods=["GET"])
@@ -289,9 +319,32 @@ def delete_roster(roster_id):
         if not roster:
             return {"message": "This roster doesn't exist"}, 400
         else:
+            shifts = db.session.execute(db.select(Shift).where(Shift.roster_id == str(roster_id))).scalars()
+            for shift in shifts:
+                db.session.delete(shift)
+                db.session.commit()
             db.session.delete(roster)
             db.session.commit()
-            return {"message": "This worked"}, 200
+            return {"message": "Roster Successfuly Deleted"}, 200
+    except Exception as e:
+        print(e)
+        response = {"message": "An error Occurred. Try Again"}
+        return jsonify(response), 400
+    
+@app.route("/api/deleteEmployee/<id>", methods=["DELETE"])
+def delete_employee(id):
+    try:
+        employee = db.session.execute(db.select(Employee).where(Employee.id == str(id))).scalar()
+        if not employee:
+            return {"message": "This Employee does not exist"}, 400
+        else:
+            shifts = db.session.execute(db.select(Shift).where(Shift.employee_id == str(id))).scalars()
+            for shift in shifts:
+                db.session.delete(shift)
+                db.session.commit()
+            db.session.delete(employee)
+            db.session.commit()
+            return {"message": "Employee Successfuly Deleted"}, 200
     except Exception as e:
         print(e)
         response = {"message": "An error Occurred. Try Again"}

@@ -14,7 +14,7 @@ const Dashboard = () => {
     const user = useSelector((state) => state.user.value)
     const [name, setName] = useState('');
     const [error, setError] = useState('');
-    const [rosters, setRosters] = useState(null)
+    const [rosters, setRosters] = useState(null);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -23,7 +23,7 @@ const Dashboard = () => {
         const getAllRosters = async () => {
             setLoading(true)
             try {
-                const response = await fetch(`http://127.0.0.1:5000/api/getAllRosters/${user.id}`, {
+                const response = await fetch(`http://roster-app-1-env.eba-myeicz6k.eu-west-1.elasticbeanstalk.com/api/getAllRosters/${user.id}`, {
                     method: 'GET'
                 })
                 const json = await response.json()
@@ -38,7 +38,7 @@ const Dashboard = () => {
         const getAllEmployees = async () => {
             setLoading(true)
             try {
-                const response = await fetch(`http://127.0.0.1:5000/api/organisation/employees/${user.id}`, {
+                const response = await fetch(`http://roster-app-1-env.eba-myeicz6k.eu-west-1.elasticbeanstalk.com/api/organisation/employees/${user.id}`, {
                     method: 'GET'
                 })
                 const json = await response.json()
@@ -55,9 +55,9 @@ const Dashboard = () => {
     }, [user.id, dispatch])
 
     const createRoster = async (event) => {
-        setLoading(true)
+        setLoading(true);
         try {
-            const response = await fetch(`http://127.0.0.1:5000/api/roster/create`, {
+            const response = await fetch(`http://roster-app-1-env.eba-myeicz6k.eu-west-1.elasticbeanstalk.com/api/roster/create`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, organisation_id: user.id }),
@@ -72,7 +72,38 @@ const Dashboard = () => {
         } catch (error) {
             console.log(error.message);
         }
-        setLoading(false)
+        setLoading(false);
+    }
+
+    const deleteRoster = async (id) => {
+        if (window.confirm("You are about to delete this roster permanently")) {
+            if (loading) {
+                return;
+            }
+            setLoading(true)
+            try {
+                if (id === "") return;
+                const response = await fetch(`http://roster-app-1-env.eba-myeicz6k.eu-west-1.elasticbeanstalk.com/api/deleteRoster/${id}`, {
+                    method: 'DELETE'
+                })
+                const json = await response.json()
+                if (!response.ok) {
+                    setError(json.message)
+                }
+                if (response.ok) {
+                    const list = rosters.filter(function (obj) {
+                        return obj.id !== id;
+                    });
+                    setRosters(list)
+                    alert(json.message);
+                }
+            } catch (error) {
+                console.log(error.message);
+            }
+            setLoading(false)
+        } else {
+            return;
+        }
     }
 
     return (
@@ -98,41 +129,44 @@ const Dashboard = () => {
                 <div className="col-8">
                     {loading || rosters === null ?
                         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                            <CircularProgress />
+                            <CircularProgress size={60}/>
                         </div>
                         :
-                        <table className='table table-striped'>
-                            <thead>
-                                <tr>
-                                    <th>id</th>
-                                    <th>name</th>
-                                    <th>Employees</th>
-                                    <th>Shifts</th>
-                                </tr>
-                            </thead>
-                            <tbody >
-                                {rosters.map((roster, i) => (
-                                    <tr key={i} className='dashboard'>
-
-                                        <td>
-                                            <button className='rosters-link' onClick={() => navigate(`/roster/${roster.id}`)}>
-                                                {roster.id}
-                                            </button>
-                                        </td>
-                                        <td>{roster.name}</td>
-                                        <td>{roster.employees.length}</td>
-                                        <td>{
-                                            roster.employees.reduce((acc, employee) => {
-                                                return acc + employee.shifts.length;
-                                            }, 0)
-                                        }</td>
-                                        <td>
-                                            <IconButton color='error' children={<DeleteIcon />} />
-                                        </td>
+                        rosters !== null && rosters.length === 0 ?
+                            <div className='no-rosters'><h3>You have no current rosters. Why not create one  :)</h3></div>
+                            :
+                            <table className='table table-striped'>
+                                <thead>
+                                    <tr>
+                                        <th>id</th>
+                                        <th>name</th>
+                                        <th>Employees</th>
+                                        <th>Shifts</th>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody >
+                                    {rosters !== null && rosters.length !== 0 && rosters.map((roster, i) => (
+                                        <tr key={i} className='dashboard'>
+
+                                            <td>
+                                                <button className='rosters-link' onClick={() => navigate(`/roster/${roster.id}`)}>
+                                                    {roster.id}
+                                                </button>
+                                            </td>
+                                            <td>{roster.name}</td>
+                                            <td>{roster.employees.length}</td>
+                                            <td>{
+                                                roster.employees.reduce((acc, employee) => {
+                                                    return acc + employee.shifts.length;
+                                                }, 0)
+                                            }</td>
+                                            <td>
+                                                <IconButton color='error' children={<DeleteIcon />} onClick={() => deleteRoster(roster.id)} />
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
                     }
                 </div>
             </div>
