@@ -114,12 +114,12 @@ As shown in the diagram below, the presentation layer is the user interface of t
 
 ## Implementation
 ### Technologies/Libraries
-- **Front-end Framework: ** React
-- **Backend Framework: ** Flask
-- **Programming Languages: ** Python, JavaScript
-- **RDMS Relational Database Management System: ** MySQL
-- **ORM (Object Relational Mapping): ** Flask-SQLAlchemy
-- **SMTP: ** Flask-Mail
+- **Front-end Framework:** React
+- **Backend Framework:** Flask
+- **Programming Languages:** Python, JavaScript
+- **RDMS Relational Database Management System:** MySQL
+- **ORM (Object Relational Mapping):** Flask-SQLAlchemy
+- **SMTP:** Flask-Mail
 
 ### React
 React is an open-source JavaScript library for building user interfaces. React makes creating user interfaces easy and painless. The way React works is that you define a state(which is just data) and design simple UI components for the state then React will update the component when the state(data) changes. Hence the name **React** i.e. The UI reacts to changes in state. One of our team member uses React frequently to build different projects, so he suggested using it for our project especially when working with data. The rest of the team did some research into React and learned the basics. It was easy to pick up because at its core React is still just HTML and CSS but you wrapped with some JavaScript to add the incredible functionality.
