@@ -112,24 +112,27 @@ As shown in the diagram below, the presentation layer is the user interface of t
 
 ![software architecture drawio](https://user-images.githubusercontent.com/97966316/218335111-4dd13b2f-3cc1-4207-9923-dae1c8242b82.png)
 
-## Database
-To store and fetch the employer and employee information we used Amazon Web Services Relational Database system. This type of database stores and provides access to data points that are related to one another. In a relational database, each row in the table is a record with a unique ID called the key. The columns of the table hold attributes of the data, and each record usually has a value for each attribute, making it easy to establish the relationships among data points. In our database we categorized our data by employers, employees, shifts and rosters databases. Employers and employees contain the account details. Employers has a relationship to employees and employees have a relationship to shifts. Shifts contains details of the shift times and employees id. Finally, the roster has an id and includes the employers id, which pulls the shifts for the employees. Each database then communicates to each other through SQL relationships and database linking.
+## Implementation
+### Technologies/Libraries
+- **Front-end Framework: ** React
+- **Backend Framework: ** Flask
+- **Programming Languages: ** Python, JavaScript
+- **RDMS Relational Database Management System: ** MySQL
+- **ORM (Object Relational Mapping): ** Flask-SQLAlchemy
+- **SMTP: ** Flask-Mail
 
-There are many benefits and reasons why we chose to use a relational database structure. Firstly, database integrity is important. RDB use a constraints as a set of rules to make sure there are no inconsistencies between the data, using data types and unique values. Another benefit is the scalability that it allows. For our application, the database would need to expand easily if larger businesses joined our system, bringing in more employees using our application. This works seamlessly with AWS, allowing additional hardware resources to be added to improve performance. Thirdly, querying is made easy and efficient with using RDB SQL (Structured Query Language) queries. As our team already was familiar with this query language it was the ideal database structure to support our system. Finally, security was a vital part of us choosing RDB as our type of database. They provide a secure way to store sensitive information, in our case this was employee emails and phone numbers. Using this to our advantage, we were able to restrict access to authorized users.
+### React
+React is an open-source JavaScript library for building user interfaces. React makes creating user interfaces easy and painless. The way React works is that you define a state(which is just data) and design simple UI components for the state then React will update the component when the state(data) changes. Hence the name **React** i.e. The UI reacts to changes in state. One of our team member uses React frequently to build different projects, so he suggested using it for our project especially when working with data. The rest of the team did some research into React and learned the basics. It was easy to pick up because at its core React is still just HTML and CSS but you wrapped with some JavaScript to add the incredible functionality.
 
-## Flask 
-Flask is a web framework for building web applications in Python. It provides a set of tools and libraries that make it easy to create web application quickly and easily. It is designed to be lightweight and flexible which it an easy choice for us when developing the web application for our new E-rostering system.
+### Flask 
+Flask is a Python web framework for building web applications in Python. It provides a set of tools and libraries that make it easy to create web application quickly and easily. It is designed to be lightweight and flexible which it an easy choice for us when developing the web application for our new E-rostering system.
 
-Flask helped us build the web application by defining the routes and views required. Routes are URLs that map to specific functions or methods, while views are the functions or methods that handle the requests and responses for those URLs. Flask provided a simple and flexible way to define the routes and views using Python decorators.
+We used Flask as our backend framework. It was perfect as it provided routing and a way to handle HTTP requests. Flask was used to build the API for our application by connecting to the MySQL database, performing CRUD(Create Read Update Delete) operations, and returning data we needed in JSON format or python dictionary.
 
-In addition to routing and views, Flask also provided us a wide range of other tools and libraries for handling tasks such as database integration, template rendering and form validation. We added these different tools to Flask when needed to meet the specific needs of our web application.
+### Database
+Our Relational Database Management System was MySQL. We started out by hosting a MySQL server on AWS RDS(Amazon Web Services Relational Database System). We mostly used an ORM(Object Relational Mapping) Flask-SQLAlchemy for database queries they have a set of APIs for doing just this well documented on their website. We have four db models i.e. Employer, Employee, Shifts and Roster. We defined relationships between properties from these models for example Employer can have many employees and an Employee belongs to an Employer etc. They all have unique IDs as primary keys.
 
-
-## React.JS
-React is an open-source JavaScript library for building user interfaces. We chose to use React to build our web application front end as it swiftly reacts to changes made in the back end, and therefore is extremely maintainable and robust. React follows the principle of "one-way data flow" which means that data flows only in one direction, from parent to child components. As React is used to build dynamic and interactive user interfaces for web applications, we thought it would suit our project development needs perfectly. One of the members of our team uses React frequently to build different projects, so by the rest of the team brushing up on our knowledge of how it works, which is very similar to HTML, it allowed us to fluidly develop the web application in the most efficient way.
-
-Our implementation of an electronic rostering system combined React with Flask. The communication between React and Flask was achieved through HTTP requests. React uses JavaScript's built-in fetch() method to make HTTP requests to Flask's API endpoints. Once React receives the data from Flask, it can update the user interface by rendering components and changing their state or props. React can also send data back to Flask by making POST or PUT requests to Flask's API endpoints, allowing the user to interact with the web application and trigger changes on the back-end.
-
+Our implementation is very simple, as simple as the way the web works. The frontend send HTTP requests to the backend and the backend responds back with JSON data. React uses JavaScript's built-in fetch() API to send to send a HTTP request to anyone of our many Flask API endpoints. Then Flask receives the request along with JSON data and performs CRUD operations accordinly if everything works perfeclty the the server should respond along with valid HTTP status codes e.g. 200, 400, 404.
 
 # References
 Drake, R.G. (2017) “E-roster policy: Insights and implications of codifying nurse scheduling,” Health Informatics Journal, 25(3), pp. 844–857. Available at: https://doi.org/10.1177/1460458217724579.
