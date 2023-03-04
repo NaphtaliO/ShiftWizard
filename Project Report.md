@@ -1,7 +1,23 @@
+# Shift Wizard - A Free and Open-Source Rostering System
+
+### Contributors
+Mark Kilgannon - 120398166
+Robbie O'Sullivan - 
+Aideen Murphy - 120323726
+Timothy McGrath - 120354876
+Naphtali Odinakachi - 120432016
+
+
 # Introduction
-All businesses that rely on shift patterns and different number of workers at different times can benefit from an e-rostering system. Importantly, human involvement is still beneficial to rostering processes. Whether you’re talking about e-rostering or auto-rostering, HR specialist or general managers are still in charge. The main distinction is that the logistics often include intricate mathematical computation necessary to determine the rotas or shift schedules, are handled automatically. 
+In today's fast-paced work environment, efficient rostering systems are essential for businesses to manage their staff and resources effectively. A rostering system is a tool that allows employers/organisation to create, manage, and assign shifts to their employees in an organized and streamlined manner as well as to track the hours employees work, assign employees to specific tasks or projects, and generate reports on employee hours and project completion.
+
+
+
+
+
+<!-- All businesses that rely on shift patterns and different number of workers at different times can benefit from an e-rostering system. Importantly, human involvement is still beneficial to rostering processes. Whether you’re talking about e-rostering or auto-rostering, HR specialist or general managers are still in charge. The main distinction is that the logistics often include intricate mathematical computation necessary to determine the rotas or shift schedules, are handled automatically. 
 After all, it is vital not just to have the sufficient number of employees per workday, but as well the personnel with specific technical expertise to get specific jobs done and allow businesses work at maximum efficiency. Visualising and planning these rosters manually can be very challenging. 
-This report and software aims to create a clear-cutting shift planning web application that relieves managers and HR specialists of difficulties that come with the demands of planning the most complex rostered organisation. Our E-rostering system is designed in the most efficient way possible that will help all businesses that depend on shift schedules, save their time, money, and resources.  
+This report and software aims to create a clear-cutting shift planning web application that relieves managers and HR specialists of difficulties that come with the demands of planning the most complex rostered organisation. Our E-rostering system is designed in the most efficient way possible that will help all businesses that depend on shift schedules, save their time, money, and resources.   -->
 
 
 # Background
@@ -122,12 +138,12 @@ As shown in the diagram below, the presentation layer is the user interface of t
 - **SMTP:** Flask-Mail
 
 ### React
-React is an open-source JavaScript library for building user interfaces. React makes creating user interfaces easy and painless. The way React works is that you define a state(which is just data) and design simple UI components for the state then React will update the component when the state(data) changes. Hence the name **React** i.e. The UI reacts to changes in state. One of our team member uses React frequently to build different projects, so he suggested using it for our project especially when working with data. The rest of the team did some research into React and learned the basics. It was easy to pick up because at its core React is still just HTML and CSS but you wrapped with some JavaScript to add the incredible functionality.
+React is an open-source JavaScript library for building user interfaces. React makes creating user interfaces easy and painless. The way React works is that you define a state(which is just data) and design simple UI components for the state then React will update the component when the state(data) changes. Hence the name **React** i.e. The UI reacts to changes in state. One of our team member uses React frequently to build different projects, so he suggested using it for our project especially when working with data. The rest of the team did some research into React and learned the basics. It was easy to pick up because at its core React is still just HTML and CSS but wrapped with JavaScript to add the incredible functionality.
 
 ### Flask 
-Flask is a Python web framework for building web applications in Python. It provides a set of tools and libraries that make it easy to create web application quickly and easily. It is designed to be lightweight and flexible which it an easy choice for us when developing the web application for our new E-rostering system.
+Flask is a Python web framework for building web applications in Python. It provides a set of tools and libraries that make it easy to create web applications quickly and easily. It is designed to be lightweight and flexible. It was an easy choice for the team when deciding what to use for developing the backend of our product.
 
-We used Flask as our backend framework. It was perfect as it provided routing and a way to handle HTTP requests. Flask was used to build the API for our application by connecting to the MySQL database, performing CRUD(Create Read Update Delete) operations, and returning data we needed in JSON format or python dictionary.
+We used Flask as our backend framework. It was perfect as it provided simple routing and a way to handle HTTP requests. Flask was used to build the API for our application by connecting to the MySQL database, performing CRUD(Create Read Update Delete) operations, and returning data(responses) we needed in JSON format or python dictionary.
 
 ### Database
 Our Relational Database Management System was MySQL. We started out by hosting a MySQL server on AWS RDS(Amazon Web Services Relational Database System). We mostly used an ORM(Object Relational Mapping) Flask-SQLAlchemy for database queries they have a set of APIs for doing just this well documented on their website. We have four db models i.e. Employer, Employee, Shifts and Roster. We defined relationships between properties from these models for example Employer can have many employees and an Employee belongs to an Employer etc. They all have unique IDs as primary keys.
