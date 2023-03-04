@@ -134,6 +134,9 @@ Our Relational Database Management System was MySQL. We started out by hosting a
 
 Our implementation is very simple, as simple as the way the web works. The frontend send HTTP requests to the backend and the backend responds back with JSON data. React uses JavaScript's built-in fetch() API to send to send a HTTP request to anyone of our many Flask API endpoints. Then Flask receives the request along with JSON data and performs CRUD operations accordinly if everything works perfeclty the the server should respond along with valid HTTP status codes e.g. 200, 400, 404.
 
+![Blank diagram](https://user-images.githubusercontent.com/48455262/222864284-c8511aff-bc01-460d-b308-6c3d7715d3a5.png)
+
+
 # References
 Drake, R.G. (2017) “E-roster policy: Insights and implications of codifying nurse scheduling,” Health Informatics Journal, 25(3), pp. 844–857. Available at: https://doi.org/10.1177/1460458217724579.
 
