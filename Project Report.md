@@ -8,8 +8,6 @@ Timothy McGrath - 120354876\
 Naphtali Odinakachi - 120432016
 
 Our product is temporarily hosted at these sites
-<!-- - [Employer's view](https://shift-wizard.web.app)
-- [Employee's view](https://shift-wizard-employee.web.app) -->
 - <a href="https://shift-wizard.web.app" target="_blank">Employer's view</a>
 - <a href="https://shift-wizard-employee.web.app" target="_blank">Employee's view</a>
 
