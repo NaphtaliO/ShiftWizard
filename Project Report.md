@@ -8,8 +8,8 @@ Timothy McGrath - 120354876\
 Naphtali Odinakachi - 120432016
 
 Our product is temporarily hosted at these sites
-- <a href="https://shift-wizard.web.app" target="_blank">Employer's view</a>
-- <a href="https://shift-wizard-employee.web.app" target="_blank">Employee's view</a>
+<a href="https://shift-wizard.web.app" target="_blank">Employer's view</a>
+<a href="https://shift-wizard-employee.web.app" target="_blank">Employee's view</a>
 
 ## Introduction
 In today's fast-paced work environment, efficient rostering systems are essential for businesses to manage their staff and resources effectively. A rostering system is a tool that allows employers/organisation to create, manage, and assign shifts to their employees in an organized and streamlined manner as well as to track the hours employees work, assign employees to specific tasks or projects, and generate reports on employee hours and project completion.
