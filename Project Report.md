@@ -7,7 +7,7 @@ Aideen Murphy - 120323726\
 Timothy McGrath - 120354876\
 Naphtali Odinakachi - 120432016
 
-Our product is temporarily hosted at these sites
+Our product is currently hosted at these sites
 - <a href="https://shift-wizard.web.app" target="_blank" rel="nofollow">Employer's view</a>
 - <a href="https://shift-wizard-employee.web.app" target="_blank" rel="nofollow">Employee's view</a>
 
