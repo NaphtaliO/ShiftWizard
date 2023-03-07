@@ -126,9 +126,9 @@ When setting out our plan to develop this system, we prioritised the foundations
 
 10-	View active rosters.
 
-11-	Request shift swap with other employees which must be accepted by the employer.
+11-	Request to change shift, which must be accepted by the employer.
 
-12-	Request days off, which must be accepted by the employer.
+12-	Request days off or holidays, which must be accepted by the employer.
 
 <ins>__Stretch goals__</ins>
 
