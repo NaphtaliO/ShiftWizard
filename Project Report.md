@@ -14,11 +14,12 @@ Our product is currently hosted at these sites
 ## Installation Guide
 <details>
   <summary>Linux/MacOS/Windows</summary>
+  
   - You should be running three instances the backend, employers view frontend and the employee's view frontend
   - You need to install Nodejs. The LTS version preferably, from ![here](https://nodejs.org/en/)
-  - Run `cd backend` and `pip install -r requirements.txt` in your terminal to install dependencies for the flask backend. You might have trouble with mysqlclient if you do. you need to install mysql server and it to your PATH.
+  - Run `cd backend` and `pip install -r requirements.txt` in your terminal to install dependencies for the flask backend. You might have trouble with       mysqlclient if you do. you need to install mysql server and it to your PATH.
   - Then run `flask --app app.py --debug run` to start the backend on localhost.
-  - assuming still in the backend folder run `cd ../frontend` then `npm install` to install node modules then `npm start` to start the employer's frontend. 
+  - assuming still in the backend folder run `cd ../frontend` then `npm install` to install node modules then `npm start` to start the employer's       frontend. 
   - assuming in frontend folder run `cd ../employee` then `npm install` to install node modules then `npm start` to start the employee's frontend. 
   
 </details>
