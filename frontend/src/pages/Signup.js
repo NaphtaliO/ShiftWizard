@@ -20,7 +20,12 @@ const Signup = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch(`http://roster-app-1-env.eba-myeicz6k.eu-west-1.elasticbeanstalk.com/api/organisation/signup`, {
+            if (email === "" || password === "" || name === "" || address === "") {
+                setError('Fields must not be empty')
+                return;
+            }
+            setError('');
+            const response = await fetch(`https://shift-wizard.herokuapp.com/api/organisation/signup`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, address, email, password }),

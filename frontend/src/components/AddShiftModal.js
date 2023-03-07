@@ -5,7 +5,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { Modal, Box, TextField, Button, LinearProgress } from '@mui/material';
 import { useSelector } from 'react-redux';
-import AddIcon from '@mui/icons-material/Add'
+import AddIcon from '@mui/icons-material/Add';
 
 function findIdByName(name, list) {
     if (name === '') {
@@ -20,6 +20,7 @@ function findIdByName(name, list) {
 }
 
 const AddShiftModal = ({ isModalOpen, setIsModalOpen, id, roster, setRoster, employeeName, day }) => {
+    const user = useSelector((state) => state.user.value)
     const employees = useSelector((state) => state.employees.value);
     //const [name, setName] = useState(employeeName);
     const [description, setDescription] = useState('');
@@ -38,9 +39,11 @@ const AddShiftModal = ({ isModalOpen, setIsModalOpen, id, roster, setRoster, emp
             // console.log({
             //     description, start_time: `${day} ${startTime.format('HH:mm')}`, end_time: `${day} ${endTime.format('HH:mm')}`, roster_id: id, employee_id
             // });
-            const response = await fetch(`http://roster-app-1-env.eba-myeicz6k.eu-west-1.elasticbeanstalk.com/api/roster/addShift`, {
+            const response = await fetch(`https://shift-wizard.herokuapp.com/api/roster/addShift`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`    },
                 body: JSON.stringify({ description, start_time: `${day} ${startTime.format('HH:mm')}`, end_time: `${day} ${endTime.format('HH:mm')}`, roster_id: id, employee_id }),
             })
             const json = await response.json()

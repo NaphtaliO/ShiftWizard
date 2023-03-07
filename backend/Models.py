@@ -98,3 +98,31 @@ class EmployeeRoster(db.Model):
     employee_id = db.Column(db.String(100), db.ForeignKey(
         'employees.id'), nullable=False, primary_key=True)
     roster_id = db.Column(db.String(100), db.ForeignKey('rosters.id'), nullable=False, primary_key=True)
+
+
+class Request(db.Model):
+    __tablename__ = "requests"
+    id = db.Column(db.String(100), primary_key=True, unique=True)
+    type_of_request = db.Column(db.String(100))
+    status = db.Column(db.String(100))
+    message = db.Column(db.String(150))
+    employee_id = db.Column(db.String(100))
+    organisation_id = db.Column(db.String(100))
+
+    def __init__(self, id, type_of_request, status, message, employee_id, organisation_id):
+        self.id = id
+        self.type_of_request = type_of_request
+        self.status = status
+        self.message = message,
+        self.employee_id = employee_id,
+        self.organisation_id = organisation_id
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "type_of_request": self.type_of_request,
+            "status": self.status,
+            "message": self.message,
+            "employee_id": self.employee_id,
+            "organisation_id": self.organisation_id 
+        }

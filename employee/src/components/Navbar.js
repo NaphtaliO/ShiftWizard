@@ -70,7 +70,8 @@ const Navbar = () => {
             <AppBar position="static">
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
-                        <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                        {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
+                        <img src="Shiftwizard_transparent.png" style={{ width: 70, height: 60, marginRight: 15 }} alt='logo' />
                         <Typography
                             variant="h5"
                              //noWrap
@@ -86,7 +87,7 @@ const Navbar = () => {
                                 textDecoration: 'none',
                             }}
                         >
-                            Project
+                            SHIFT-WIZARD
                         </Typography>
 
                         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -147,18 +148,22 @@ const Navbar = () => {
                         {user ?
                             <>
                                 <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                                        {/* <Button onClick={() => navigate('/')}
+                                    <Button onClick={() => navigate('/')}
                                             sx={{ my: 2, color: 'white', display: 'block', fontWeight: 'bold' }}>
-                                            dashboard
-                                    </Button> */}
-                                    <Button onClick={handleCloseNavMenu}
+                                            MySchedule
+                                    </Button>
+                                    <Button onClick={() => navigate('/team-roster')}
                                         sx={{ my: 2, color: 'white', display: 'block', fontWeight: 'bold' }}>
-                                        Chat
+                                        Rosters
+                                    </Button>
+                                    <Button onClick={() => navigate('/request-time-off')}
+                                        sx={{ my: 2, color: 'white', display: 'block', fontWeight: 'bold' }}>
+                                        Make a Request
                                     </Button>
                                     
                                 </Box>
+                                <Box sx={{ flexGrow: 0}}>
 
-                                <Box sx={{ flexGrow: 0 }}>
                                     <Tooltip title="Open settings">
                                         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                             <Avatar>

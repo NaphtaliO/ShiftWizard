@@ -5,12 +5,13 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import DeleteIcon from '@mui/icons-material/Delete';
 import moment from 'moment';
+import { useSelector } from 'react-redux';
 
-const pickRandomColor = () => {
-    let colors = ["#F55050", "#1F8A70", "#0081B4", "#FFEA20", "#C58940"];
-    let randomColor = colors[Math.floor(Math.random() * colors.length)];
-    return randomColor;
-};
+// const pickRandomColor = () => {
+//     let colors = ["#F55050", "#1F8A70", "#0081B4", "#FFEA20", "#C58940"];
+//     let randomColor = colors[Math.floor(Math.random() * colors.length)];
+//     return randomColor;
+// };
 
 const style = {
     position: 'absolute',
@@ -27,8 +28,10 @@ const style = {
 };
 
 const Shift = ({ shift, name, roster, setRoster }) => {
+    const user = useSelector((state) => state.user.value)
     const [opacity, setOpacity] = useState(1);
-    const [color] = useState(pickRandomColor());
+    // const [color] = useState(pickRandomColor());
+    const [color] = useState('#1976d2');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [startTime, setStartTime] = useState(moment(shift.startTime.split(' ')[3], "HH:mm"));
     const [endTime, setEndTime] = useState(moment(shift.endTime.split(' ')[3], "HH:mm"));
@@ -40,9 +43,11 @@ const Shift = ({ shift, name, roster, setRoster }) => {
         event.preventDefault();
         try {
             //console.log({ description, start_time: `${st} ${startTime.format('HH:mm')}`, end_time: `${et} ${endTime.format('HH:mm')}`, shift_id: shift.id });
-            const response = await fetch(`http://roster-app-1-env.eba-myeicz6k.eu-west-1.elasticbeanstalk.com/api/editShift`, {
+            const response = await fetch(`https://shift-wizard.herokuapp.com/api/editShift`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`    },
                 body: JSON.stringify({ description, start_time: `${st} ${startTime.format('HH:mm')}`, end_time: `${et} ${endTime.format('HH:mm')}`, shift_id: shift.id }),
             })
             const json = await response.json()
@@ -80,8 +85,11 @@ const Shift = ({ shift, name, roster, setRoster }) => {
             // console.log(roster);
             // console.log(shift.id);
             try {
-                const response = await fetch(`http://roster-app-1-env.eba-myeicz6k.eu-west-1.elasticbeanstalk.com/api/deleteShift/${shift.id}`, {
-                    method: 'DELETE'
+                const response = await fetch(`https://shift-wizard.herokuapp.com/api/deleteShift/${shift.id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${user.token}`
+                    }
                 })
                 const json = await response.json()
                 if (!response.ok) {
@@ -121,10 +129,10 @@ const Shift = ({ shift, name, roster, setRoster }) => {
                     onClick={() => setIsModalOpen(true)}
                     onMouseEnter={() => setOpacity(0.6)}
                     onMouseLeave={() => setOpacity(1)}>
-                    <p>
+                    <p style={{color: 'white'}}>
                         {shift.startTime.split(' ')[3]} - {shift.endTime.split(' ')[3]}
                     </p>
-                    <p>{shift.description !== "" ? shift.description : null}</p>
+                    <p style={{ color: 'white' }}>{shift.description !== "" ? shift.description : null}</p>
                 </div>
             </div>
             <Modal

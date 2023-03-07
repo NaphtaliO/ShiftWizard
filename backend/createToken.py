@@ -1,11 +1,16 @@
 import jwt
 from datetime import datetime, timedelta
+from dotenv import load_dotenv
+import os
 
-def create_jwt(id):
-    secret_key = b"jkhkgfklsbrthikelgtjg4589763596784736tewyufhsjdngitu4yerugfsd" ##Random strings so It can't be hacked,
+load_dotenv()
+def create_jwt(id, type_of_user):
+    secret_key = os.getenv("SECRET_KEY")
+    secret_key = secret_key.encode('utf-8')
     #Secret keys must remain secret to the server
     payload = {
-        'id': str(id),
+        'user_id': str(id),
+        'type': type_of_user,
         'exp': datetime.utcnow() + timedelta(days=30) #Token expires in 30 days
     }
 

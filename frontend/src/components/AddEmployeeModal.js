@@ -38,9 +38,12 @@ const AddEmployeeModal = ({ isOpen, setIsOpen, roster_id, setRoster, roster }) =
         }
         setLoading(true);
         try {
-            const response = await fetch(`http://roster-app-1-env.eba-myeicz6k.eu-west-1.elasticbeanstalk.com/api/employee/create`, {
+            const response = await fetch(`https://shift-wizard.herokuapp.com/api/employee/create`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
+                },
                 body: JSON.stringify({ name, job, email, organisation_id: user.id, roster_id }),
             })
             const json = await response.json()

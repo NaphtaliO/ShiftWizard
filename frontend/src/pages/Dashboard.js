@@ -23,8 +23,11 @@ const Dashboard = () => {
         const getAllRosters = async () => {
             setLoading(true)
             try {
-                const response = await fetch(`http://roster-app-1-env.eba-myeicz6k.eu-west-1.elasticbeanstalk.com/api/getAllRosters/${user.id}`, {
-                    method: 'GET'
+                const response = await fetch(`https://shift-wizard.herokuapp.com/api/getAllRosters/${user.id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${user.token}`
+                    }
                 })
                 const json = await response.json()
                 if (response.ok) {
@@ -38,8 +41,9 @@ const Dashboard = () => {
         const getAllEmployees = async () => {
             setLoading(true)
             try {
-                const response = await fetch(`http://roster-app-1-env.eba-myeicz6k.eu-west-1.elasticbeanstalk.com/api/organisation/employees/${user.id}`, {
-                    method: 'GET'
+                const response = await fetch(`https://shift-wizard.herokuapp.com/api/organisation/employees/${user.id}`, {
+                    method: 'GET',
+                    headers: { 'Authorization': `Bearer ${user.token}` }
                 })
                 const json = await response.json()
                 if (response.ok) {
@@ -52,14 +56,16 @@ const Dashboard = () => {
         }
         getAllRosters()
         getAllEmployees()
-    }, [user.id, dispatch])
+    }, [user.id, dispatch, user.token])
 
     const createRoster = async (event) => {
         setLoading(true);
         try {
-            const response = await fetch(`http://roster-app-1-env.eba-myeicz6k.eu-west-1.elasticbeanstalk.com/api/roster/create`, {
+            const response = await fetch(`https://shift-wizard.herokuapp.com/api/roster/create`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`    },
                 body: JSON.stringify({ name, organisation_id: user.id }),
             })
             const json = await response.json()
@@ -83,8 +89,11 @@ const Dashboard = () => {
             setLoading(true)
             try {
                 if (id === "") return;
-                const response = await fetch(`http://roster-app-1-env.eba-myeicz6k.eu-west-1.elasticbeanstalk.com/api/deleteRoster/${id}`, {
-                    method: 'DELETE'
+                const response = await fetch(`https://shift-wizard.herokuapp.com/api/deleteRoster/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${user.token}`
+                    }
                 })
                 const json = await response.json()
                 if (!response.ok) {
@@ -138,7 +147,7 @@ const Dashboard = () => {
                             <table className='table table-striped'>
                                 <thead>
                                     <tr>
-                                        <th>id</th>
+                                        <th></th>
                                         <th>name</th>
                                         <th>Employees</th>
                                         <th>Shifts</th>
@@ -147,10 +156,9 @@ const Dashboard = () => {
                                 <tbody >
                                     {rosters !== null && rosters.length !== 0 && rosters.map((roster, i) => (
                                         <tr key={i} className='dashboard'>
-
                                             <td>
                                                 <button className='rosters-link' onClick={() => navigate(`/roster/${roster.id}`)}>
-                                                    {roster.id}
+                                                    VIEW ROSTER
                                                 </button>
                                             </td>
                                             <td>{roster.name}</td>

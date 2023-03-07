@@ -8,6 +8,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import { setEmployees } from '../state_management/employeesSlice';
 
 const Employees = () => {
+    const user = useSelector((state) => state.user.value);
     const employees = useSelector((state) => state.employees.value);
     const dispatch = useDispatch()
     console.log(employees);
@@ -16,8 +17,11 @@ const Employees = () => {
         if (window.confirm("You are about to delete this employee permanently")) {
             // console.log(id);
             try {
-                const response = await fetch(`http://roster-app-1-env.eba-myeicz6k.eu-west-1.elasticbeanstalk.com/api/deleteEmployee/${id}`, {
-                    method: 'DELETE'
+                const response = await fetch(`https://shift-wizard.herokuapp.com/api/deleteEmployee/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${user.token}`
+                    }
                 })
                 const json = await response.json()
                 if (!response.ok) {

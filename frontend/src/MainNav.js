@@ -11,6 +11,7 @@ import { logIn } from './state_management/userSlice';
 import { useEffect } from 'react';
 import Employees from './pages/Employees';
 import Profile from './pages/Profile';
+import Requests from './pages/Requets';
 
 const MainNav = () => {
     //this is the user made global
@@ -46,6 +47,10 @@ const MainNav = () => {
                     <Route
                         path="/profile"
                         element={user ? <Profile /> : <Navigate to="/login" />}
+                    />
+                    <Route
+                        path="/requests"
+                        element={user ? <Requests /> : <Navigate to="/login" />}
                     />
                     <Route
                         path="/login"

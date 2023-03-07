@@ -11,6 +11,7 @@ import IconButton from '@mui/material/IconButton';
 import AddShiftModal from './AddShiftModal';
 import PrintIcon from '@mui/icons-material/Print';
 import html2pdf from 'html2pdf.js';
+import {useSelector} from 'react-redux'
 // import EditEmployeeModal from './EditEmployeeModal';
 
 
@@ -45,6 +46,7 @@ import html2pdf from 'html2pdf.js';
 
 //TODO: update roster to on show shifts with the same roster id
 const Roster = () => {
+    const user = useSelector((state) => state.user.value)
     const { id } = useParams();
     const [isModalOpen, setIsModalOpen] = useState(false);
     // const [isEditEmployeeModalOpen, setIsEditEmployeeModalOpen] = useState(false);
@@ -94,8 +96,11 @@ const Roster = () => {
         const fetchRoster = async () => {
             setLoading(true)
             try {
-                const response = await fetch(`http://roster-app-1-env.eba-myeicz6k.eu-west-1.elasticbeanstalk.com/api/roster/view/${id}`, {
+                const response = await fetch(`https://shift-wizard.herokuapp.com/api/roster/view/${id}`, {
                     method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${user.token}`
+                    }
                 })
                 const json = await response.json()
                 if (!response.ok) {
@@ -110,7 +115,7 @@ const Roster = () => {
             setLoading(false);
         }
         fetchRoster()
-    }, [id])
+    }, [id, user.token])
 
 
     return (

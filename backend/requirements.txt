@@ -12,6 +12,7 @@ mysql-connector-python==8.0.32
 mysqlclient==2.1.1
 protobuf==3.20.3
 PyJWT==2.6.0
+python-dotenv==1.0.0
 six==1.16.0
 SQLAlchemy==1.4.46
 uuid==1.30

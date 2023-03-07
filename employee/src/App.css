@@ -80,3 +80,101 @@ footer.footer {
     width: 100%;
     height: 2.5rem;
 }
+
+.number-count {
+    display: flex;
+    justify-content: flex-end;
+}
+
+p.number-count-p {
+    font-size: 70px;
+    font-weight: 600;
+}
+
+.rosters-link {
+    border: none;
+    background-color: transparent;
+    color: rgb(70, 70, 215);
+}
+
+.delete-button {
+    border: none;
+    background-color: transparent;
+    color: red;
+    font-weight: 600;
+    font-size: larger;
+}
+
+tbody td {
+    vertical-align: middle;
+}
+
+.no-rosters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.names {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+div.names p {
+    margin-left: 10px;
+}
+
+.details p,
+.shift p {
+    margin: 0;
+}
+
+.details p.job {
+    color: rgb(168, 202, 202);
+}
+
+.shift {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.modal-buttons {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.roster-buttons {
+    margin: 20px 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.calendar-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar-text h4 {
+    margin: 0;
+}
+
+.add-employee {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-buttons {
+    display: flex;
+
+}

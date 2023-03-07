@@ -17,8 +17,12 @@ const Login = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            //console.log({email, password, isChecked});
-            const response = await fetch(`http://roster-app-1-env.eba-myeicz6k.eu-west-1.elasticbeanstalk.com/api/employee/login`, {
+            if (email === "" || password === "") {
+                setError('Fields must not be empty')
+                return;
+            }
+            setError('');
+            const response = await fetch(`https://shift-wizard.herokuapp.com/api/employee/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password }),
@@ -30,7 +34,7 @@ const Login = () => {
             }
             if (response.ok) {
                 //save the user to local storage
-                localStorage.setItem('user', JSON.stringify(json))
+                localStorage.setItem('employee', JSON.stringify(json))
 
                 dispatch(logIn(json))
             }
@@ -55,7 +59,7 @@ const Login = () => {
                         <LockOutlinedIcon />
                     </Avatar>
                     <Typography component="h1" variant="h5">
-                        Log in
+                        Employee Log In
                     </Typography>
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
                         <TextField
