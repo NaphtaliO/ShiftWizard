@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import "../styles/employees.css"
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
 import { setEmployees } from '../state_management/employeesSlice';
 
 const Employees = () => {
@@ -72,9 +71,6 @@ const Employees = () => {
                                 </td>
                                 <td>{employee.job}</td>
                                 <td>{employee.email}</td>
-                                <td>
-                                    <IconButton children={<EditIcon />} />
-                                </td>
                                 <td>
                                     <IconButton color='error' children={<DeleteIcon />}
                                         onClick={() => deleteEmployee(employee.id)} />
