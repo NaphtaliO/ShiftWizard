@@ -11,6 +11,18 @@ Our product is currently hosted at these sites
 - <a href="https://shift-wizard.web.app" target="_blank" rel="nofollow">Employer's view</a>
 - <a href="https://shift-wizard-employee.web.app" target="_blank" rel="nofollow">Employee's view</a>
 
+## Installation Guide
+<details>
+  <summary>Linux/MacOS/Windows</summary>
+  - You should be running three instances the backend, employers view frontend and the employee's view frontend
+  - You need to install Nodejs. The LTS version preferably, from ![here](https://nodejs.org/en/)
+  - Run `cd backend` and `pip install -r requirements.txt` in your terminal to install dependencies for the flask backend. You might have trouble with mysqlclient if you do. you need to install mysql server and it to your PATH.
+  - Then run `flask --app app.py --debug run` to start the backend on localhost.
+  - assuming still in the backend folder run `cd ../frontend` then `npm install` to install node modules then `npm start` to start the employer's frontend. 
+  - assuming in frontend folder run `cd ../employee` then `npm install` to install node modules then `npm start` to start the employee's frontend. 
+  
+</details>
+
 ## Introduction
 In today's fast-paced work environment, efficient rostering systems are essential for businesses to manage their staff and resources effectively. A rostering system is a tool that allows employers/organisation to create, manage, and assign shifts to their employees in an organized and streamlined manner as well as to track the hours employees work, assign employees to specific tasks or projects, and generate reports on employee hours and project completion.
 
