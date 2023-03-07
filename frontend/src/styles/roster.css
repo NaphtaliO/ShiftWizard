@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+div.names {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+div.names p {
+    margin-left: 10px;
+}
+
+.details p,
+.shift p {
+    margin: 0;
+}
+
+.details p.job {
+    color: rgb(168, 202, 202);
+}
+
+.shift {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.modal-buttons{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.roster-buttons{
+    margin: 20px 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.calendar-text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar-text h4{
+    margin: 0;
+}
+
+.add-employee{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-buttons{
+    display: flex;
+    
+}

@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+div.names {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+div.names p {
+    margin-left: 10px;
+}
+
+.details p {
+    margin: 0;
+}
+
+.details p.job {
+    color: rgb(168, 202, 202);
+}

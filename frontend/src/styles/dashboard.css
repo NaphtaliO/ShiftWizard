@@ -1,0 +1,33 @@
+.number-count{
+    display: flex;
+    justify-content: flex-end;
+}
+
+p.number-count-p{
+    font-size: 70px;
+    font-weight: 600;
+}
+
+.rosters-link{
+    border: none;
+    background-color: transparent;
+    color: rgb(70, 70, 215);
+}
+
+.delete-button{
+    border: none;
+    background-color: transparent;
+    color: red;
+    font-weight: 600;
+    font-size: larger;
+}
+
+tbody td {
+    vertical-align: middle;
+}
+
+.no-rosters{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
