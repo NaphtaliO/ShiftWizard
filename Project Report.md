@@ -1,15 +1,30 @@
-# Shift Wizard - A Free and Open-Source Rostering System
-
+<img src="https://user-images.githubusercontent.com/48455262/223453923-423ffe60-693b-4629-bd04-3d3a9f2d1ff6.png"
+            width="100" height="100">
+# Shift-Wizard - A Free and Open-Source Rostering System
+        
 ### Contributors
 Mark Kilgannon - 120398166\
-Robbie O'Sullivan - \
+Robbie O' Sullivan - 120399733\
 Aideen Murphy - 120323726\
 Timothy McGrath - 120354876\
 Naphtali Odinakachi - 120432016
 
-Our product is temporarily hosted at these sites
+Our product is currently hosted at these sites
 - <a href="https://shift-wizard.web.app" target="_blank" rel="nofollow">Employer's view</a>
 - <a href="https://shift-wizard-employee.web.app" target="_blank" rel="nofollow">Employee's view</a>
+
+## Installation Guide
+<details>
+  <summary>Linux/MacOS/Windows</summary>
+  
+  - You should be running three instances the backend, employers view frontend and the employee's view frontend
+  - You need to install Nodejs. The LTS version preferably, from [here](https://nodejs.org/en/)
+  - Run `cd backend` and `pip install -r requirements.txt` in your terminal to install dependencies for the flask backend. You might have trouble with       mysqlclient if you do. you need to install mysql server and it to your PATH.
+  - Then run `flask --app app.py --debug run` to start the backend on localhost.
+  - assuming still in the backend folder run `cd ../frontend` then `npm install` to install node modules then `npm start` to start the employer's       frontend. 
+  - assuming in frontend folder run `cd ../employee` then `npm install` to install node modules then `npm start` to start the employee's frontend. 
+  
+</details>
 
 ## Introduction
 In today's fast-paced work environment, efficient rostering systems are essential for businesses to manage their staff and resources effectively. A rostering system is a tool that allows employers/organisation to create, manage, and assign shifts to their employees in an organized and streamlined manner as well as to track the hours employees work, assign employees to specific tasks or projects, and generate reports on employee hours and project completion.
@@ -44,19 +59,22 @@ There are three main types of rosters for business operations which are used acr
 
 
 ## Use Case
-![Use case (1)](https://user-images.githubusercontent.com/114653179/220119895-99662f81-143d-40b7-a384-21cd556b466e.png)
-This use case diagram describes how the user interacts with the system. There is two actors that interact with the system, employees and employers. These two actors will interact with a different view of the system. Both actors can log in, and will then be sorted into whether they are employers or employees. 
+![Use case](https://user-images.githubusercontent.com/114653179/223481367-3cf30f84-1b0e-43b5-aa80-1ae169b73998.png)
 
-For an employer logging into the system for the first time, the option to register the account and set up working hours and employee data will be given. This allows for greater automation and ease of use for employers. Once registered, the employer can create a new roster, or interact with an existing roster. 
+This use case diagram describes how the user interacts with the system. There is two actors that interact with the system, employees and employers. These two actors will interact with a different view of the system. Both actors can log in, the employers will log into the employer view, and the employees will log into the employee view. 
 
-An employee logging into the system will be able to view the rosters that their employers have created, along with the ability to request a shift change with another employee or the ability to request days off from their employer. If the employee receives a request to swap from another employee, the request will show up on their dashboard. 
+For an employer logging into the system for the first time, the employer can create a new roster, which will create a roster in their database. This roster is then viewable on the dashboard, and the employer can edit the employees active on the roster, and their shifts.  
+
+An employee logging into the system will be automatically shown their schedule, which shows their rostered shifts. They will be also able to view the rosters that their employers have created, along with the ability to request a shift change, the ability to request days off from their employer, and the ability to ask for a day off due to sickness or other reasons, with the requesting feature. These requests wil show up in an employers request tab, which they can enter to either accept the request, or deny it. 
 
 ## Data Flow
-![Data Flow Diagram 2](https://user-images.githubusercontent.com/114653179/218460986-f98d6190-1842-46b0-8710-b1b0aa887c32.png)
+![Data Flow](https://user-images.githubusercontent.com/114653179/223473291-01773a43-efb8-4ea4-bfe2-6b34107b64cc.png)
 
-This Data Flow diagram shows the flow of information throughout the system. The system has two views to start the data flow, employers and employees. Once they log in, the system sorts them into either an employer or an employee. It does this by directing the person to their relevant login page. Once the system has verified which type of log in has occurred, the user is directed to their dashboard. 
+This Data Flow diagram shows the flow of information throughout the system. The system has two views to start the data flow, employers and employees. Once the user registers as an employer or an employee, the system displays the users relevent dashboard. 
 
-Both types of user can view any active roster. The employer can make changes to the roster, and those changes will be applied to the roster and is automatically available to view to employees. If an employee would like to swap shifts with another employee, they can make requests with available employees. The swap request is sent to the employee selected, and if accepted, is sent to the employer for approval. An option to export the roster is also given to the employer.
+The employer can first create a roster. They do this by using the option on the dashboard, and after giving the roster a name, can choose to view it. The employer can make changes to the roster, and those changes will be applied automatically. These changes give notifications via email to registered employee's that the changes apply to. The employer can also download an exported roster to print out.
+
+Once an employee logs in, they are greeted with an overview of their schedule. If they would like to view the active roster with all other employees, they can do so by choosing the roster tab. The employee can make a request to their employer for time off for sickness, holidays, if they are not available, or another reason by choosing the "Make a Request" tab. This request is then sent on to the employer to either accept, or deny. 
 
 ## Sequence Diagram
 ### Employer Sequence Diagram
@@ -108,9 +126,9 @@ When setting out our plan to develop this system, we prioritised the foundations
 
 10-	View active rosters.
 
-11-	Request shift swap with other employees which must be accepted by the employer.
+11-	Request to change shift, which must be accepted by the employer.
 
-12-	Request days off, which must be accepted by the employer.
+12-	Request days off or holidays, which must be accepted by the employer.
 
 <ins>__Stretch goals__</ins>
 
@@ -127,7 +145,7 @@ As shown in the diagram below, the presentation layer is the user interface of t
 
 ![software architecture drawio](https://user-images.githubusercontent.com/97966316/218335111-4dd13b2f-3cc1-4207-9923-dae1c8242b82.png)
 
-## Implementation
+## Core Technologies
 ### Technologies/Libraries
 - **Front-end Framework:** React
 - **Backend Framework:** Flask
@@ -151,6 +169,22 @@ Our implementation is very simple, as simple as the way the web works. The front
 
 ![Blank diagram](https://user-images.githubusercontent.com/48455262/222864284-c8511aff-bc01-460d-b308-6c3d7715d3a5.png)
 
+## Lessons Learned
+1 -	Team Roles and Responsibilites:
+
+Defining team roles and responsibilities was essential for ensuring that everyone knows what they are responsible for and what is expected of them. It also helps prevent confusion and overlapping work. For example, some of our team members had different strengths and weaknesses, such as coding ability, writing ability and idea and feature imagination. By splitting up roles according to these strengths and characteristics, the development ran much smoother and efficient.
+
+2 -	Time Management: 
+
+Time management was crucial for ensuring that the project was completed on schedule. Creating a project timeline, as can be found above in the “Path of Development” section, and setting realistic deadlines helped the team stay on track to complete tasks on a timeframe that suited the quick nature of the module. As can be seen on the plan, the team did not get to complete two of our original stretch goals. We originally planned them as stretch goals with the objective to complete them all, but we knew the short timeframe of the project might not allow for these. In the end, the team was happy to complete one of these stretch goals, but perhaps with better time management, all could have been completed.
+
+3 -	Adaptability: 
+
+No matter how well-planned the project development was, unexpected challenges did arise. For example, availability was a struggle for the group for the first weeks. We had an unfortunate string of illness and absences for the majority of the team on two weeks during the already short project. Thankfully, we as a team were as adaptable as possible, and moved to online collaboration and different meeting times where it was possible to keep the efficiency of the project as high as possible. 
+
+4 -	Documentation and Planning:
+
+Keeping on top of changes in goals and structure would have saved the group time. Retrospective changes needed to be to the software and the report, which took up valuable time that could have been used else ware. Documenting all these changes and decisions would help future developers understand the project and make improvements.
 
 ## References
 Drake, R.G. (2017) “E-roster policy: Insights and implications of codifying nurse scheduling,” Health Informatics Journal, 25(3), pp. 844–857. Available at: https://doi.org/10.1177/1460458217724579.
