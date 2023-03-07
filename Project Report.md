@@ -1,4 +1,4 @@
-# Shift Wizard - A Free and Open-Source Rostering System
+# ![Shiftwizard_transparent](https://user-images.githubusercontent.com/48455262/223453923-423ffe60-693b-4629-bd04-3d3a9f2d1ff6.png)ShiftWizard - A Free and Open-Source Rostering System
 
 ### Contributors
 Mark Kilgannon - 120398166\
