@@ -145,7 +145,7 @@ As shown in the diagram below, the presentation layer is the user interface of t
 
 ![software architecture drawio](https://user-images.githubusercontent.com/97966316/218335111-4dd13b2f-3cc1-4207-9923-dae1c8242b82.png)
 
-## Implementation
+## Core Technologies
 ### Technologies/Libraries
 - **Front-end Framework:** React
 - **Backend Framework:** Flask
