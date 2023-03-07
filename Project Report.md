@@ -59,12 +59,13 @@ There are three main types of rosters for business operations which are used acr
 
 
 ## Use Case
-![Use case (1)](https://user-images.githubusercontent.com/114653179/220119895-99662f81-143d-40b7-a384-21cd556b466e.png)
-This use case diagram describes how the user interacts with the system. There is two actors that interact with the system, employees and employers. These two actors will interact with a different view of the system. Both actors can log in, and will then be sorted into whether they are employers or employees. 
+![Use case](https://user-images.githubusercontent.com/114653179/223481367-3cf30f84-1b0e-43b5-aa80-1ae169b73998.png)
 
-For an employer logging into the system for the first time, the option to register the account and set up working hours and employee data will be given. This allows for greater automation and ease of use for employers. Once registered, the employer can create a new roster, or interact with an existing roster. 
+This use case diagram describes how the user interacts with the system. There is two actors that interact with the system, employees and employers. These two actors will interact with a different view of the system. Both actors can log in, the employers will log into the employer view, and the employees will log into the employee view. 
 
-An employee logging into the system will be able to view the rosters that their employers have created, along with the ability to request a shift change with another employee or the ability to request days off from their employer. If the employee receives a request to swap from another employee, the request will show up on their dashboard. 
+For an employer logging into the system for the first time, the employer can create a new roster, which will create a roster in their database. This roster is then viewable on the dashboard, and the employer can edit the employees active on the roster, and their shifts.  
+
+An employee logging into the system will be automatically shown their schedule, which shows their rostered shifts. They will be also able to view the rosters that their employers have created, along with the ability to request a shift change, the ability to request days off from their employer, and the ability to ask for a day off due to sickness or other reasons, with the requesting feature. These requests wil show up in an employers request tab, which they can enter to either accept the request, or deny it. 
 
 ## Data Flow
 ![Data Flow](https://user-images.githubusercontent.com/114653179/223473291-01773a43-efb8-4ea4-bfe2-6b34107b64cc.png)
