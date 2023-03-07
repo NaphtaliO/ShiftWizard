@@ -169,6 +169,22 @@ Our implementation is very simple, as simple as the way the web works. The front
 
 ![Blank diagram](https://user-images.githubusercontent.com/48455262/222864284-c8511aff-bc01-460d-b308-6c3d7715d3a5.png)
 
+## Lessons Learned
+1 -	Team Roles and Responsibilites:
+
+Defining team roles and responsibilities was essential for ensuring that everyone knows what they are responsible for and what is expected of them. It also helps prevent confusion and overlapping work. For example, some of our team members had different strengths and weaknesses, such as coding ability, writing ability and idea and feature imagination. By splitting up roles according to these strengths and characteristics, the development ran much smoother and efficient.
+
+2 -	Time Management: 
+
+Time management was crucial for ensuring that the project was completed on schedule. Creating a project timeline, as can be found above in the “Path of Development” section, and setting realistic deadlines helped the team stay on track to complete tasks on a timeframe that suited the quick nature of the module. As can be seen on the plan, the team did not get to complete two of our original stretch goals. We originally planned them as stretch goals with the objective to complete them all, but we knew the short timeframe of the project might not allow for these. In the end, the team was happy to complete one of these stretch goals, but perhaps with better time management, all could have been completed.
+
+3 -	Adaptability: 
+
+No matter how well-planned the project development was, unexpected challenges did arise. For example, availability was a struggle for the group for the first weeks. We had an unfortunate string of illness and absences for the majority of the team on two weeks during the already short project. Thankfully, we as a team were as adaptable as possible, and moved to online collaboration and different meeting times where it was possible to keep the efficiency of the project as high as possible. 
+
+4 -	Documentation and Planning:
+
+Keeping on top of changes in goals and structure would have saved the group time. Retrospective changes needed to be to the software and the report, which took up valuable time that could have been used else ware. Documenting all these changes and decisions would help future developers understand the project and make improvements.
 
 ## References
 Drake, R.G. (2017) “E-roster policy: Insights and implications of codifying nurse scheduling,” Health Informatics Journal, 25(3), pp. 844–857. Available at: https://doi.org/10.1177/1460458217724579.
