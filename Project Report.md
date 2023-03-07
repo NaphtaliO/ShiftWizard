@@ -1,4 +1,5 @@
-![avatar](https://user-images.githubusercontent.com/48455262/223453923-423ffe60-693b-4629-bd04-3d3a9f2d1ff6.png)
+<img src="https://user-images.githubusercontent.com/48455262/223453923-423ffe60-693b-4629-bd04-3d3a9f2d1ff6.png"
+            width="100" height="100">
 # ShiftWizard - A Free and Open-Source Rostering System
         
 ### Contributors
