@@ -1,10 +1,10 @@
 <img src="https://user-images.githubusercontent.com/48455262/223453923-423ffe60-693b-4629-bd04-3d3a9f2d1ff6.png"
             width="100" height="100">
-# ShiftWizard - A Free and Open-Source Rostering System
+# Shift-Wizard - A Free and Open-Source Rostering System
         
 ### Contributors
 Mark Kilgannon - 120398166\
-Robbie O'Sullivan - 120399733\
+Robbie O' Sullivan - 120399733\
 Aideen Murphy - 120323726\
 Timothy McGrath - 120354876\
 Naphtali Odinakachi - 120432016
