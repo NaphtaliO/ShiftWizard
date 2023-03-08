@@ -167,6 +167,10 @@ A Roster Generaaly looks like this. It is initially empty but the employer has t
 <img height="400" alt="Screenshot" style="display: block;margin-left: auto;margin-right: auto;"
             src="https://user-images.githubusercontent.com/48455262/223876774-0cb0e7a4-b35a-43a4-87ac-557bca6c8488.png">
 
+An employee get's their login details sent to them via email when the employer add's them to the organisation/roster.
+
+<img height="400" alt="Screenshot" style="display: block;margin-left: auto;margin-right: auto;"
+            src="https://user-images.githubusercontent.com/48455262/223878421-157eb2f1-a244-4fe5-b436-098537fdfc10.png">
 
 ## Employee's view
 
