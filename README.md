@@ -152,10 +152,18 @@ When setting out our plan to develop this system, we prioritised the foundations
 ##Implementation
 #### Employer's view
 
-Users are able to log in
+Users should log in or create an account if they do not have one
 
-<img height="500" alt="Screenshot" style="display: block;margin-left: auto;margin-right: auto;"
+<img height="300" alt="Screenshot" style="display: block;margin-left: auto;margin-right: auto;"
             src="https://user-images.githubusercontent.com/48455262/223737872-8a264652-b6f3-4faa-ae5d-0287fd985e42.png">
+
+After logging in you are presented with you dashboard. If you don't have any rosters the you create one with the form on the left. Then Click **VIEW ROSTER** to open the roster
+
+<img height="300" alt="Screenshot" style="display: block;margin-left: auto;margin-right: auto;"
+            src="https://user-images.githubusercontent.com/48455262/223875214-7556aad2-bfb1-4ecf-820a-bbafa983063a.png">
+            
+
+
 ### Hosting
 - The Flask Backend is hosted on [heroku](https://heroku.com/).
 - The React Frontend is hosted on [Firebase](https://firebase.google.com/).
