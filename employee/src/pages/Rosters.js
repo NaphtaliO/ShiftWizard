@@ -43,7 +43,7 @@ const Rosters = () => {
                     <table className='table table-striped'>
                         <thead>
                             <tr>
-                                <th>id</th>
+                                <th></th>
                                 <th>name</th>
                                 <th>Employees</th>
                                 <th>Shifts</th>
@@ -55,7 +55,7 @@ const Rosters = () => {
 
                                     <td>
                                         <button className='rosters-link' onClick={() => navigate(`/roster/${roster.id}`)}>
-                                            {roster.id}
+                                            VIEW ROSTER
                                         </button>
                                     </td>
                                     <td>{roster.name}</td>

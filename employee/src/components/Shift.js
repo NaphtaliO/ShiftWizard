@@ -14,7 +14,7 @@ const Shift = ({ shift}) => {
             <div className="shift-item">
                 <div
                     className="shift"
-                    style={{ backgroundColor: color }}>
+                    style={{ backgroundColor: color, color: 'white' }}>
                     <p>
                         {shift.startTime.split(' ')[3]} - {shift.endTime.split(' ')[3]}
                     </p>
