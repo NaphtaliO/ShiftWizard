@@ -190,6 +190,8 @@ No matter how well-planned the project development was, unexpected challenges di
 Keeping on top of changes in goals and structure would have saved the group time. Retrospective changes needed to be to the software and the report, which took up valuable time that could have been used else ware. Documenting all these changes and decisions would help future developers understand the project and make improvements.
 
 ## References
+Chegini, A. (2021) What percentage should labor cost be in a restaurant?, Epos Now. Epos Now. Available at: https://www.eposnow.com/ie/resources/what-percentage-should-labor-cost-be-in-a-restaurant/#:~:text=Labour%20is%20often%20one%20of,on%20the%20type%20of%20restaurant. (Accessed: March 7, 2023).
+
 Drake, R.G. (2017) “E-roster policy: Insights and implications of codifying nurse scheduling,” Health Informatics Journal, 25(3), pp. 844–857. Available at: https://doi.org/10.1177/1460458217724579.
 
 Edie, L.C. (1954) “Traffic delays at Toll Booths,” Journal of the Operations Research Society of America, 2(2), pp. 107–138. Available at: https://doi.org/10.1287/opre.2.2.107.
