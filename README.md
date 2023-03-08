@@ -52,10 +52,10 @@ There are many systems already on the market that provide roster management for 
 
 <img src="https://www.allocatesoftware.co.uk/wp-content/uploads/sites/93/2021/03/Rostering-prop-page1.png" width="500">
 
-### Case 1:
+### 2.2.1 Case 1:
 Xero is a New Zealand–based technology company that provides cloud-based accounting software for small and medium-sized businesses. The company also has a workforce management application called Planday that helps employers to set up a shift work roster system for their business. The benefits of this, is that it can integrate in with their accounting system, so employees can manage their payroll and scheduling all in one place. Xero calculates VAT and files VAT returns online securely with HMRC using software that’s compatible with HMRC systems. As well employees can connect their bank account to Xero and set up bank feeds. Some drawbacks to the Planday application is that it does not suit enterprises with a large number of staff operating from a single location. There are other software that are more convenient that charge by location and allow for an unlimited number of employees to be added. As well, businesses with a small budget who require a free plan do not suit Planday as all their plans are paid for. 
 
-### Case 2:
+### 2.2.2 Case 2:
 RosterElf is an Australian cloud-based staff scheduling tool to assist enterprises. The application allows managers to develop and publish employee rosters, chat with employees, and keep track of employee hours worked. RosterElf also provides features which help to make scheduling more efficient and keep employees satisfied, including shift swapping, automated shift reminders, and real-time reporting. RosterElf reports that they cater for any size of enterprise, including those in retail, hospitality, healthcare, and other industries. Although cheaper than Xero, RosterElf is still a monthly subscription per employee. This does not suit businesses starting out that do not have the budget or a small business with a large amount of overheads already. As well, RosterElf does offer a wide range of customization options, but many businesses rather a clean and simple solution to their employee management problems.
 
 
@@ -148,7 +148,7 @@ When setting out our plan to develop this system, we prioritised the foundations
 
 15-	Chat function allowing employees to communicate.
 
-## Implementation
+##Implementation
 
 ### Header (TBD)
 <img height="500" alt="Screenshot" style="display: block;margin-left: auto;margin-right: auto;"
