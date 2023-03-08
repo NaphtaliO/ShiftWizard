@@ -154,22 +154,22 @@ When setting out our plan to develop this system, we prioritised the foundations
 
 Users should log in or create an account if they do not have one
 
-<img height="400" alt="Screenshot" style="display: block;margin-left: auto;margin-right: auto;"
+<img height="400" alt="Screenshot" style="display: block;margin-left: auto;margin-right: auto;width: 100%;"
             src="https://user-images.githubusercontent.com/48455262/223737872-8a264652-b6f3-4faa-ae5d-0287fd985e42.png">
 
 After logging in you are presented with you dashboard. If you don't have any rosters the you create one with the form on the left. Then Click **VIEW ROSTER** to open the roster
 
-<img height="400" alt="Screenshot" style="display: block;margin-left: auto;margin-right: auto;"
+<img height="400" alt="Screenshot" style="display: block;margin-left: auto;margin-right: auto;width: 100%;"
             src="https://user-images.githubusercontent.com/48455262/223875214-7556aad2-bfb1-4ecf-820a-bbafa983063a.png">
             
 A Roster Generaaly looks like this. It is initially empty but the employer has to populate it with employees and assign shifts to the employee. You can click the print button to print a roster to pdf.
 
-<img height="400" alt="Screenshot" style="display: block;margin-left: auto;margin-right: auto;"
+<img height="400" alt="Screenshot" style="display: block;margin-left: auto;margin-right: auto;width: 100%;"
             src="https://user-images.githubusercontent.com/48455262/223876774-0cb0e7a4-b35a-43a4-87ac-557bca6c8488.png">
 
 An employee get's their login details sent to them via email when the employer add's them to the organisation/roster.
 
-<img height="400" alt="Screenshot" style="display: block;margin-left: auto;margin-right: auto;"
+<img height="400" alt="Screenshot" style="display: block;margin-left: auto;margin-right: auto;width: 100%;"
             src="https://user-images.githubusercontent.com/48455262/223878421-157eb2f1-a244-4fe5-b436-098537fdfc10.png">
 
 ## Employee's view
