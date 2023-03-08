@@ -149,6 +149,7 @@ When setting out our plan to develop this system, we prioritised the foundations
 15-	Chat function allowing employees to communicate.
 
 ##Implementation
+
 ### Header (TBD)
 <img height="500" alt="Screenshot" style="display: block;margin-left: auto;margin-right: auto;"
             src="https://user-images.githubusercontent.com/48455262/223737872-8a264652-b6f3-4faa-ae5d-0287fd985e42.png">
