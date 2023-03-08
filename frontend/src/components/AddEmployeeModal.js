@@ -55,6 +55,11 @@ const AddEmployeeModal = ({ isOpen, setIsOpen, roster_id, setRoster, roster }) =
                 dispatch(addEmployee(json.employee))
                 setRoster(json.roster)
                 setIsOpen(false)
+                setName('');
+                setEmail('');
+                setJob('');
+                setSuccessMessage('');
+                setEmployeeError('')
             }
         } catch (error) {
             console.log(error.message);
