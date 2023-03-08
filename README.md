@@ -154,17 +154,17 @@ When setting out our plan to develop this system, we prioritised the foundations
 
 Users should log in or create an account if they do not have one
 
-<img height="300" alt="Screenshot" style="display: block;margin-left: auto;margin-right: auto;"
+<img height="400" alt="Screenshot" style="display: block;margin-left: auto;margin-right: auto;"
             src="https://user-images.githubusercontent.com/48455262/223737872-8a264652-b6f3-4faa-ae5d-0287fd985e42.png">
 
 After logging in you are presented with you dashboard. If you don't have any rosters the you create one with the form on the left. Then Click **VIEW ROSTER** to open the roster
 
-<img height="300" alt="Screenshot" style="display: block;margin-left: auto;margin-right: auto;"
+<img height="400" alt="Screenshot" style="display: block;margin-left: auto;margin-right: auto;"
             src="https://user-images.githubusercontent.com/48455262/223875214-7556aad2-bfb1-4ecf-820a-bbafa983063a.png">
             
 A Roster Generaaly looks like this. It is initially empty but the employer has to populate it with employees and assign shifts to the employee. You can click the print button to print a roster to pdf.
 
-<img height="300" alt="Screenshot" style="display: block;margin-left: auto;margin-right: auto;"
+<img height="400" alt="Screenshot" style="display: block;margin-left: auto;margin-right: auto;"
             src="https://user-images.githubusercontent.com/48455262/223876774-0cb0e7a4-b35a-43a4-87ac-557bca6c8488.png">
 
 
