@@ -149,8 +149,8 @@ When setting out our plan to develop this system, we prioritised the foundations
 
 15-	Chat function allowing employees to communicate.
 
-##Implementation
-#### Employer's view
+## Implementation
+## Employer's view
 
 Users should log in or create an account if they do not have one
 
@@ -162,7 +162,13 @@ After logging in you are presented with you dashboard. If you don't have any ros
 <img height="300" alt="Screenshot" style="display: block;margin-left: auto;margin-right: auto;"
             src="https://user-images.githubusercontent.com/48455262/223875214-7556aad2-bfb1-4ecf-820a-bbafa983063a.png">
             
+A Roster Generaaly looks like this. It is initially empty but the employer has to populate it with employees and assign shifts to the employee. You can click the print button to print a roster to pdf.
 
+<img height="300" alt="Screenshot" style="display: block;margin-left: auto;margin-right: auto;"
+            src="https://user-images.githubusercontent.com/48455262/223876774-0cb0e7a4-b35a-43a4-87ac-557bca6c8488.png">
+
+
+## Employee's view
 
 ### Hosting
 - The Flask Backend is hosted on [heroku](https://heroku.com/).
