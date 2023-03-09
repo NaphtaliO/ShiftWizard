@@ -72,7 +72,9 @@ There are three main types of rosters for business operations which are used acr
 # Chapter 3 - Design
 ## 3.1 Path of Development
 When setting out our plan to develop this system, we prioritised the foundations of the system first, and built upon them. This list and diagram describe the path of development that we strived to achieve to make development as efficient as possible. This ensured we had as much time as possible to implement features and polish to the product.
-![CPD](https://user-images.githubusercontent.com/114653179/218506085-92ebfb08-134d-4445-b7a1-2d96416c9585.png)
+<p align="center">
+<img src="https://user-images.githubusercontent.com/114653179/218506085-92ebfb08-134d-4445-b7a1-2d96416c9585.png" width="500">
+</p>
 
 <ins>__Features for the Employer view:__</ins>
 
