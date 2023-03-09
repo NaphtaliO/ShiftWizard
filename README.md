@@ -198,13 +198,14 @@ They can also send requests to the employer. Requests for time-off, shift swaps 
 
 ## Extra Features
 
-- Employer user edit their profile
-- Employee users are able to change their passwords from the auto-generated one
+- Employer users can edit their profile.
+- Employee users are able to change their passwords from the auto-generated one sent to their email
 
 #### Security
 - For authentication we used JWT Authentication and token are being stored on the client. JSON Web Tokens are a good way of transmitting information between parties securely because they can be signed, which means you can be sure senders are who they say they are.
 - To prevent SQL injections we used an ORM for database querying.
 - Passwords in the database are salted and then hashed which makes it harder and impossible to crack.
+- All our Flask backend API routes are protected(wrapped with a token_required wrapper). You need a valid token to be able to send requests via the API.
 
 ## Core Technologies
 ### Technologies/Libraries
