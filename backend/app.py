@@ -427,6 +427,11 @@ def delete_employee(id):
             return {"message": "This Employee does not exist"}, 400
         else:
             shifts = db.session.execute(db.select(Shift).where(Shift.employee_id == str(id))).scalars()
+            requests = db.session.execute(db.select(Request).where(
+                Request.employee_id == str(id))).scalars()
+            for i in requests:
+                db.session.delete(i)
+                db.session.commit()
             for shift in shifts:
                 db.session.delete(shift)
                 db.session.commit()
