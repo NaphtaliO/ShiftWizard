@@ -57,6 +57,7 @@ Xero is a New Zealand–based technology company that provides cloud-based accou
 
 ### 2.2.2 Case 2:
 RosterElf is an Australian cloud-based staff scheduling tool to assist enterprises. The application allows managers to develop and publish employee rosters, chat with employees, and keep track of employee hours worked. RosterElf also provides features which help to make scheduling more efficient and keep employees satisfied, including shift swapping, automated shift reminders, and real-time reporting. RosterElf reports that they cater for any size of enterprise, including those in retail, hospitality, healthcare, and other industries. Although cheaper than Xero, RosterElf is still a monthly subscription per employee. This does not suit businesses starting out that do not have the budget or a small business with a large amount of overheads already. As well, RosterElf does offer a wide range of customization options, but many businesses rather a clean and simple solution to their employee management problems.
+
 <p align="center">
 <img src="https://www.allocatesoftware.co.uk/wp-content/uploads/sites/93/2021/03/Rostering-prop-page1.png" width="500">
 </p>
@@ -66,9 +67,11 @@ In healthcare, the industry has had extensive research done on the implications 
 
 ## 2.4 Roster Types
 There are three main types of rosters for business operations which are used across all industry types and levels (Square, 2021). First is a Duty roster. These are frequently employed in the hospitality sector and are intended to reduce the number of excessive shifts. In essence, it prevents scheduling an excessive number of employees for the same shift and job duties. A roster system like this is important to combat loosing qualified workers due to low job satisfaction (Heimerl et al., 2020). Flexible rosters are the second type. These are for employees who can work a variety of hours to suit the employer. A staff member may work hours that do not correspond to the business' typical start and end timings if the roster is flexible. This might imply that they are scheduled to work any time within usually a 40-hour work week, for a few hours or a full day. Employees may, for instance, work from 7 a.m. to 4 p.m. rather than the standard 8 a.m. to 5 p.m. The last type is Staggered rosters. These are used where start times are staggered for workers. This roster type is typically used in industries that experience high changing demand of customers throughout the day, such as retail or restaurants. You may have two employees starting work at 9am and finishing at 2pm. Another starts at 11am to 2pm, another at 12am to 3pm, and so on. This gives more flexibility, and makes sure that a staff member is always on during lunch breaks, etc. 
+
 <p align="center">
 <img src="https://user-images.githubusercontent.com/105229775/223852361-753cc858-266b-4254-af93-60de9ac63441.png" width="500">
 </p>
+
 # Chapter 3 - Design
 ## 3.1 Path of Development
 When setting out our plan to develop this system, we prioritised the foundations of the system first, and built upon them. This list and diagram describe the path of development that we strived to achieve to make development as efficient as possible. This ensured we had as much time as possible to implement features and polish to the product.
@@ -122,6 +125,7 @@ This use case diagram describes how the user interacts with the system. There is
 For an employer logging into the system for the first time, the employer can create a new roster, which will create a roster in their database. This roster is then viewable on the dashboard, and the employer can edit the employees active on the roster, and their shifts.  
 
 An employee logging into the system will be automatically shown their schedule, which shows their rostered shifts. They will be also able to view the rosters that their employers have created, along with the ability to request a shift change, the ability to request days off from their employer, and the ability to ask for a day off due to sickness or other reasons, with the requesting feature. These requests wil show up in an employers request tab, which they can enter to either accept the request, or deny it.
+
 <p align="center">
 <img src="https://user-images.githubusercontent.com/114653179/223481367-3cf30f84-1b0e-43b5-aa80-1ae169b73998.png" width="800">
 </p>
@@ -132,6 +136,7 @@ This Data Flow diagram shows the flow of information throughout the system. The 
 The employer can first create a roster. They do this by using the option on the dashboard, and after giving the roster a name, can choose to view it. The employer can make changes to the roster, and those changes will be applied automatically. These changes give notifications via email to registered employee's that the changes apply to. The employer can also download an exported roster to print out.
 
 Once an employee logs in, they are greeted with an overview of their schedule. If they would like to view the active roster with all other employees, they can do so by choosing the roster tab. The employee can make a request to their employer for time off for sickness, holidays, if they are not available, or another reason by choosing the "Make a Request" tab. This request is then sent on to the employer to either accept, or deny.
+
 <p align="center">
 <img src="https://user-images.githubusercontent.com/114653179/223473291-01773a43-efb8-4ea4-bfe2-6b34107b64cc.png" width="800">
 </p>
@@ -139,12 +144,14 @@ Once an employee logs in, they are greeted with an overview of their schedule. I
 ## 3.4 Sequence Diagram
 ### Employer Sequence Diagram
 This diagram shows the ordered interactions which the Employer user can take in time focus. Our system is made up of the Roster System / User Interface, the Systems Database, the Employer Account, and the Individual Rosters. Employers can perform difference opoerations once logged into the system. They can add a new Roster, add an employee to their account, add a timeslot entry to a Rosters, delete a Roster timeslot entry, or delete an entire roster.
+
 <p align="center">
 <img src="https://user-images.githubusercontent.com/105229775/218795910-c2617b5c-0227-46e9-ab54-38e010d17b02.png" width="800">
 </p>
 
 ### 3.5 Employee Sequence Diagram
 The other user of our system is the Employee of the company / business. This Sequence Diagram has the same objects as the Employer. Employees can perform difference opoerations once logged into their account that has been created for them on the system by the Employer. They can request a day off, request a shift swap with another employee, accept or decline a shift swap from another employee.
+
 <p align="center">
 <img src="https://user-images.githubusercontent.com/105229775/218797242-8ba3811a-f643-42be-8cf4-0fc2a0d3df0a.png" width="800">
 </p>
@@ -154,7 +161,10 @@ This ER Diagram helps explain the logical structure of the work rostering system
 Firstly, when a user of the application logs on to use this web application, they must sign in using their username and password. This data is collected and registers whether the account is an employee or an employer. Employees are directed to the employee dashboard. Employers are directed to the employer’s dashboard. 
 The employee dashboard contains the active roster being used at that moment. Employees can click into that roster where it reveals it to them in a calendar format. This is where they can avail of our feature of swap requesting. They also export the roster in picture format for printing. 
 The employer dashboard contains all the existing rosters created by that employer. The dashboard also lists all the employees in the database that can be added to rosters. Employers can add and delete employees. Lastly, the employee can click in to the rosters where they can edit it. They can add new shifts, delete shifts and also export the roster in to picture format for printing.
-![ERD (1)](https://user-images.githubusercontent.com/113925559/218854406-6c3868c6-9745-4d93-9743-59f66873f5b7.png)
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/113925559/218854406-6c3868c6-9745-4d93-9743-59f66873f5b7.png" width="800">
+</p>
 
 # Chapter 4 - Implementation
 <p align="center">
