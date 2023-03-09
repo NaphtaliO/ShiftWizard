@@ -41,7 +41,7 @@ const RequestTimeOff = () => {
     const makeRequest = async (event) => {
         event.preventDefault();
         try {
-            console.log({ type_of_request, status: 'pending', message, employee_id: user.id, organisation_id: user.organisation_id });
+            //console.log({ type_of_request, status: 'pending', message, employee_id: user.id, organisation_id: user.organisation_id });
             const response = await fetch(`https://shift-wizard.herokuapp.com/api/makeRequest`, {
                 method: 'POST',
                 headers: {

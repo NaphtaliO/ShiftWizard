@@ -195,10 +195,6 @@ const Roster = () => {
                                                                 setCalDay(date)
                                                                 setName(employee.name)
                                                                 setIsModalOpen(true)
-
-                                                                // console.log(date);
-                                                                // console.log(employee.name);
-
                                                             }} color='primary' children={<AddIcon />} />
                                                         </div>
 

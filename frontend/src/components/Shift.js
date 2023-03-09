@@ -82,8 +82,6 @@ const Shift = ({ shift, name, roster, setRoster }) => {
 
     const deleteShift = async () => {
         if (window.confirm("You are about to delete this shift")) {
-            // console.log(roster);
-            // console.log(shift.id);
             try {
                 const response = await fetch(`https://shift-wizard.herokuapp.com/api/deleteShift/${shift.id}`, {
                     method: 'DELETE',
@@ -163,7 +161,6 @@ const Shift = ({ shift, name, roster, setRoster }) => {
                                 value={endTime}
                                 onChange={(newValue) => {
                                     setEndTime(newValue)
-                                    //console.log(newValue.format('h:mmA'));
                                 }}
                                 renderInput={(params) => <TextField {...params} fullWidth required />}
                                 // maxTime={moment().hours(18).minutes(0)}

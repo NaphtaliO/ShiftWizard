@@ -2,7 +2,6 @@ import React from 'react';
 import { Box, Button, Modal } from "@mui/material";
 
 const EditEmployeeModal = ({ isOpen, setIsOpen, employee }) => {
-    console.log(employee);
     return ( 
             <Modal
                 open={isOpen}

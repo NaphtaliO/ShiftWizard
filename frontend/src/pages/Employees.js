@@ -10,7 +10,6 @@ const Employees = () => {
     const user = useSelector((state) => state.user.value);
     const employees = useSelector((state) => state.employees.value);
     const dispatch = useDispatch()
-    console.log(employees);
 
     const deleteEmployee = async (id) => {
         if (window.confirm("You are about to delete this employee permanently")) {
