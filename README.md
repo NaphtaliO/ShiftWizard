@@ -61,6 +61,7 @@ RosterElf is an Australian cloud-based staff scheduling tool to assist enterpris
 <p align="center">
 <img src="https://www.allocatesoftware.co.uk/wp-content/uploads/sites/93/2021/03/Rostering-prop-page1.png" width="500">
 </p>
+
 ## 2.3 Target Customer
 An online Roster Management system is a Software as a service (SaaS) product. The target customer and market are small to medium enterprises in the hospitality, retail, entertainment, healthcare, gyms, sports clubs, etc. The system also indirectly effects the employers workers. These are the people that will use the roster system the most so it is important to keep the user in mind when creating a system. 
 In healthcare, the industry has had extensive research done on the implications of codifying nurse schedules. In this situation, a non-robust system can have indirect consequences to patient care, work/life balance and hospital budgets (Drake, 2017). Back in 2014, the NHS in the U.K. wanted all clinical staff to be rostered electronically by the year 2021 (Nursing Times, 2021).
@@ -75,6 +76,7 @@ There are three main types of rosters for business operations which are used acr
 # Chapter 3 - Design
 ## 3.1 Path of Development
 When setting out our plan to develop this system, we prioritised the foundations of the system first, and built upon them. This list and diagram describe the path of development that we strived to achieve to make development as efficient as possible. This ensured we had as much time as possible to implement features and polish to the product.
+
 <p align="center">
 <img src="https://user-images.githubusercontent.com/114653179/218506085-92ebfb08-134d-4445-b7a1-2d96416c9585.png" width="800">
 </p>
@@ -142,21 +144,21 @@ Once an employee logs in, they are greeted with an overview of their schedule. I
 </p>
 
 ## 3.4 Sequence Diagram
-### Employer Sequence Diagram
+### 3.4.1 Employer Sequence Diagram
 This diagram shows the ordered interactions which the Employer user can take in time focus. Our system is made up of the Roster System / User Interface, the Systems Database, the Employer Account, and the Individual Rosters. Employers can perform difference opoerations once logged into the system. They can add a new Roster, add an employee to their account, add a timeslot entry to a Rosters, delete a Roster timeslot entry, or delete an entire roster.
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/105229775/218795910-c2617b5c-0227-46e9-ab54-38e010d17b02.png" width="800">
 </p>
 
-### 3.5 Employee Sequence Diagram
+### 3.4.2 Employee Sequence Diagram
 The other user of our system is the Employee of the company / business. This Sequence Diagram has the same objects as the Employer. Employees can perform difference opoerations once logged into their account that has been created for them on the system by the Employer. They can request a day off, request a shift swap with another employee, accept or decline a shift swap from another employee.
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/105229775/218797242-8ba3811a-f643-42be-8cf4-0fc2a0d3df0a.png" width="800">
 </p>
 
-## 3.6 ER Diagram
+## 3.5 ER Diagram
 This ER Diagram helps explain the logical structure of the work rostering system. It visualises how the different entities relate to each other.   
 Firstly, when a user of the application logs on to use this web application, they must sign in using their username and password. This data is collected and registers whether the account is an employee or an employer. Employees are directed to the employee dashboard. Employers are directed to the employer’s dashboard. 
 The employee dashboard contains the active roster being used at that moment. Employees can click into that roster where it reveals it to them in a calendar format. This is where they can avail of our feature of swap requesting. They also export the roster in picture format for printing. 
