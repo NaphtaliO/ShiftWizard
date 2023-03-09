@@ -207,6 +207,7 @@ They can also send requests to the employer. Requests for time-off, shift swaps 
 
 ## Extra Features
 
+- Sending automated emails. Employees are sent their login in credentials to thier email. Also every time they are assign a shift or their shift is edited they are send an email with shift details.
 - Employer users can edit their profile.
 - Employee users are able to change their passwords from the auto-generated one sent to their email
 
