@@ -27,9 +27,7 @@ Our product is currently hosted at these sites
 </details>
 
 # Abstract
-<p align="center">
 In this project we will explore the design and creation of an E-Rostering System. Optimising efficiency is important across all enterprises, in a typical restaurant labour costs can be at least 30% of revenue (Chegini, 2021). It is no surprise therefore, that there is a high level of interest as to how staffing is organised and how it can be used most effectively and efficiently without compromising a high standard of product / service. The project would involve building a frontend for the Employer and Employee, and a backend database that would store the different employee rosters and employee shifts. The hope is to create a system that will make organising employees similar for employers and make it easier for employees to independently manage and understand their work schedule.
-</p>
 
 # Chapter 1 - Introduction
 In today's fast-paced work environment, efficient rostering systems are essential for businesses to manage their staff and resources effectively. A rostering system is a tool that allows employers/organisation to create, manage, and assign shifts to their employees in an organized and streamlined manner as well as to track the hours employees work, assign employees to specific tasks or projects, and generate reports on employee hours and project completion.
@@ -59,18 +57,18 @@ Xero is a New Zealand–based technology company that provides cloud-based accou
 
 ### 2.2.2 Case 2:
 RosterElf is an Australian cloud-based staff scheduling tool to assist enterprises. The application allows managers to develop and publish employee rosters, chat with employees, and keep track of employee hours worked. RosterElf also provides features which help to make scheduling more efficient and keep employees satisfied, including shift swapping, automated shift reminders, and real-time reporting. RosterElf reports that they cater for any size of enterprise, including those in retail, hospitality, healthcare, and other industries. Although cheaper than Xero, RosterElf is still a monthly subscription per employee. This does not suit businesses starting out that do not have the budget or a small business with a large amount of overheads already. As well, RosterElf does offer a wide range of customization options, but many businesses rather a clean and simple solution to their employee management problems.
-
+<p align="center">
 <img src="https://www.allocatesoftware.co.uk/wp-content/uploads/sites/93/2021/03/Rostering-prop-page1.png" width="500">
-
+</p>
 ## 2.3 Target Customer
 An online Roster Management system is a Software as a service (SaaS) product. The target customer and market are small to medium enterprises in the hospitality, retail, entertainment, healthcare, gyms, sports clubs, etc. The system also indirectly effects the employers workers. These are the people that will use the roster system the most so it is important to keep the user in mind when creating a system. 
 In healthcare, the industry has had extensive research done on the implications of codifying nurse schedules. In this situation, a non-robust system can have indirect consequences to patient care, work/life balance and hospital budgets (Drake, 2017). Back in 2014, the NHS in the U.K. wanted all clinical staff to be rostered electronically by the year 2021 (Nursing Times, 2021).
 
 ## 2.4 Roster Types
 There are three main types of rosters for business operations which are used across all industry types and levels (Square, 2021). First is a Duty roster. These are frequently employed in the hospitality sector and are intended to reduce the number of excessive shifts. In essence, it prevents scheduling an excessive number of employees for the same shift and job duties. A roster system like this is important to combat loosing qualified workers due to low job satisfaction (Heimerl et al., 2020). Flexible rosters are the second type. These are for employees who can work a variety of hours to suit the employer. A staff member may work hours that do not correspond to the business' typical start and end timings if the roster is flexible. This might imply that they are scheduled to work any time within usually a 40-hour work week, for a few hours or a full day. Employees may, for instance, work from 7 a.m. to 4 p.m. rather than the standard 8 a.m. to 5 p.m. The last type is Staggered rosters. These are used where start times are staggered for workers. This roster type is typically used in industries that experience high changing demand of customers throughout the day, such as retail or restaurants. You may have two employees starting work at 9am and finishing at 2pm. Another starts at 11am to 2pm, another at 12am to 3pm, and so on. This gives more flexibility, and makes sure that a staff member is always on during lunch breaks, etc. 
-
+<p align="center">
 <img src="https://user-images.githubusercontent.com/105229775/223852361-753cc858-266b-4254-af93-60de9ac63441.png" width="500">
-
+</p>
 # Chapter 3 - Design
 ## 3.1 Path of Development
 When setting out our plan to develop this system, we prioritised the foundations of the system first, and built upon them. This list and diagram describe the path of development that we strived to achieve to make development as efficient as possible. This ensured we had as much time as possible to implement features and polish to the product.
@@ -151,8 +149,9 @@ The employer dashboard contains all the existing rosters created by that employe
 ![ERD (1)](https://user-images.githubusercontent.com/113925559/218854406-6c3868c6-9745-4d93-9743-59f66873f5b7.png)
 
 # Chapter 4 - Implementation
-
-<img src="https://user-images.githubusercontent.com/105229775/224044950-955afed5-9a24-42c7-ae61-bacefc06ddbe.png" width="500">
+<p align="center">
+<img src="https://user-images.githubusercontent.com/105229775/224044950-955afed5-9a24-42c7-ae61-bacefc06ddbe.png" width="1000">
+</p>
 
 ## Employer's view
 
