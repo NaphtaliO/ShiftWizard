@@ -78,7 +78,7 @@ def index():
 @app.route("/sendEmail")
 def sendEmail():
     try:
-        msg = Message('Welcome to our Organisation', sender='shiftwizardapp@gmail.com',
+        msg = Message('Welcome to our Organisation', sender='shiftwizardwebapp@gmail.com',
                     recipients=['naphtali2003@gmail.com'])
         msg.body = "This is the email body"
         mail.send(msg)
@@ -227,7 +227,7 @@ def create_employee():
                 "email": employee.email,
                 "organisation_id": employee.organisation_id
             }
-            msg = Message('Welcome to our Organisation', sender='shiftwizardapp@gmail.com',
+            msg = Message('Welcome to our Organisation', sender='shiftwizardwebapp@gmail.com',
                         recipients=[f'{employee.email}'])
             msg.body = "Below are your login details"
             msg.html = f"""<h3> You have been added to our Organisation </h3>
@@ -301,7 +301,7 @@ def addShift():
             return jsonify(message="Employee does not exist"), 400
         employee.shifts.append(new_shift)
         db.session.commit()
-        msg = Message('New Shift', sender='shiftwizardapp@gmail.com',
+        msg = Message('New Shift', sender='shiftwizardwebapp@gmail.com',
                         recipients=[f'{employee.email}'])
         msg.body = "You've been assigned a new shift"
         msg.html = f"""<h3> You have been assigned a new shift.</h3>
@@ -336,7 +336,7 @@ def edit_shift():
         shift.start_time = start_time
         shift.end_time = end_time
         db.session.commit()
-        msg = Message('Your shift has been edited', sender='shiftwizardapp@gmail.com',
+        msg = Message('Your shift has been edited', sender='shiftwizardwebapp@gmail.com',
                         recipients=[f'{employee.email}'])
         msg.body = "Your shift has been edited"
         msg.html = f"""<h3> Your shift has been edited.</h3>
@@ -364,7 +364,7 @@ def delete_shift(id):
             return jsonify({"message": "Employee does not exist"}), 400
         db.session.delete(shift)
         db.session.commit()
-        msg = Message('Your shift has been deleted', sender='shiftwizardapp@gmail.com',
+        msg = Message('Your shift has been deleted', sender='shiftwizardwebapp@gmail.com',
                         recipients=[f'{employee.email}'])
         msg.body = "Your shift has been deleted"
         msg.html = f"""<h3> Your shift has been deleted.</h3>
@@ -540,7 +540,7 @@ def change_password(id):
             new_hashed_password = hashpw(new_password, salt)
             employee.password = new_hashed_password
             db.session.commit()
-            msg = Message('Password Change', sender='shiftwizardapp@gmail.com',
+            msg = Message('Password Change', sender='shiftwizardwebapp@gmail.com',
                         recipients=[f'{employee.email}'])
             msg.body = "Your password has been changed"
             msg.html = f"""<h3> Your password has been changed </h3>
