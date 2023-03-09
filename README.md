@@ -248,6 +248,20 @@ No matter how well-planned the project development was, unexpected challenges di
 
 Keeping on top of changes in goals and structure would have saved the group time. Retrospective changes needed to be to the software and the report, which took up valuable time that could have been used else ware. Documenting all these changes and decisions would help future developers understand the project and make improvements.
 
+5 -         Communication:
+
+Communication was key. Clearly sharing our ideas and problems with each other allowed the project to progress and grow further. A problem had was a problem shared. At first, we had difficulty in doing this efficiently. Following a hybrid of AGILE and WATERFALL development really helped our communication and teamwork skills, having regular meetings either in person or online with regular contact over messaging through the projects development.  
+
+# Conclusion
+In conclusion, the Shift-Wizard e-rostering system offers a range of benefits for firms looking to optimise their workforce scheduling. The system provides a user-friendly interface that allows managers to quickly and easily create, edit, manage employee schedules, and employees to track their rostered shifts easily and intuitively. Additionally, the Shift-Wizard system provides real-time updates and alerts, ensuring that schedules are always up-to-date and that any changes are communicated promptly to employees by email.
+
+Overall, our evaluation of the Shift-Wizard e-rostering system has highlighted its potential to improve workforce management processes, increase staff productivity, and reduce costs associated with manual rostering processes. We recommend that organizations considering implementing an e-rostering system consider Shift-Wizard as a viable option, and evaluate its potential benefits against their own specific needs and requirements.
+
+As we have highlighted in the plan, some strech goals were not met as the team overestimated the time taken on polish of the product. One of these was to add functionality that an employer can add days the the firm is closed, and opening/closing hours. Another was a feature similar to a group chat, implemented in the employee and employer view, allowing either employees to communicate with each other, or employees to get in contact with theie employer to discuss shifts. These can be the first jumpimg on point to any future developers working on our free, open source application. From there on, they can expand on the many different features in the system, giving more functionality to some of the products more elaborate parts.
+
+Development on Shift-Wizard has been an overall great success. We have achieved the vast majority of our goals and delivered a high-quality software solution that would meet the needs of our target market. All members of the team is very happy with the finished product and have learned many programming, team-work, and presentaion skills along the way.
+
+
 ## References
 Chegini, A. (2021) What percentage should labor cost be in a restaurant?, Epos Now. Epos Now. Available at: https://www.eposnow.com/ie/resources/what-percentage-should-labor-cost-be-in-a-restaurant/#:~:text=Labour%20is%20often%20one%20of,on%20the%20type%20of%20restaurant. (Accessed: March 7, 2023).
 
