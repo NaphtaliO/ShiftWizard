@@ -237,6 +237,16 @@ No matter how well-planned the project development was, unexpected challenges di
 
 Keeping on top of changes in goals and structure would have saved the group time. Retrospective changes needed to be to the software and the report, which took up valuable time that could have been used else ware. Documenting all these changes and decisions would help future developers understand the project and make improvements.
 
+## Extra Features
+
+- Employer user edit their profile
+- Employee users are able to change their passwords from the auto-generated one
+
+#### Security
+- For authentication we used JWT Authentication and token are being stored on the client. JSON Web Tokens are a good way of transmitting information between parties securely because they can be signed, which means you can be sure senders are who they say they are.
+- To prevent SQL injections we used an ORM for database querying.
+- Passwords in the database are salted and then hashed which makes it harder and impossible to crack.
+
 ## References
 Chegini, A. (2021) What percentage should labor cost be in a restaurant?, Epos Now. Epos Now. Available at: https://www.eposnow.com/ie/resources/what-percentage-should-labor-cost-be-in-a-restaurant/#:~:text=Labour%20is%20often%20one%20of,on%20the%20type%20of%20restaurant. (Accessed: March 7, 2023).
 
