@@ -157,7 +157,7 @@ Users should log in or create an account if they do not have one
 <img alt="Screenshot" style="display: block;margin-left: auto;margin-right: auto;"
             src="https://user-images.githubusercontent.com/48455262/223737872-8a264652-b6f3-4faa-ae5d-0287fd985e42.png">
 
-After logging in you are presented with you dashboard. If you don't have any rosters the you create one with the form on the left. Then Click **VIEW ROSTER** to open the roster
+After logging in you are presented with you dashboard where you can create, edit, view and/or delete a roster. If you don't have any rosters then you create one with the form on the left. Then Click **VIEW ROSTER** to open the roster
 
 <img alt="Screenshot" style="display: block;margin-left: auto;margin-right: auto;"
             src="https://user-images.githubusercontent.com/48455262/223875214-7556aad2-bfb1-4ecf-820a-bbafa983063a.png">
@@ -167,12 +167,30 @@ A Roster Generaaly looks like this. It is initially empty but the employer has t
 <img alt="Screenshot" style="display: block;margin-left: auto;margin-right: auto;"
             src="https://user-images.githubusercontent.com/48455262/223876774-0cb0e7a4-b35a-43a4-87ac-557bca6c8488.png">
 
-An employee get's their login details sent to them via email when the employer add's them to the organisation/roster.
+An employee get's their login details sent to them via email when the employer add's them to the organisation/roster. Thier password is random and auto-generated. It can be changed by the employee when they log in.
 
 <img  alt="Screenshot" style="display: block;margin-left: auto;margin-right: auto;"
             src="https://user-images.githubusercontent.com/48455262/223878421-157eb2f1-a244-4fe5-b436-098537fdfc10.png">
-
+            
 ## Employee's view
+
+The employee should log in with login credentials sent to thier email.
+
+![Screenshot 2023-03-09 at 00 09 32](https://user-images.githubusercontent.com/48455262/223881616-9f5d2f09-10dc-4eb5-9b05-ff48e9b7ede3.png)
+
+After that employees are able to view their personal schedule as a calender.
+
+![Screenshot 2023-03-09 at 00 13 30](https://user-images.githubusercontent.com/48455262/223882012-01673389-bfb3-4c4a-a7bc-88da9dac4d95.png)
+
+They can view the full roster made by their manager/employer
+
+![Screenshot 2023-03-09 at 00 16 14](https://user-images.githubusercontent.com/48455262/223882475-f3a2cb25-53b5-47e3-8f69-33e584267fa2.png)
+
+They can also send requests to the employer. Requests for time-off, shift swaps and many more. Requests are pending initially and need approval from the employer
+
+![Screenshot 2023-03-09 at 00 17 24](https://user-images.githubusercontent.com/48455262/223882597-384f8b50-6636-4fcc-9e3b-946e97a7d021.png)
+
+
 
 ### Hosting
 - The Flask Backend is hosted on [heroku](https://heroku.com/).
