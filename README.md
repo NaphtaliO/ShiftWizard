@@ -69,43 +69,8 @@ There are three main types of rosters for business operations which are used acr
 
 <img src="https://user-images.githubusercontent.com/105229775/223852361-753cc858-266b-4254-af93-60de9ac63441.png" width="500">
 
-## Use Case
-![Use case](https://user-images.githubusercontent.com/114653179/223481367-3cf30f84-1b0e-43b5-aa80-1ae169b73998.png)
-
-This use case diagram describes how the user interacts with the system. There is two actors that interact with the system, employees and employers. These two actors will interact with a different view of the system. Both actors can log in, the employers will log into the employer view, and the employees will log into the employee view. 
-
-For an employer logging into the system for the first time, the employer can create a new roster, which will create a roster in their database. This roster is then viewable on the dashboard, and the employer can edit the employees active on the roster, and their shifts.  
-
-An employee logging into the system will be automatically shown their schedule, which shows their rostered shifts. They will be also able to view the rosters that their employers have created, along with the ability to request a shift change, the ability to request days off from their employer, and the ability to ask for a day off due to sickness or other reasons, with the requesting feature. These requests wil show up in an employers request tab, which they can enter to either accept the request, or deny it. 
-
-## Data Flow
-![Data Flow](https://user-images.githubusercontent.com/114653179/223473291-01773a43-efb8-4ea4-bfe2-6b34107b64cc.png)
-
-This Data Flow diagram shows the flow of information throughout the system. The system has two views to start the data flow, employers and employees. Once the user registers as an employer or an employee, the system displays the users relevent dashboard. 
-
-The employer can first create a roster. They do this by using the option on the dashboard, and after giving the roster a name, can choose to view it. The employer can make changes to the roster, and those changes will be applied automatically. These changes give notifications via email to registered employee's that the changes apply to. The employer can also download an exported roster to print out.
-
-Once an employee logs in, they are greeted with an overview of their schedule. If they would like to view the active roster with all other employees, they can do so by choosing the roster tab. The employee can make a request to their employer for time off for sickness, holidays, if they are not available, or another reason by choosing the "Make a Request" tab. This request is then sent on to the employer to either accept, or deny. 
-
-## Sequence Diagram
-### Employer Sequence Diagram
-This diagram shows the ordered interactions which the Employer user can take in time focus. Our system is made up of the Roster System / User Interface, the Systems Database, the Employer Account, and the Individual Rosters. Employers can perform difference opoerations once logged into the system. They can add a new Roster, add an employee to their account, add a timeslot entry to a Rosters, delete a Roster timeslot entry, or delete an entire roster.
-![EmployerSequenceDiagram](https://user-images.githubusercontent.com/105229775/218795910-c2617b5c-0227-46e9-ab54-38e010d17b02.png)
-
-### Employee Sequence Diagram
-The other user of our system is the Employee of the company / business. This Sequence Diagram has the same objects as the Employer. Employees can perform difference opoerations once logged into their account that has been created for them on the system by the Employer. They can request a day off, request a shift swap with another employee, accept or decline a shift swap from another employee.
-![EmployeeSequenceDiagram](https://user-images.githubusercontent.com/105229775/218797242-8ba3811a-f643-42be-8cf4-0fc2a0d3df0a.png)
-
-## ER Diagram
-This ER Diagram helps explain the logical structure of the work rostering system. It visualises how the different entities relate to each other.   
-Firstly, when a user of the application logs on to use this web application, they must sign in using their username and password. This data is collected and registers whether the account is an employee or an employer. Employees are directed to the employee dashboard. Employers are directed to the employer’s dashboard. 
-The employee dashboard contains the active roster being used at that moment. Employees can click into that roster where it reveals it to them in a calendar format. This is where they can avail of our feature of swap requesting. They also export the roster in picture format for printing. 
-The employer dashboard contains all the existing rosters created by that employer. The dashboard also lists all the employees in the database that can be added to rosters. Employers can add and delete employees. Lastly, the employee can click in to the rosters where they can edit it. They can add new shifts, delete shifts and also export the roster in to picture format for printing.
-![ERD (1)](https://user-images.githubusercontent.com/113925559/218854406-6c3868c6-9745-4d93-9743-59f66873f5b7.png)
-
-
-## Design
-### Path of Development
+# Chapter 3 - Design
+## 3.1 Path of Development
 When setting out our plan to develop this system, we prioritised the foundations of the system first, and built upon them. This list and diagram describe the path of development that we strived to achieve to make development as efficient as possible. This ensured we had as much time as possible to implement features and polish to the product.
 ![CPD](https://user-images.githubusercontent.com/114653179/218506085-92ebfb08-134d-4445-b7a1-2d96416c9585.png)
 
@@ -149,7 +114,44 @@ When setting out our plan to develop this system, we prioritised the foundations
 
 15-	Chat function allowing employees to communicate.
 
-## Implementation
+## 3.2 Use Case
+![Use case](https://user-images.githubusercontent.com/114653179/223481367-3cf30f84-1b0e-43b5-aa80-1ae169b73998.png)
+
+This use case diagram describes how the user interacts with the system. There is two actors that interact with the system, employees and employers. These two actors will interact with a different view of the system. Both actors can log in, the employers will log into the employer view, and the employees will log into the employee view. 
+
+For an employer logging into the system for the first time, the employer can create a new roster, which will create a roster in their database. This roster is then viewable on the dashboard, and the employer can edit the employees active on the roster, and their shifts.  
+
+An employee logging into the system will be automatically shown their schedule, which shows their rostered shifts. They will be also able to view the rosters that their employers have created, along with the ability to request a shift change, the ability to request days off from their employer, and the ability to ask for a day off due to sickness or other reasons, with the requesting feature. These requests wil show up in an employers request tab, which they can enter to either accept the request, or deny it. 
+
+## 3.3 Data Flow
+![Data Flow](https://user-images.githubusercontent.com/114653179/223473291-01773a43-efb8-4ea4-bfe2-6b34107b64cc.png)
+
+This Data Flow diagram shows the flow of information throughout the system. The system has two views to start the data flow, employers and employees. Once the user registers as an employer or an employee, the system displays the users relevent dashboard. 
+
+The employer can first create a roster. They do this by using the option on the dashboard, and after giving the roster a name, can choose to view it. The employer can make changes to the roster, and those changes will be applied automatically. These changes give notifications via email to registered employee's that the changes apply to. The employer can also download an exported roster to print out.
+
+Once an employee logs in, they are greeted with an overview of their schedule. If they would like to view the active roster with all other employees, they can do so by choosing the roster tab. The employee can make a request to their employer for time off for sickness, holidays, if they are not available, or another reason by choosing the "Make a Request" tab. This request is then sent on to the employer to either accept, or deny. 
+
+## 3.4 Sequence Diagram
+### Employer Sequence Diagram
+This diagram shows the ordered interactions which the Employer user can take in time focus. Our system is made up of the Roster System / User Interface, the Systems Database, the Employer Account, and the Individual Rosters. Employers can perform difference opoerations once logged into the system. They can add a new Roster, add an employee to their account, add a timeslot entry to a Rosters, delete a Roster timeslot entry, or delete an entire roster.
+![EmployerSequenceDiagram](https://user-images.githubusercontent.com/105229775/218795910-c2617b5c-0227-46e9-ab54-38e010d17b02.png)
+
+### 3.5 Employee Sequence Diagram
+The other user of our system is the Employee of the company / business. This Sequence Diagram has the same objects as the Employer. Employees can perform difference opoerations once logged into their account that has been created for them on the system by the Employer. They can request a day off, request a shift swap with another employee, accept or decline a shift swap from another employee.
+![EmployeeSequenceDiagram](https://user-images.githubusercontent.com/105229775/218797242-8ba3811a-f643-42be-8cf4-0fc2a0d3df0a.png)
+
+## 3.6 ER Diagram
+This ER Diagram helps explain the logical structure of the work rostering system. It visualises how the different entities relate to each other.   
+Firstly, when a user of the application logs on to use this web application, they must sign in using their username and password. This data is collected and registers whether the account is an employee or an employer. Employees are directed to the employee dashboard. Employers are directed to the employer’s dashboard. 
+The employee dashboard contains the active roster being used at that moment. Employees can click into that roster where it reveals it to them in a calendar format. This is where they can avail of our feature of swap requesting. They also export the roster in picture format for printing. 
+The employer dashboard contains all the existing rosters created by that employer. The dashboard also lists all the employees in the database that can be added to rosters. Employers can add and delete employees. Lastly, the employee can click in to the rosters where they can edit it. They can add new shifts, delete shifts and also export the roster in to picture format for printing.
+![ERD (1)](https://user-images.githubusercontent.com/113925559/218854406-6c3868c6-9745-4d93-9743-59f66873f5b7.png)
+
+# Chapter 4 - Implementation
+
+<img src="https://user-images.githubusercontent.com/105229775/224044950-955afed5-9a24-42c7-ae61-bacefc06ddbe.png" width="500">
+
 ## Employer's view
 
 Users should log in or create an account if they do not have one
