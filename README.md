@@ -3,10 +3,10 @@
 # Shift-Wizard - A Free and Open-Source Rostering System
 
 <p align="center"> •
-  <a href="#Chapter 1">Introduction</a> •
-  <a href="#Chapter 2">Analysis</a> •
-  <a href="#Chapter 3">Design</a> •
-  <a href="#Chapter 4">Implementation</a> •
+  <a href="#Chapter-1--Introduction">Introduction</a> •
+  <a href="#Chapter-2--">Analysis</a> •
+  <a href="#Chapter-3--">Design</a> •
+  <a href="#Chapter-4--">Implementation</a> •
   <a href="#Extra">Extra Features</a> •
   <a href="#challenges">Challenges</a> •
   <a href="#Conclusion">Conclusion</a> •
