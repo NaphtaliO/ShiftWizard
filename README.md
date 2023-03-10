@@ -254,6 +254,10 @@ They can also send requests to the employer. Requests for time-off, shift swaps 
 - Passwords in the database are salted and then hashed which makes it harder and impossible to crack.
 - All our Flask backend API routes are protected(wrapped with a token_required wrapper). You need a valid token to be able to send requests via the API.
 
+## Challenges
+
+- We had troubles trying to get our app installed
+- It was tough to get emails to work with. 
 
 ## Lessons Learned
 1 -	Team Roles and Responsibilites:
