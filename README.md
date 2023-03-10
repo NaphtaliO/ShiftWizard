@@ -27,10 +27,14 @@ Our product is currently hosted at these sites
 ## Installation Guide
 <details>
   <summary>Linux/MacOS/Windows</summary>
-  
+
   - You should be running three instances the backend, employers view frontend and the employee's view frontend
   - You need to install Nodejs. The LTS version preferably, from [here](https://nodejs.org/en/)
   - Run `cd backend` and `pip install -r requirements.txt` in your terminal to install dependencies for the flask backend. You might have trouble with       mysqlclient if you do then you need to install mysql server and add mysql to your PATH.
+  - Create your own mysql server and fill the credentials in the .env file found in the backend folder
+  `
+  SQLALCHEMY_DATABASE_URI=mysql://<username>:<password>@<host>:<port>/<dbname>
+  `
   - Then run `flask --app app.py --debug run` to start the backend on localhost.
   - assuming still in the backend folder run `cd ../frontend` then `npm install` to install node modules then `npm start` to start the employer's       frontend. 
   - assuming in frontend folder run `cd ../employee` then `npm install` to install node modules then `npm start` to start the employee's frontend. 
@@ -38,25 +42,25 @@ Our product is currently hosted at these sites
 </details>
 
 # Abstract
-In this project, we will explore the design and creation of an E-Rostering System. Optimising efficiency is important across all enterprises, in a typical restaurant labour costs can be at least 30% of revenue (Chegini, 2021). It is no surprise therefore, that there is a high level of interest as to how staffing is organised and how it can be used most effectively and efficiently without compromising a high standard of product / service. The project would involve building a frontend for the Employer and Employee, and a backend database that would store the different employee rosters and employee shifts. The hope is to create a system that will make organising employees similar for employers and make it easier for employees to independently manage and understand their work schedule.
+In this project, we will explore the design and creation of an E-Rostering System. Optimising efficiency is important across all enterprises, in a typical restaurant labour costs can be at least 30% of revenue (Chegini, 2021). It is no surprise therefore, that there is a high level of interest as to how staffing is organised and how it can be used most effectively and efficiently without compromising a high standard of product/service. The project would involve building a front-end for the Employer and Employee, and a backend database that would store the different employee rosters and employee shifts. The hope is to create a system that will make organising employees similar for employers and make it easier for employees to independently manage and understand their work schedule.
 
 # Chapter 1 - Introduction
-In today's fast-paced work environment, efficient rostering systems are essential for businesses to manage their staff and resources effectively. A rostering system is a tool that allows employers/organisation to create, manage, and assign shifts to their employees in an organized and streamlined manner as well as to track the hours employees work, assign employees to specific tasks or projects, and generate reports on employee hours and project completion.
-
-All businesses that rely on shift patterns and different number of workers at different times can benefit from an e-rostering system. Importantly, human involvement is still beneficial to rostering processes. Whether you’re talking about e-rostering or auto-rostering, HR specialist or general managers are still in charge. The main distinction is that the logistics often include intricate mathematical computation necessary to determine the rotas or shift schedules, are handled automatically. 
-After all, it is vital not just to have the sufficient number of employees per workday, but as well the personnel with specific technical expertise to get specific jobs done and allow businesses work at maximum efficiency. Visualising and planning these rosters manually can be very challenging. 
-This report and software aims to create a clear-cutting shift planning web application that relieves managers and HR specialists of difficulties that come with the demands of planning the most complex rostered organisation. Our E-rostering system is designed in the most efficient way possible that will help all businesses that depend on shift schedules, save their time, money, and resources.  
+In today's fast-paced work environment, efficient rostering systems are essential for businesses to manage their staff and resources effectively. A rostering system is a tool that allows employers/organisations to create, manage, and assign shifts to their employees in an organized and streamlined manner as well as to track the hours employees work, assign employees to specific tasks or projects, and generate reports on employee hours and project completion.
+All businesses that rely on shift patterns and a different number of workers at different times can benefit from an e-rostering system. Importantly, human involvement is still beneficial to rostering processes. Whether you’re talking about e-rostering or auto-rostering, HR specialists or general managers are still in charge. The main distinction is that the logistics often include intricate mathematical computations necessary to determine the rotas or shift schedules, which are handled automatically.
+After all, it is vital not just to have a sufficient number of employees per workday, but as well the personnel with specific technical expertise to get specific jobs done and allow businesses to work at maximum efficiency. Visualising and planning these rosters manually can be very challenging.
+This report and software aim to create a clear-cutting shift planning web application that relieves managers and HR specialists of difficulties that come with the demands of planning the most complex rostered organisation. Our E-rostering system is designed in the most efficient way possible that will help all businesses that depend on shift schedules, save their time, money, and resources.  
 
 ## Background
 
-Work rostering the human resources of a business is more than merely recording each employees working hours. Rostering, when done correctly can be essential for planning how employees work within a firm.
-A well planned roster can have an impact on five key areas in a business; employee motivation, performance tracking, attendance, workplace health and safety and productivity levels. 
-It is all well and good having qualified staff but if they are unhappy because of the times they are working this can affect their performance. Jobs will be left undone, and attendance will be low. Using a rostering system can help find the specific time of day where each employee works best. When the human resources of a firm are managed fairly and efficiently, employees are far more motivated and productivity levels are met.
-Our web application is designed to make the management of employees work schedules easier for HR specialists and general managers. The application will contain two views based on whether you’re a manager or an employee. A login function is required when accessing this application and this will determine what view the user will have access to. 
+Work rostering the human resources of a business is more than merely recording each employee's working hours. Rostering, when done correctly can be essential for planning how employees work within a firm.
+A well-planned roster can have an impact on five key areas in a business; employee motivation, performance tracking, attendance, workplace health and safety and productivity levels. 
+It is all well and good having qualified staff but if they are unhappy because of the times they are working this can affect their performance. Jobs will be left undone, and attendance will be low. Using a rostering system can help find the specific time of day when each employee works best. When the human resources of a firm are managed fairly and efficiently, employees are far more motivated and productivity levels are met.
+Our web application is designed to make the management of employees' work schedules easier for HR specialists and general managers. The application will contain two views based on whether you’re a manager or an employee. A login function is required when accessing this application and this will determine what view the user will have access to.
 
 # Chapter 2 - Analysis
 ## 2.1 Research
-To develop our own e-roster management system we first developed a research plan to gain a broader knowledge of the sector. This included both first-hand and second-hand research. Rostering, or personnel scheduling, has gained a lot of research interest since the 1950s (Edie, 1954). Over this time a variety of constraints have formed, from legal and organisation requirements to staff preferences. Different approaches have been taken to tackle these: optimization, meta-heristics, artificial intelligence, decision-support and a hybrid approach of these (Petrovic, 2017).
+
+To develop our own e-roster management system we first developed a research plan to gain a broader knowledge of the sector. This included both first-hand and second-hand research. Rostering, or personnel scheduling has gained a lot of research interest since the 1950s (Edie, 1954). Over this time a variety of constraints have formed, from legal and organisation requirements to staff preferences. Different approaches have been taken to tackle these: optimization, meta-heuristics, artificial intelligence, decision support and a hybrid approach of these (Petrovic, 2017).
 
 ## 2.2 Market
 There are many systems already on the market that provide roster management for businesses big and small. The top branded products include Xero, RosterElf, Sage, and Connecteam. The different price points and features are important to consider when choosing the best system to use for your business. Reporting capabilities such as, allowing the employer to separate reports for more detailed analysis of their management is crucial. The system should be user-friendly and customizable to fit with the businesses framework. Some systems have the added benefit of payroll, allowing an employer to deposit payroll to their employees directly. This simplifies the process of collating, producing, and filing taxes for payroll. Another feature many systems have is an instant alert where employees are sent reminders and notifications to notify them if their immediate action is required This can be for example, to review their new shift.
@@ -163,27 +167,23 @@ This diagram shows the ordered interactions which the Employer user can take in 
 </p>
 
 ### 3.4.2 Employee Sequence Diagram
-The other user of our system is the Employee of the company / business. This Sequence Diagram has the same objects as the Employer. Employees can perform difference opoerations once logged into their account that has been created for them on the system by the Employer. They can request a day off, request a shift swap with another employee, accept or decline a shift swap from another employee.
+The other user of our system is the Employee of the company/business. This Sequence Diagram has the same objects as the Employer. Employees can perform different operations once logged into their account that has been created for them on the system by the Employer. They can request a day off, request a shift swap with another employee, accept or decline a shift swap from another employee.
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/105229775/218797242-8ba3811a-f643-42be-8cf4-0fc2a0d3df0a.png" width="800">
 </p>
 
 ## 3.5 ER Diagram
-This ER Diagram helps explain the logical structure of the work rostering system. It visualises how the different entities relate to each other.   
+This ER Diagram helps explain the logical structure of the work rostering system. It visualises how the different entities relate to each other.   
 Firstly, when a user of the application logs on to use this web application, they must sign in using their username and password. This data is collected and registers whether the account is an employee or an employer. Employees are directed to the employee dashboard. Employers are directed to the employer’s dashboard. 
 The employee dashboard contains the active roster being used at that moment. Employees can click into that roster where it reveals it to them in a calendar format. This is where they can avail of our feature of swap requesting. They also export the roster in picture format for printing. 
-The employer dashboard contains all the existing rosters created by that employer. The dashboard also lists all the employees in the database that can be added to rosters. Employers can add and delete employees. Lastly, the employee can click in to the rosters where they can edit it. They can add new shifts, delete shifts and also export the roster in to picture format for printing.
+The employer dashboard contains all the existing rosters created by that employer. The dashboard also lists all the employees in the database that can be added to rosters. Employers can add and delete employees. Lastly, the employee can click into the roster where they can edit it. They can add new shifts, delete shifts and also export the roster to PDF or PNG format for printing.
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/113925559/218854406-6c3868c6-9745-4d93-9743-59f66873f5b7.png" width="800">
 </p>
 
 # Chapter 4 - Implementation
-<p align="center">
-<img src="https://user-images.githubusercontent.com/105229775/224044950-955afed5-9a24-42c7-ae61-bacefc06ddbe.png" width="700">
-</p>
-
 ## 4.1 Core Technologies
 ### Technologies/Libraries
 - **Front-end Framework:** React
@@ -194,7 +194,7 @@ The employer dashboard contains all the existing rosters created by that employe
 - **SMTP:** Flask-Mail
 
 ### 4.1.1 React
-React is an open-source JavaScript library for building user interfaces. React makes creating user interfaces easy and painless. The way React works is that you define a state(which is just data) and design simple UI components for the state then React will update the component when the state(data) changes. Hence the name **React** i.e. The UI reacts to changes in state. One of our team member uses React frequently to build different projects, so he suggested using it for our project especially when working with data. The rest of the team did some research into React and learned the basics. It was easy to pick up because at its core React is still just HTML and CSS but wrapped with JavaScript to add the incredible functionality.
+React is an open-source JavaScript library for building user interfaces. React makes creating user interfaces easy and painless. The way React works is that you define a state(which is just data) and design simple UI components for the state then React will update the component when the state(data) changes. Hence the name **React** i.e. The UI reacts to changes in state. One of our team members uses React frequently to build different projects, so he suggested using it for our project, especially when working with data. The rest of the team did some research into React and learned the basics. It was easy to pick up because at its core React is still just HTML and CSS but wrapped with JavaScript to add incredible dynamic functionality.
 
 ### 4.1.2 Flask 
 Flask is a Python web framework for building web applications in Python. It provides a set of tools and libraries that make it easy to create web applications quickly and easily. It is designed to be lightweight and flexible. It was an easy choice for the team when deciding what to use for developing the backend of our product.
@@ -202,11 +202,13 @@ Flask is a Python web framework for building web applications in Python. It prov
 We used Flask as our backend framework. It was perfect as it provided simple routing and a way to handle HTTP requests. Flask was used to build the API for our application by connecting to the MySQL database, performing CRUD(Create Read Update Delete) operations, and returning data(responses) we needed in JSON format or python dictionary.
 
 ### 4.1.3 Database
-Our Relational Database Management System was MySQL. We started out by hosting a MySQL server on AWS RDS(Amazon Web Services Relational Database System). We mostly used an ORM(Object Relational Mapping) Flask-SQLAlchemy for database queries they have a set of APIs for doing just this well documented on their website. We have four db models i.e. Employer, Employee, Shifts and Roster. We defined relationships between properties from these models for example Employer can have many employees and an Employee belongs to an Employer etc. They all have unique IDs as primary keys.
+Our Relational Database Management System was MySQL. We started by hosting a MySQL server on AWS RDS(Amazon Web Services Relational Database System). We mostly used an ORM(Object Relational Mapping) Flask-SQLAlchemy for database queries they have a set of APIs for doing just this well documented on their website. We have five database models i.e. Employers, Employees, Shifts and Rosters and Requests. We defined relationships between properties from these models, for example, an Employer can have many employees and an Employee belongs to an Employer etc. They all have unique IDs as primary keys.
 
-Our implementation is very simple, as simple as the way the web works. The frontend send HTTP requests to the backend and the backend responds back with JSON data. React uses JavaScript's built-in fetch() API to send to send a HTTP request to anyone of our many Flask API endpoints. Then Flask receives the request along with JSON data and performs CRUD operations accordinly if everything works perfeclty the the server should respond along with valid HTTP status codes e.g. 200, 400, 404.
+Our implementation is very simple, as simple as the way the web works. The front end sends HTTP requests to the backend and the backend responds with JSON data. React uses JavaScript's built-in fetch() API to send an HTTP request to any one of our many Flask API endpoints. Then the Flask app receives the request along with data sent by the client and performs CRUD operations accordingly if everything works perfectly the server should respond along with valid HTTP status codes e.g. 200, 400, 404.
 
-![Blank diagram](https://user-images.githubusercontent.com/48455262/222864284-c8511aff-bc01-460d-b308-6c3d7715d3a5.png)
+<p align="center">
+<img src="https://user-images.githubusercontent.com/105229775/224044950-955afed5-9a24-42c7-ae61-bacefc06ddbe.png" width="700">
+</p>
 
 ## 4.2 Employer's view
 
@@ -220,7 +222,7 @@ After logging in you are presented with you dashboard where you can create, edit
 <img alt="Screenshot" style="display: block;margin-left: auto;margin-right: auto;"
             src="https://user-images.githubusercontent.com/48455262/223875214-7556aad2-bfb1-4ecf-820a-bbafa983063a.png">
             
-A Roster Generaaly looks like this. It is initially empty but the employer has to populate it with employees and assign shifts to the employee. You can click the print button to print a roster to pdf.
+A Roster Generally looks like this. It is initially empty but the employer has to populate it with employees and assign shifts to the employee. You can click the print button to print a roster to pdf.
 
 <img alt="Screenshot" style="display: block;margin-left: auto;margin-right: auto;"
             src="https://user-images.githubusercontent.com/48455262/223876774-0cb0e7a4-b35a-43a4-87ac-557bca6c8488.png">
@@ -255,36 +257,36 @@ They can also send requests to the employer. Requests for time-off, shift swaps 
 
 ## Extra Features
 
-- Sending automated emails. Employees are sent their login credentials to thier email. Also every time they are assigned a shift or their shift is edited they are sent an email with the shift details.
+- Sending automated emails. Employees are sent their login credentials to their email. Also, every time they are assigned a shift or their shift is edited they are sent an email with the shift details.
 - Employer users can edit their profile.
-- Employee users are able to change their passwords from the auto-generated password sent to their email
+- Employee users can change their passwords from the auto-generated password sent to their email.
 
 #### Security
-- For authentication we used JWT Authentication and token are being stored on the client. JSON Web Tokens are a good way of transmitting information between parties securely because they can be signed, which means you can be sure senders are who they say they are.
+- For authentication, we used JWT Authentication and token are being stored on the client. JSON Web Tokens are a good way of transmitting information between parties securely because they can be signed, which means you can be sure senders are whom they say they are.
 - To prevent SQL injections we used an ORM for database querying.
 - Passwords in the database are salted and then hashed which makes it harder and impossible to crack.
 - All our Flask backend API routes are protected(wrapped with a token_required wrapper). You need a valid token to be able to send requests via the API.
 
 ## Challenges
 
-- We had troubles trying to get our app dependencies installed on each of our computers. We were trying to connect to our mysql server and it wasn't working because additional software has to be installed like installing mysql and adding it to PATH. It took a while but we eventually got it installed and working perfectly.
+- We had trouble trying to get our app dependencies installed on each of our computers. We were trying to connect to our MySQL server and it wasn't working because additional software had to be installed like installing MySQL and adding it to PATH. It took a while but we eventually got it installed and working perfectly.
 
-- We had the same issue above when deploying our app to the cloud. Those dependencies wouldn't install automatically on the cloud instance. It took a while but we eventually figured it out. We just had to figure a way to ssh into the linux instance running on the cloud and install everything manually.
+- We had the same issue above when deploying our app to the cloud. Those dependencies wouldn't install automatically on the cloud instance. It took a while but we eventually figured it out. We just had to figure out a way to simply ssh into the Linux instance running on the cloud and install everything manually just as we did on our personal computers.
 
 - Emails were scarce to work with. An email was created just for our app and our employee models were populated with random emails like `jake123@gmail.com`. We got our app email blocked by google because those emails even though they seem random actually belong to people and so our email got disabled for spamming. We found a way to work around it by using more random and preposterous emails like `test234@widget.game`.
 
 ## Lessons Learned
 1 -	Team Roles and Responsibilites:
 
-Defining team roles and responsibilities was essential for ensuring that everyone knows what they are responsible for and what is expected of them. It also helps prevent confusion and overlapping work. For example, some of our team members had different strengths and weaknesses, such as coding ability, writing ability and idea and feature imagination. By splitting up roles according to these strengths and characteristics, the development ran much smoother and efficient.
+Defining team roles and responsibilities was essential for ensuring that everyone knows what they are responsible for and what is expected of them. It also helps prevent confusion and overlapping work. For example, some of our team members had different strengths and weaknesses, such as coding ability, writing ability and idea and feature imagination. By splitting up roles according to these strengths and characteristics, the development ran much smoother and more efficiently.
 
 2 -	Time Management: 
 
-Time management was crucial for ensuring that the project was completed on schedule. Creating a project timeline, as can be found above in the “Path of Development” section, and setting realistic deadlines helped the team stay on track to complete tasks on a timeframe that suited the quick nature of the module. As can be seen on the plan, the team did not get to complete two of our original stretch goals. We originally planned them as stretch goals with the objective to complete them all, but we knew the short timeframe of the project might not allow for these. In the end, the team was happy to complete one of these stretch goals, but perhaps with better time management, all could have been completed.
+Time management was crucial for ensuring that the project was completed on schedule. Creating a project timeline, as can be found above in the “Path of Development” section, and setting realistic deadlines helped the team stay on track to complete tasks within a timeframe that suited the quick nature of the module. As can be seen on the plan, the team did not get to complete two of our original stretch goals. We originally planned them as stretch goals with the objective to complete them all, but we knew the short timeframe of the project might not allow for these. In the end, the team was happy to complete one of these stretch goals, but perhaps with better time management, all could have been completed.
 
 3 -	Adaptability: 
 
-No matter how well-planned the project development was, unexpected challenges did arise. For example, availability was a struggle for the group for the first weeks. We had an unfortunate string of illness and absences for the majority of the team on two weeks during the already short project. Thankfully, we as a team were as adaptable as possible, and moved to online collaboration and different meeting times where it was possible to keep the efficiency of the project as high as possible. 
+No matter how well-planned the project development was, unexpected challenges did arise. For example, availability was a struggle for the group for the first weeks. We had an unfortunate string of illnesses and absences for the majority of the team for two weeks during the already short project. Thankfully, we as a team were as adaptable as possible and moved to online collaboration and different meeting times where it was possible to keep the efficiency of the project as high as possible.  
 
 4 -	Documentation and Planning:
 
@@ -292,29 +294,32 @@ Keeping on top of changes in goals and structure would have saved the group time
 
 5 -         Communication:
 
-Communication was key. Clearly sharing our ideas and problems with each other allowed the project to progress and grow further. A problem had was a problem shared. At first, we had difficulty in doing this efficiently. Following a hybrid of AGILE and WATERFALL development really helped our communication and teamwork skills, having regular meetings either in person or online with regular contact over messaging through the projects development.  
+Communication was key. Clearly sharing our ideas and problems with each other allowed the project to progress and grow further. A problem had was a problem shared. At first, we had difficulty doing this efficiently. Following a hybrid of AGILE and WATERFALL development really helped our communication and teamwork skills, having regular meetings either in person or online with regular contact over messaging through the development of the project.   
 
-# Conclusion
+## Conclusion
+
 In conclusion, the Shift-Wizard e-rostering system offers a range of benefits for firms looking to optimise their workforce scheduling. The system provides a user-friendly interface that allows managers to quickly and easily create, edit, manage employee schedules, and employees to track their rostered shifts easily and intuitively. Additionally, the Shift-Wizard system provides real-time updates and alerts, ensuring that schedules are always up-to-date and that any changes are communicated promptly to employees by email.
-
 Overall, our evaluation of the Shift-Wizard e-rostering system has highlighted its potential to improve workforce management processes, increase staff productivity, and reduce costs associated with manual rostering processes. We recommend that organizations considering implementing an e-rostering system consider Shift-Wizard as a viable option, and evaluate its potential benefits against their own specific needs and requirements.
-
-As we have highlighted in the plan, some strech goals were not met as the team overestimated the time taken on polish of the product. One of these was to add functionality that an employer can add days the the firm is closed, and opening/closing hours. Another was a feature similar to a group chat, implemented in the employee and employer view, allowing either employees to communicate with each other, or employees to get in contact with theie employer to discuss shifts. These can be the first jumpimg on point to any future developers working on our free, open source application. From there on, they can expand on the many different features in the system, giving more functionality to some of the products more elaborate parts.
-
-Development on Shift-Wizard has been an overall great success. We have achieved the vast majority of our goals and delivered a high-quality software solution that would meet the needs of our target market. All members of the team is very happy with the finished product and have learned many programming, team-work, and presentaion skills along the way.
+As we have highlighted in the plan, some stretch goals were not met as the team overestimated the time taken to polish the product. One of these was to add functionality that an employer can add days the firm is closed, and opening/closing hours. Another was a feature similar to a group chat, implemented in the employee and employer view, allowing either employees to communicate with each other, or employees to get in contact with their employer to discuss shifts. These can be the first jumping-on point for any future developers working on our free, open-source application. From there on, they can expand on the many different features in the system, giving more functionality to some of the products' more elaborate parts.
+Development on Shift-Wizard has been an overall great success. We have achieved the vast majority of our goals and delivered a high-quality software solution that would meet the needs of our target market. All members of the team are very happy with the finished product and have learned many programming, teamwork, and presentation skills along the way.
 
 
 ## References
-Chegini, A. (2021) What percentage should labor cost be in a restaurant?, Epos Now. Epos Now. Available at: https://www.eposnow.com/ie/resources/what-percentage-should-labor-cost-be-in-a-restaurant/#:~:text=Labour%20is%20often%20one%20of,on%20the%20type%20of%20restaurant. (Accessed: March 7, 2023).
 
-Drake, R.G. (2017) “E-roster policy: Insights and implications of codifying nurse scheduling,” Health Informatics Journal, 25(3), pp. 844–857. Available at: https://doi.org/10.1177/1460458217724579.
+- [Flask-SQLAlchemy Documentation](https://flask-sqlalchemy.palletsprojects.com/en/3.0.x/)
 
-Edie, L.C. (1954) “Traffic delays at Toll Booths,” Journal of the Operations Research Society of America, 2(2), pp. 107–138. Available at: https://doi.org/10.1287/opre.2.2.107.
+- [SQLAlchemy Documentation](https://www.sqlalchemy.org/)
 
-Heimerl, P. et al. (2020) “Factors influencing job satisfaction in hospitality industry,” SAGE Open, 10(4), p. 215824402098299. Available at: https://doi.org/10.1177/2158244020982998.
+- [Chegini, A. (2021) What percentage should labor cost be in a restaurant?, Epos Now. Epos Now.](https://www.eposnow.com/ie/resources/what-percentage-should-labor-cost-be-in-a-restaurant/#:~:text=Labour%20is%20often%20one%20of,on%20the%20type%20of%20restaurant) (Accessed: March 7, 2023).
 
-Nursing Times (2021) Dilemmas of E-rostering old and new: Towards intelligent systems?, Nursing Times. Available at: https://www.nursingtimes.net/clinical-archive/healthcare-it/dilemmas-of-e-rostering-old-and-new-towards-intelligent-systems-07-05-2019/ (Accessed: January 31, 2023).
+- [Drake, R.G. (2017) “E-roster policy: Insights and implications of codifying nurse scheduling,” Health Informatics Journal, 25(3), pp. 844–857.](https://doi.org/10.1177/1460458217724579)
 
-Petrovic, S. (2017) “‘you have to get wet to learn how to swim’ applied to bridging the gap between research into personnel scheduling and its implementation in practice,” Annals of Operations Research, 275(1), pp. 161–179. Available at: https://doi.org/10.1007/s10479-017-2574-4.
+- [Edie, L.C. (1954) “Traffic delays at Toll Booths,” Journal of the Operations Research Society of America, 2(2), pp. 107–138.](https://doi.org/10.1287/opre.2.2.107)
 
-Square (2021) How to roster staff effectively: Types, tips and Guides L Square, Square. Available at: https://squareup.com/au/en/townsquare/roster-staff-effectively (Accessed: January 31, 2023).
+- [Heimerl, P. et al. (2020) “Factors influencing job satisfaction in hospitality industry,” SAGE Open, 10(4), p. 215824402098299.](https://doi.org/10.1177/2158244020982998)
+
+- [Nursing Times (2021) Dilemmas of E-rostering old and new: Towards intelligent systems?, Nursing Times.]( https://www.nursingtimes.net/clinical-archive/healthcare-it/dilemmas-of-e-rostering-old-and-new-towards-intelligent-systems-07-05-2019/) (Accessed: January 31, 2023).
+
+- [Petrovic, S. (2017) “‘you have to get wet to learn how to swim’ applied to bridging the gap between research into personnel scheduling and its implementation in practice,” Annals of Operations Research, 275(1), pp. 161–179.](https://doi.org/10.1007/s10479-017-2574-4)
+
+- [Square (2021) How to roster staff effectively: Types, tips and Guides L Square, Square.](https://squareup.com/au/en/townsquare/roster-staff-effectively) (Accessed: January 31, 2023).
