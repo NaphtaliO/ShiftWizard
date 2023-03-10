@@ -1,6 +1,17 @@
 <img src="https://user-images.githubusercontent.com/48455262/223453923-423ffe60-693b-4629-bd04-3d3a9f2d1ff6.png"
             width="100" height="100">
 # Shift-Wizard - A Free and Open-Source Rostering System
+
+<p align="center"> •
+  <a href="#Chapter 1 - Introduction">Introduction</a> •
+  <a href="#Chapter 2 - Analysis">Analysis</a> •
+  <a href="#Chapter 3 - Design">Design</a> •
+  <a href="#Chapter 4 - Implementation">Implementation</a> •
+  <a href="#Extra Features">Extra Features</a> •
+  <a href="#challenges">Challenges</a> •
+  <a href="#Conclusion">Conclusion</a> •
+  <a href="#References">References</a> •
+</p>
         
 ### Contributors
 Mark Kilgannon - 120398166\
