@@ -24,6 +24,8 @@ Our product is currently hosted at these sites
 - <a href="https://shift-wizard.web.app" target="_blank" rel="nofollow">Employer's view</a>
 - <a href="https://shift-wizard-employee.web.app" target="_blank" rel="nofollow">Employee's view</a>
 
+Here's a link to our github repo https://github.com/NaphtaliO/ShiftWizard
+
 ## Installation Guide
 <details>
   <summary>Linux/MacOS/Windows</summary>
