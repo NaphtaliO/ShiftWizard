@@ -271,7 +271,7 @@ They can also send requests to the employer. Requests for time-off, shift swaps 
 
 - We had the same issue above when deploying our app to the cloud. Those dependencies wouldn't install automatically on the cloud instance. It took a while but we eventually figured it out. We just had to figure a way to ssh into the linux instance running on the cloud and install everything manually.
 
-- Emails were scarce to work with. An email was created just for our app and our employee models were populated with random emails like jake123@gmail.com. We got our app email blocked by google because those emails even though they seem random actually belong to people and so our email got disabled for spamming. We found a way to work around it by using more random and preposterous emails like test234@widget.game.
+- Emails were scarce to work with. An email was created just for our app and our employee models were populated with random emails like `jake123@gmail.com`. We got our app email blocked by google because those emails even though they seem random actually belong to people and so our email got disabled for spamming. We found a way to work around it by using more random and preposterous emails like `test234@widget.game`.
 
 ## Lessons Learned
 1 -	Team Roles and Responsibilites:
