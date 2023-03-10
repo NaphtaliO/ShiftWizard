@@ -244,9 +244,9 @@ They can also send requests to the employer. Requests for time-off, shift swaps 
 
 ## Extra Features
 
-- Sending automated emails. Employees are sent their login in credentials to thier email. Also every time they are assign a shift or their shift is edited they are send an email with shift details.
+- Sending automated emails. Employees are sent their login credentials to thier email. Also every time they are assigned a shift or their shift is edited they are sent an email with the shift details.
 - Employer users can edit their profile.
-- Employee users are able to change their passwords from the auto-generated one sent to their email
+- Employee users are able to change their passwords from the auto-generated password sent to their email
 
 #### Security
 - For authentication we used JWT Authentication and token are being stored on the client. JSON Web Tokens are a good way of transmitting information between parties securely because they can be signed, which means you can be sure senders are who they say they are.
@@ -256,8 +256,11 @@ They can also send requests to the employer. Requests for time-off, shift swaps 
 
 ## Challenges
 
-- We had troubles trying to get our app installed
-- It was tough to get emails to work with. 
+- We had troubles trying to get our app dependencies installed on each of our computers. We were trying to connect to our mysql server and it wasn't working because additional software has to be installed like installing mysql and adding it to PATH. It took a while but we eventually got it installed and working perfectly.
+
+- We had the same issue above when deploying our app to the cloud. Those dependencies wouldn't install automatically on the cloud instance. It took a while but we eventually figured it out. We just had to figure a way to ssh into the linux instance running on the cloud and install everything manually.
+
+- Emails were scarce to work with. An email was created just for our app and our employee models were populated with random emails like jake123@gmail.com. We got our app email blocked by google because those emails even though they seem random actually belong to people and so our email got disabled for spamming. We found a way to work around it by using more random and preposterous emails like test234@widget.game.
 
 ## Lessons Learned
 1 -	Team Roles and Responsibilites:
