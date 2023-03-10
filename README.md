@@ -7,7 +7,7 @@
   <a href="#Chapter-2--">Analysis</a> •
   <a href="#Chapter-3--">Design</a> •
   <a href="#Chapter-4--">Implementation</a> •
-  <a href="#Extra">Extra Features</a> •
+  <a href="#extra-features">Extra Features</a> •
   <a href="#challenges">Challenges</a> •
   <a href="#Conclusion">Conclusion</a> •
   <a href="#References">References</a> •
